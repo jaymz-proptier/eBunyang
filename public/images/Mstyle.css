@@ -1,0 +1,1647 @@
+@charset "utf-8";
+@font-face { font-family: 'SUIT'; font-style: normal; font-weight: 400; src: url(../font/SUIT-Regular.woff2) format('woff2'), url(../font/SUIT-Regular.otf) format('opentype'); } 
+@font-face { font-family: 'SUIT'; font-style: normal; font-weight: 500; src: url(../font/SUIT-Medium.woff2) format('woff2'), url(../font/SUIT-Medium.otf) format('opentype'); } 
+@font-face { font-family: 'SUIT'; font-style: normal; font-weight: 600; src: url(../font/SUIT-SemiBold.woff2) format('woff2'), url(../font/SUIT-SemiBold.otf) format('opentype'); } 
+@font-face { font-family: 'SUIT'; font-style: normal; font-weight: 700; src: url(../font/SUIT-Bold.woff2) format('woff2'), url(../font/SUIT-Bold.otf) format('opentype'); } 
+
+
+
+* { font-family: 'SUIT', sans-serif; margin: 0; padding: 0; border: 0; box-sizing: border-box; text-decoration: none; color: inherit; list-style: none; } 
+html, body { font-weight: 400; width: 100%; height: 100%; font-size: 16px; color: #3A3736; background: #FFFFFF; overflow-x: hidden;} 
+.wrap {width: 100%; height: 100%;}
+body.popupView {position:static; overflow:hidden;}
+[aria-hidden="true"] {display:none;}
+input[type="checkbox"]+label, input[type="radio"]+label {cursor:pointer;}
+.checkbox input[type="checkbox"], .radiobox input[type="radio"] {display: none;}
+
+.noUi-target {position:relative; height:4px; margin:10px 10px 19px; text-indent:-3000px; background-color:#f0f3f9; border-radius:2.5px;}
+.noUi-target, .noUi-target * {-webkit-touch-callout:none; -webkit-tap-highlight-color:rgba(0, 0, 0, 0); -webkit-user-select:none; -ms-touch-action:none; touch-action:none; -ms-user-select:none; -moz-user-select:none; user-select:none; -moz-box-sizing:border-box; box-sizing:border-box;}
+.noUi-connect {width:100%; height:4px; vertical-align:baseline; text-indent:-999px; background-color:#f98342; border-radius:2.5px;}
+.noUi-base, .noUi-connects {position:relative; z-index:1; width:100%; height:100%;}
+.noUi-horizontal .noUi-origin {height:0;}
+.noUi-origin {width:10%; height:10%;}
+.noUi-connect, .noUi-origin {position:absolute; z-index:1; top:0; right:0; will-change:transform; -ms-transform-origin:0 0; -webkit-transform-origin:0 0; -webkit-transform-style:preserve-3d; transform-origin:0 0; transform-style:flat;}
+.noUi-handle {position:absolute; top:-8px; right:-10.5px; width:21px; height:21px; margin:0; overflow:visible; font-size:0; line-height:0; text-indent:-9999px; vertical-align:top; background-color:#fff; border:1px solid #f98342; border-radius:50%; -moz-border-radius:50%; -webkit-border-radius:50%; box-shadow:0 2px 4px -1px rgba(0, 27, 65, 0.12); -webkit-backface-visibility:hidden; backface-visibility:hidden;}
+
+/* 팝업 기본*/
+.MSpopupWrap {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color:rgba(0, 0, 0, .75); z-index: 7777;}
+.MSpopupWrap .popupWrap {position:fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 77777; width: 604px; background: #fff; border-radius: 6px; height: 84%; padding: 24px 16px;}
+.MSpopupLayerWrap {}
+.MSpopupWrap .popupWrap .popupHeader {width: 100%;}
+.MSpopupWrap .popupWrap .popupHeader .mobileBackWrap {display: none;}
+.MSpopupWrap .popupWrap .popupHeader .popupTitle {font-size: 20px; font-weight: 500; line-height: 26px; text-align: center; border-bottom: solid 1px #E2DDDA; padding: 8px 0 24px;}
+.MSpopupWrap .popupWrap .popupHeader .closeBtnWrap {position: absolute; top: 16px; right: 16px;}
+.MSpopupWrap .popupWrap .popupHeader .closeBtnWrap .close {}
+.MSpopupWrap .popupWrap .popupHeader .closeBtnWrap .close .MSicon {display: block; content: ''; width: 24px; height: 24px; background-position: -120px -200px;}
+.MSpopupWrap .popupWrap .popupContentWrap {height: 100%;}
+
+.MSpopupWrap .popupContentWrap .buttonWrap {text-align: center;}
+.MSpopupWrap .popupContentWrap .buttonWrap .ok {padding:8px 24px; background: #fff; border: solid 1px #E2DDDA; transition: all 0.2s; cursor: pointer; font-size: 16px; line-height: 24px; border-radius: 6px;}
+.MSpopupWrap .popupContentWrap .buttonWrap .ok:hover {background: #F6F4F2;}
+.MSpopupWrap .filterBtnWrap {display: flex; padding: 24px 16px 0;}
+
+/* Main - 검색결과팝업 */
+.MSpopupWrap.searchResultPopup {}
+.searchResultPopup .searchBoxWrap {position:relative; border: solid 1px #E2DDDA; border-radius: 30px; background: #fff; display: flex; margin: 16px 0;}
+.searchResultPopup .searchBoxWrap input.searchBox {padding: 10px 20px; border-radius: 30px; font-size: 15px; line-height: 23px; color: #3A3736; width: 92%;}
+.searchResultPopup .searchListWrap {height: 80%; overflow: hidden; overflow-y: auto; white-space: nowrap; margin: 16px 0;}
+.searchResultPopup .searchListWrap .resultCount {font-size: 18px; line-height: 24px; font-weight: 600; padding: 0 8px 8px;}
+.searchResultPopup .searchListWrap .resultListWrap {}
+.searchResultPopup .searchListWrap .resultListWrap .resultList {}
+.searchResultPopup .searchListWrap .resultListWrap .resultList .itemWrap {padding: 8px 10px;}
+.searchResultPopup .searchListWrap .resultListWrap .resultList .itemWrap .textWrap {}
+.searchResultPopup .searchListWrap .resultListWrap .resultList .itemWrap .textWrap .text {}
+.searchResultPopup .searchListWrap .resultListWrap .resultList .itemWrap .textWrap .address {font-size: 14px; line-height: 20px; color: #9A9390;}
+
+/* Main - 지역선택팝업 */
+.MSpopupWrap.mainAreaPopup {}
+.MSpopupWrap.mainAreaPopup .popupWrap {height: 365px; padding: 0;}
+.mainAreaPopup .popupWrap .popupHeader .closeBtnWrap {top: 12px;}
+/* .mainAreaPopup .popupWrap .popupHeader .closeBtnWrap .close .MSicon {display: block; width: 32px; height: 32px; background-position: -656px 0;} */
+.mainAreaPopup .popupWrap .selectTable .regionRow .filterBtnWrap {display: flex; background: #fff;}
+.mainAreaPopup .popupWrap .selectTable .regionRow .filterBtnWrap .filterSelectBtn {margin: 0 4px;}
+.mainAreaPopup .popupWrap .selectTable .regionRow .filterBtnWrap .filterSelectBtn.cancelBtn {background: #ADA6A3; color: #fff; width: 100%; border-radius: 6px; font-size: 16px; padding: 10px; line-height: 24px; display: flex; justify-content: center; cursor: pointer;}
+.mainAreaPopup .popupWrap .selectTable .regionRow .filterBtnWrap .filterSelectBtn .filterSelectIcon {content: ''; display: block; width: 24px; height: 24px; background-position: -96px -200px; margin-right: 4px;}
+
+
+/* 검색어 확인 경고 팝업 */
+.MSpopupWrap.alertPopup .popupWrap {width: auto; height: auto;}
+.alertPopup .nodataWrap {padding: 48px 64px 24px; text-align: center;}
+.alertPopup .nodataWrap .popupContentWrap {}
+.alertPopup .nodataWrap .popupContentWrap .popupAlertWrap {}
+.alertPopup .popupAlertWrap .textWrap {padding-bottom: 32px;}
+.alertPopup .popupAlertWrap .textWrap .text {font-size: 16px; line-height: 24px; text-align: center;}
+
+
+/* 이미지 전체보기 팝업 */
+.MSpopupWrap.imgViewerPopup {}
+.MSpopupWrap.imgViewerPopup .popupWrap {width: 720px; background: none; height: auto;}
+.imgViewerPopup .popupWrap .popupHeader .closeBtnWrap {top: 24px; right: -24px;}
+.imgViewerPopup .popupWrap .popupHeader .closeBtnWrap .close .MSicon {display: block; width: 32px; height: 32px; background-position: -656px 0;}
+.imgViewerPopup .popupWrap .popupContentWrap .closeBtnWrap .close .MSicon {display: block; width: 32px; height: 32px; background-position: -656px 0;}
+.imgViewerPopup .infoImgSlider .mySwiper2 .swiper-slide .imgBox {display: block; background:url('/public/images/images01.png') no-repeat center / cover; width: 100%; padding-top: 56.25%;}
+.imgViewerPopup .infoImgSlider .thumbSwiper {padding-top: 8px;}
+.imgViewerPopup .infoImgSlider .mySwiper .thumb {width: 140px !important;}
+.imgViewerPopup .infoImgSlider .mySwiper .thumb .imgBox {display: block; background:url('/public/images/images01.png') no-repeat center / cover; width: 100%; padding-top: 70%;}
+
+/* 학군정보 팝업 */
+.layerPopup.schoolInfoLayer {position: absolute; top: 145px; left: 400px; width: 560px; background: #fff; border-radius: 0; border: none; border-right: solid 1px #E2DDDA; bottom: 0; overflow: hidden; overflow-y: auto; white-space: nowrap;}
+.schoolInfoLayer .schoolInfoWrap {}
+.schoolInfoWrap .schoolInfoWrap .popupContentWrap {}
+.schoolInfoWrap .popupContentWrap .schoolInfoContent {}
+
+.schoolInfoWrap .contentArea {padding: 40px 24px; border-bottom: solid 10px #EEEBE9;}
+.schoolInfoWrap .contentArea:last-child, .schoolInfoWrap .contentArea .textItemWrap:last-child {border-bottom: none;}
+.schoolInfoWrap .contentArea .headerTitle {font-weight: 600; font-size: 20px; line-height: 28px; padding-bottom: 16px;}
+.schoolInfoWrap .contentArea .schoolName {text-align: center; padding-bottom: 56px;}
+.schoolInfoWrap .contentArea .schoolName .schoolType {}
+.schoolInfoWrap .contentArea .textItemWrap {display: flex; justify-content: space-between; padding: 24px 16px; border-bottom: solid 1px #E2DDDA;}
+.schoolInfoWrap .contentArea .textItemWrap .title {}
+.schoolInfoWrap .contentArea .textItemWrap .textWrap {}
+.schoolInfoWrap .contentArea .textItemWrap .textWrap .text {}
+.schoolInfoWrap .contentArea .chartArea {display: flex;}
+.schoolInfoWrap .contentArea .chartArea .classChartArea {position:relative; width: 50%; padding: 16px 0;}
+.schoolInfoWrap .student .chartArea .classChartArea:first-child::after {position: absolute; content: ''; width: 1px; height: 100%; background: #E2DDDA; top: 0; right: 0;}
+.schoolInfoWrap .contentArea .chartArea .classChartArea .title {font-weight: 500; text-align: center; padding-bottom: 16px;}
+.schoolInfoWrap .contentArea .chartArea .classChartArea .chartItemWrap {}
+.schoolInfoWrap .contentArea .chartArea .classChartArea .chartItemWrap.donutInfo {padding-left: 24px;}
+.schoolInfoWrap .contentArea .chartArea .classChartArea .chartItemWrap .studentBarWrap {display: flex; height: 100%; padding: 24px;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem {position:relative; width: 33.3%; margin: 0 auto;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem .chartBarWrap {position: relative; width: 40px; height: 120px; background: #fff; margin: 0 auto;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem .chartBarWrap .chartBar {}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem .chartBarWrap .chartBar .numText {position: absolute; top: -24px; width: 100%; font-size: 14px; line-height: 22px; text-align: center; color: #797472;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem:last-child .chartBarWrap .chartBar .numText {color: #F98342;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem .chartBarWrap .chartBar .data {position: absolute; height: 30%; width: 100%; margin: 0 auto; background: #797472; bottom: 0; left: 0; border-radius: 2px;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem:last-child .chartBarWrap .chartBar .data {background: #f98342;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem .chartBarWrap .text {position: absolute; bottom: -24px; font-size: 14px; line-height: 22px; text-align: center; width: 100%;}
+.schoolInfoWrap .contentArea .studentBarWrap .regionItem:last-child .chartBarWrap .text {color: #f98342;}
+.schoolInfoWrap .employee .chartArea .classChartArea {padding: 16px;}
+.schoolInfoWrap .contentArea .total {font-size: 18px; line-height: 26px; font-weight: 600; padding-bottom: 8px;}
+.schoolInfoWrap .contentArea .each {position: relative; font-size: 15px; line-height: 23px; padding-bottom: 4px; left: 20px;}
+.schoolInfoWrap .contentArea .each::before {position: absolute; left: -20px; top: 5px; border-radius: 2px; content: ''; width: 14px; height: 14px; background: #307EB7;}
+.schoolInfoWrap .contentArea .each[aria-label="여교원"]::before {background: #D6EAFF;}
+.schoolInfoWrap .contentArea .each[aria-label="남교원"]::before {background: #307EB7;}
+.schoolInfoWrap .contentArea .each[aria-label="여사무직"]::before {background: #FFD652;}
+.schoolInfoWrap .contentArea .each[aria-label="남사무직"]::before {background: #CECECE;}
+.schoolInfoWrap .contentArea .source {font-size: 12px; line-height: 16px; color: #9A9390; text-align: right; padding: 8px 16px;}
+
+/* 공유하기 팝업 */
+.MSpopupWrap.sharePopup .popupWrap {width: auto; height: auto;}
+.sharePopup .shareContentWrap {}
+.shareContentWrap .snsBtnWrap {display: flex; justify-content: center; padding: 32px;}
+.shareContentWrap .snsBtnWrap .snsBtn {padding: 0 8px; background-color: #fff; cursor: pointer;}
+.shareContentWrap .snsBtnWrap .snsBtn .SNSicon {display: block; content: ''; width: 60px; height: 60px;}
+.shareContentWrap .snsBtnWrap .snsBtn[aria-label="공유_카카오톡"] .SNSicon {background-position: -480px -344px;}
+.shareContentWrap .snsBtnWrap .snsBtn[aria-label="공유_페이스북"] .SNSicon {background-position: -540px -344px;}
+.shareContentWrap .snsBtnWrap .snsBtn[aria-label="공유_카카오스토리"] .SNSicon {background-position: -600px -344px;}
+.shareContentWrap .snsBtnWrap .snsBtn[aria-label="공유_블로그"] .SNSicon {background-position: -660px -344px;}
+.shareContentWrap .snsBtnWrap .snsBtn[aria-label="공유_밴드"] .SNSicon {background-position: -720px -344px;}
+.shareContentWrap .copyBtnWrap {}
+.shareContentWrap .copyBtnWrap .urladdress {display: block; background: #F6F4F2; padding: 10px; border: solid 1px #D3CECC; cursor: pointer; font-size: 14px; line-height: 20px; width: 80%; margin: auto; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.shareContentWrap .copyBtnWrap .text {text-align: center; padding: 10px 0 16px;}
+
+/* 공유하기 - url복사완료 팝업 */
+.MSpopupWrap.copyCompletePopup, .MSpopupWrap.alarmCompletePopup {display: none;}
+.MSpopupWrap.copyCompletePopup .popupWrap, .MSpopupWrap.alarmCompletePopup .popupWrap {width: auto; height: auto; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); padding: 12px 32px;}
+.copyCompletePopup .text, .alarmCompletePopup .text {text-align: center; font-size: 14px;}
+
+/* 입주탐방 검색필터 팝업 */
+.MSpopupWrap.visitFilterPopup .popupWrap, .MSpopupWrap.tourFilterPopup .popupWrap  {padding: 16px 0 32px; height: auto;}
+
+/* 레이어 기본 */
+.layerPopup {position: absolute; z-index: 999; box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.1); background-color: #fff; border: 1px solid #E2DDDA; border-radius: 6px; overflow: hidden;}
+.layerPopup .layerHeader {position: relative; width: 100%; height: 100%;}
+.layerPopup .layerHeader .closeBtnWrap {position: absolute; top: 20px; right: 20px;}
+.layerPopup .layerHeader .closeBtnWrap .close {}
+.layerPopup .layerHeader .closeBtnWrap .close .MSicon {display: block; content: ''; width: 24px; height: 24px; background-position: -120px -200px;}
+
+
+
+/* 지역검색 레이어 */
+.layerPopup.areaLayer {width: 420px; top: 48px; left: 50%; transform: translateX(-50%);} 
+.areaLayer[aria-hidden="true"] { display: none;}
+.areaLayer .selectTable {}
+.areaLayer .selectTable .regionTableWrap {width: 100%; border-spacing: 0; border-collapse: collapse;}
+.areaLayer .selectTable .regionTableWrap .regionRow.areaBox {height: 100%; max-height: 250px; overflow-y: scroll;}
+.areaLayer .selectTable .regionTableWrap .regionRow .areaSelectMenu {display: flex; padding: 10px; border-bottom: solid 1px #E2DDDA; justify-content: center; align-items: center;}
+.areaLayer .selectTable .regionTableWrap .regionRow .areaSelectMenu .regionSelect {font-size: 15px; line-height: 24px;}
+.areaLayer .selectTable .regionTableWrap .regionRow .areaSelectMenu .arrowRight {display: block; width: 16px; height: 16px; background-position: -96px -32px; margin: 0 4px;}
+.areaLayer .selectTable .regionTableWrap .regionRow .rowContent {display: flex; width: 100%; flex-wrap: wrap;}
+.areaLayer .selectTable .regionTableWrap .regionRow .rowContent .regionCell {width: 33.33%; font-size: 14px; line-height: 16px; text-align: center; border-bottom: 1px solid #F1EEEC; border-right: 1px solid #F1EEEC; height: 42px; cursor: pointer; padding-top: 12px; letter-spacing: -0.4px;}
+.areaLayer .selectTable .regionTableWrap .regionRow .rowContent .regionCell[aria-selected="true"] {color: #F98342;}
+.areaLayer .selectTable .regionRow .filterBtnWrap {width: 100%; text-align: center; padding: 12px; border-top: solid 1px #E2DDDA; display: inline-block; margin-top: -1px;}
+.areaLayer .selectTable .regionRow .filterBtnWrap .filterSelectBtn {background: #F98342; color: #fff; width: 100%; border-radius: 6px; font-size: 15px; padding: 8px; line-height: 24px; display: flex; justify-content: center; cursor: pointer;}
+.areaLayer .selectTable .regionRow .filterBtnWrap .filterSelectBtn .filterSelectIcon {content: ''; display: block; width: 24px; height: 24px; background-position: -96px -200px; margin-right: 4px;}
+
+/* 분양정보 지역검색 레이어 */
+.layerPopup.mapAreaLayer {top: 44px; max-height: 485px;} 
+
+/* 검색필터 레이어 */
+.layerPopup .mobileSubHeader, .MSpopupWrap .mobileSubHeader, .MSpopupWrap .mobileBackWrap {display: none;}
+.sectionWrap .contentWrap .filterSection .filterBox {padding-right: 24px;}
+.sectionWrap .contentWrap .filterSection .filterBox, .sectionWrap .listSection .listHeader .filterBox {position: relative;}
+.sectionWrap .contentWrap .filterSection .filterBox .filterBtn, .sectionWrap .listSection .listHeader .filterBox .filterBtn {display: flex; align-items: center; padding: 4px 8px; border: solid 1px #E2DDDA; border-radius: 6px; font-size: 15px; line-height: 20px; background: #fff; margin-left: 8px; cursor: pointer;}
+.sectionWrap .contentWrap .filterSection .filterBox .filterBtn .MSicon, .sectionWrap .listSection .listHeader .filterBox .filterBtn .MSicon {display: block; width: 24px; height: 24px; background-position: -24px -32px; margin-right: 4px;}
+.layerPopup.filterLayer {top:136px; right: 24px; background:#fff; width: 640px; height: 660px; border: solid 1px #EEEBE9; border-radius: 6px;}
+.filterLayer .layerContentWrap {}
+.filterLayer .filterInner {height: 582px; overflow: hidden; overflow-y: auto; white-space: nowrap;}
+
+.filterLayer .filterItemWrap, .MSpopupWrap .filterItemWrap {padding: 24px; border-bottom: solid 12px #EEEBE9;}
+.MSpopupWrap .popupContentWrap .filterItemWrap.no-line {border-bottom: none;}
+.filterLayer .filterItemWrap .title, .MSpopupWrap .filterItemWrap .title {font-size: 18px; font-weight: 600; padding-bottom: 8px;}
+.filterLayer .filterItemWrap .selectBox, .MSpopupWrap .filterItemWrap .selectBox, .tip .listSection .selectBox, .mainSearch .textWrap .selectBox {position: relative; cursor: pointer;}
+.filterLayer .filterItemWrap .selectBox .selectItem, .MSpopupWrap .filterItemWrap .selectBox .selectItem, .tip .listSection .selectBox .selectItem { position: relative; font-size: 16px; line-height: 24px; padding: 8px 16px; border: solid 1px #E2DDDA; border-radius: 6px; display: block; width: 100%;}
+
+.filterLayer .filterItemWrap .selectBox .selectItem::after, .MSpopupWrap .filterItemWrap .selectBox .selectItem::after, .tip .listSection .selectBox .selectItem::after {position: absolute; content: ""; display: block; width: 16px; height: 16px; background-position: -80px 0; right: 14px; top: 12px;}
+.filterLayer .filterItemWrap .selectBox .selectItem[aria-pressed=false]+.selectList, .MSpopupWrap .filterItemWrap .selectBox .selectItem[aria-pressed=false]+.selectList, .tip .listSection .selectBox .selectItem[aria-pressed=false]+.selectList, .mainSearch .textWrap .selectBox .selectItem[aria-pressed=false]+.selectList { display: none; } 
+.filterLayer .filterItemWrap .selectItem[aria-pressed="true"]+.selectList, .MSpopupWrap .filterItemWrap .selectItem[aria-pressed="true"]+.selectList, .tip .listSection .selectBox .selectItem[aria-pressed="true"]+.selectList, .mainSearch .textWrap .selectBox .selectItem[aria-pressed=true]+.selectList { display: block; } 
+
+.filterLayer .filterItemWrap .selectBox .selectList, .MSpopupWrap .filterItemWrap .selectBox .selectList, .tip .listSection .selectBox .selectList, .mainSearch .textWrap .selectBox .selectList {position: absolute; top: 46px; border: solid 1px #E2DDDA; border-radius: 6px; padding: 8px 0; background: #fff; width: 100%; z-index: 77;}
+.filterLayer .filterItemWrap .selectBox .selectList a, .MSpopupWrap .filterItemWrap .selectBox .selectList a, .tip .listSection .selectBox .selectList a, .mainSearch .textWrap .selectBox .selectList a {width: 100%; display: block; font-size: 16px; line-height: 24px; padding: 8px 16px;}
+.filterLayer .filterItemWrap .selectBox .selectList a:hover, .MSpopupWrap .filterItemWrap .selectBox .selectList a:hover, .tip .listSection .selectBox .selectList a:hover, .mainSearch .textWrap .selectBox .selectList a:hover {background: #F6F6F6; }
+.filterLayer .filterItemWrap .filterItem, .MSpopupWrap .filterItemWrap .filterItem {position: relative; font-size: 15px;}
+.filterLayer .filterItemWrap .filterItem .checkbox, .filterLayer .filterItemWrap .filterItem .radiobox, .MSpopupWrap .filterItemWrap .filterItem .checkbox, .MSpopupWrap .filterItemWrap .filterItem .radiobox {display: flex; text-align: center; position: relative; justify-content: center; width: 24%; margin: 2px; }
+
+.filterLayer .filterItemWrap .filterItem .checkbox .option {margin-right: 16px;}
+.filterLayer input[type="checkbox"], .filterLayer input[type="radio"], .MSpopupWrap .filterLayer input[type="checkbox"], .MSpopupWrap .filterLayer input[type="radio"] { position: absolute; clip: rect(0 0 0 0); width: 1px; height: 1px; margin: -1px; overflow: hidden;}
+.filterLayer .filterItemWrap .checkboxWrap, .filterLayer .filterItemWrap .radioboxWrap, .MSpopupWrap .filterItemWrap .checkboxWrap, .MSpopupWrap .filterItemWrap .radioboxWrap  {display: inline-flex; flex-wrap: wrap; width: 100%;}
+.filterLayer .filterItemWrap .checkboxWrap.themeWrap {}
+.filterLayer .filterItemWrap .checkboxWrap.themeWrap .checkbox {border: none; width: 15%;}
+
+.checkbox.theme {margin-right: 24px;}
+.checkbox.theme .labelInfo:before {position: absolute; width: 48px; height: 48px; top: 0; left: 50%; margin-left: -24px;}
+
+.checkbox.theme[aria-label="3D뷰어"] .labelInfo:before {content:""; background-position: -112px 0; display: block;}
+.checkbox.theme[aria-label="가상청약"] .labelInfo:before {content:""; background-position: -160px 0; display: block;}
+.checkbox.theme[aria-label="현장방문"] .labelInfo:before {content:""; background-position: -208px 0; display: block;}
+.checkbox.theme[aria-label="입지영상"] .labelInfo:before {content:""; background-position: -256px 0; display: block;}
+.checkbox.theme[aria-label="내부영상"] .labelInfo:before {content:""; background-position: -304px 0; display: block;}
+.checkbox.theme[aria-label="VR"] .labelInfo:before {content:""; background-position: -352px 0; display: block;}
+
+.checkbox.theme[aria-label="3D뷰어"] input:checked+.labelInfo:before {content:"";background-position: -112px -48px; display: block;}
+.checkbox.theme[aria-label="가상청약"] input:checked+.labelInfo:before {content:""; background-position: -160px -48px; display: block;}
+.checkbox.theme[aria-label="현장방문"] input:checked+.labelInfo:before {content:""; background-position: -208px -48px; display: block;}
+.checkbox.theme[aria-label="입지영상"] input:checked+.labelInfo:before {content:""; background-position: -256px -48px; display: block;}
+.checkbox.theme[aria-label="내부영상"] input:checked+.labelInfo:before {content:""; background-position: -304px -48px; display: block;}
+.checkbox.theme[aria-label="VR"] input:checked+.labelInfo:before {content:""; background-position: -352px -48px; display: block;}
+.checkbox.theme input:checked+.labelInfo {color: #F98342;}
+.checkbox.theme .text {padding-top: 50px;}
+
+.checkbox.type .labelInfo, .radiobox.type .labelInfo {width: 100%; border: solid 1px #E2DDDA; border-radius: 2px; padding: 8px; display: table;} 
+.checkbox.type .labelInfo .text, .radiobox.type .labelInfo .text {display: table-cell; vertical-align: middle;} 
+.checkbox.type input:checked+.labelInfo, .radiobox.type input:checked+.labelInfo {color: #fff; background-color: #F98342; border-color: #F98342;}
+
+.filterItemWrap .rangeBox {}
+.filterItemWrap .rangeBox .labelInfo {font-size: 14px; line-height: 20px; display: block; padding-bottom: 8px;}
+.filterItemWrap .rangeBox input[type="range"] {width: 100%; -webkit-appearance: none; background: transparent;}
+.filterItemWrap .rangeBox input[type="range"]::-webkit-slider-thumb {width:20px; height: 20px; -webkit-appearance: none; background: #fff; border-radius: 20px; border: solid 1px #ADA6A3; margin-top: -6px;}
+.filterItemWrap .rangeBox input[type="range"]::-webkit-slider-runnable-track {background-color: #D3CECC; height: 5px; border-radius: 20px;  cursor: pointer;}
+.filterItemWrap .rangeBox .change {cursor: pointer; position: absolute; right: 24px; background: #fff; border-radius: 20px; margin-top: -4px;}
+.filterItemWrap .rangeBox .change .changeIcon, .tabContent .sizeContentWrap .changeBtnWrap .change .changeIcon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .changeBtnWrap .change .changeIcon {display: block; width: 45px; height: 24px; background-position: -112px -96px;}
+.filterItemWrap .rangeBox .change[aria-pressed="false"] .changeIcon, .tabContent .sizeContentWrap .changeBtnWrap .change[aria-pressed="false"] .changeIcon { background-position: -157px -96px;}
+
+.filterLayer .filterInner .filterItemWrap:last-child, .MSpopupWrap .filterInner .filterItemWrap:last-child {border-bottom: none;}
+
+.filterLayer .filterBtnWrap {padding: 16px;}
+.filterLayer .filterBtnWrap .btnItemWrap {width: 100%; display: flex;}
+
+
+.filterLayer .filterBtnWrap .searchBtn, .MSpopupWrap .filterBtnWrap .searchBtn {width: 50%; margin-right: 4px; padding: 10px; background: #F98342; border-radius: 6px; color: #fff; font-size: 16px; line-height: 24px; cursor: pointer;}
+.filterLayer .filterBtnWrap .searchBtn:nth-child(1), .MSpopupWrap .filterBtnWrap .searchBtn:nth-child(1) {background: #ADA6A3; }
+
+/* 메인검색 레이어 */
+.mainWrap .searchBarLayer {position: absolute; top: 322px; left: 37px; background: #fff; border: solid 1px #E2DDDA; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); width: 278px;}
+.mainWrap .searchBarLayer .latelyWrap, .mainWrap .searchBarLayer .recommendWrap {padding: 16px; max-height: 480px;}
+.mainWrap .searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap .rightItem .date {font-size: 14px;}
+
+/* header - web */
+.headerWrap {position: relative; width: 100%; top: 0; left: 0;}
+.headerWrap.mapHeader {position: fixed; z-index: 999;}
+.headerWrap .headerInner {position:relative; display: flex; align-items: center; padding: 0 40px; border-bottom: solid 1px #F98342; background: #fff;}
+.headerWrap .headerInner .innerArea {padding-right: 24px;}
+.headerWrap .headerInner .logo .MSicon {display:block; background-position: 0 0; width: 80px; height: 32px;}
+.headerWrap .headerInner .headerNav {position: relative; height: 80px; font-size: 18px; font-weight: 500;}
+.headerWrap .headerInner .headerNav .navMenu {display: flex;}
+.headerWrap .headerInner .headerNav .navMenu .mobileHome {display: none;}
+.headerWrap .headerInner .headerNav .navMenu li {}
+.headerWrap .headerInner .headerNav .navMenu li .menu {padding: 28px 20px; line-height: 26px; display: block;}
+.headerWrap .headerInner .headerNav .navMenu li .menu[aria-selected="true"] {color: #F98342;}
+
+.headerWrap .headerInner .headerAuth {position: absolute; right: 40px; font-size: 14px; line-height: 20px; display: flex;}
+.headerWrap .headerInner .headerAuth .auth {padding: 0 8px;}
+.headerWrap .headerInner .headerAuth .auth:first-child::after {position: absolute; top:3px; left: 54px; content: ''; display: block; width: 1px; height: 14px; background: #E2DDDA; }
+
+.headerWrap .headerInner .mobileHeaderBtn, .mobileHeader {display: none;}
+.headerWrap .headerInner .headerBtnWrap {display: none;}
+
+/* 모바일 메뉴 레이어 */
+/* .layerPopup.gnbMobileLayer[aria-hidden="false"] {display: block;} */
+.layerPopup.gnbMobileLayer {top: 0; left: 0; right:0; bottom: 0; background: #fff;}
+.gnbMobileLayer .layerHeader {height: 48px;}
+.gnbMobileLayer .gnbContentWrap {padding: 0 8px;}
+.gnbMobileLayer .contentItem {}
+.gnbMobileLayer .contentItem .menuTit {font-size: 18px; line-height: 24px; padding: 8px; border-bottom: solid 1px #f98342; font-weight: 600;}
+.gnbMobileLayer .contentItem .menuItemWrap, .gnbMobileLayer .contentItem .snsItemWrap {padding: 24px 16px;}
+.gnbMobileLayer .contentItem .menuItemWrap .menuItem {}
+.gnbMobileLayer .contentItem .menuItemWrap .menuItem .menu:not(:last-child) {padding-bottom: 20px;}
+.gnbMobileLayer .contentItem .menuItemWrap .menuItem .menu a {font-size: 16px; line-height: 24px;}
+.gnbMobileLayer .contentItem .snsItemWrap .snsItem {display: inline-flex; flex-wrap: wrap;}
+.gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns {width: 50%; padding-bottom: 16px;}
+.gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a {display: inline-flex; align-items: center;}
+.gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a .SNSicon {margin-right: 8px;}
+
+/* 홈 - 커트라인 레이어 */
+.layerPopup.mainScoreInfoLayer {top: 28px; right: 94px; background: #F6F4F2;}
+.mainScoreInfoLayer .infoBox {}
+.mainScoreInfoLayer .infoBox .text {font-size: 14px; line-height: 20px; text-align: center; padding: 8px 16px;}
+
+/* 디테일헤더 */
+.detailHeaderWrap {position:fixed; width: 100%; transition: top 0.5s; background: #333E53; color: #fff; z-index: 999; height: 100px; display: block; top: -100%;}
+.detailHeaderWrap.change {top: 0;}
+.detailHeaderWrap .detailHeader { display: flex; justify-content: space-between; padding: 24px 0; width: 1128px; margin: 0 auto; align-items: center;}
+.detailHeaderWrap .detailHeader .titleArea {}
+.detailHeaderWrap .detailHeader .titleArea .labelArea {display: flex; }
+.detailHeaderWrap .detailHeader .titleArea .labelArea .label {position:relative; font-size: 14px; line-height: 20px; padding-right: 16px;}
+.detailHeaderWrap .detailHeader .titleArea .labelArea .label::after {position: absolute; top: 9px; right: 6px; content: ''; display: block; width: 2px; height: 2px; background: #fff; border-radius: 50%;}
+.detailHeaderWrap .detailHeader .titleArea .labelArea .label:last-child::after {content: none;}
+.detailHeaderWrap .detailHeader .titleArea .headerTitle {font-size: 26px; line-height: 32px; font-weight: 600; padding-top: 2px;}
+.detailHeaderWrap .detailHeader .agentArea {}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea {display: flex; align-items: center;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn {display: flex; align-items: center; margin-right: 16px;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn .views {display: flex; align-items: center;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn .views .viewsIcon {display: block; width: 24px; height: 24px; background-position: -144px -200px;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn button {background: none; margin-left: 8px; cursor: pointer;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn .shareIcon {display: block; width: 32px; height: 32px; background-position: -560px -144px;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn .favoriteIcon {display: block; width: 32px; height: 32px; background-position: -592px -144px;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .detailAgentBtn button[aria-pressed="false"] .favoriteIcon {display: block; width: 32px; height: 32px; background-position: -624px -64px;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .inquiryBtn {}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .inquiryBtn .agencyInfoWrap {font-size: 18px; line-height: 26px; font-weight: 600; display: flex; }
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .inquiryBtn .agencyInfoWrap .agencyData {}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .inquiryBtn .inquiry {display: none; display: flex; align-items: center; background: #F98342; color: #fff; border-radius: 6px; padding: 6px 8px; cursor: pointer; font-size: 16px; line-height: 24px;}
+.detailHeaderWrap .detailHeader .agentArea .infoBtnArea .inquiryBtn .inquiry .MSicon, .detailWrap .detailInfoArea .mobileAgency .MSicon {display: block; width: 24px; height: 24px; background-position: -168px -176px; margin-right: 4px;}
+
+
+/* 지도 */
+.wrap .sectionWrap {width: 100%; height: 100%;}
+.sectionWrap .contentWrap {width: 100%; height: 100%;}
+
+.sectionWrap .contentWrap .filterSection {position: fixed; width: 100%; top: 81px; z-index: 999; background: #fff; display: flex; justify-content: space-between; align-items: center; height: 64px; border-bottom: solid 1px #E2DDDA;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap {position: relative;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox {}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .selectItem {display: flex; font-size: 16px; line-height: 24px; padding: 0 16px; border: solid 1px #E2DDDA; border-radius: 30px; align-items: center; background: #fff;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .option {display: flex;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .MSicon {display: block; width: 24px; height: 24px; background-position: -72px -200px;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .option span {padding: 8px 16px; border-right: solid 1px #F6F4F2;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .option span:last-child {border-right: none;}
+
+
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .nextIcon {display: block; width: 24px; height: 24px; background-position: -72px -32px; margin: 0 8px;}
+.sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .downIcon {display: block; width: 24px; height: 24px; background-position: -48px -32px; margin-left: 80px;}
+
+
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap {position: relative; border-right: solid 1px #E2DDDA; flex: 0 0 auto; height: 100%; width: 400px;}
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap .formWrap {height: 100%;}
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap .formWrap input.mapSearchBox {padding: 24px; width: 100%; height: 100%; font-size: 16px;}
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap .formWrap input:focus {outline: none;}
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap .formWrap .labelInfo {position: absolute; top: 50%; margin-top: -16px; right: 16px;}
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap .formWrap .labelInfo button {background: #fff; cursor: pointer;}
+.sectionWrap .contentWrap .filterSection .mapSearchBoxWrap .formWrap .labelInfo .search {display: block; width: 32px; height: 32px; background-position: -592px 0;}
+
+
+/* .filterSection+.mapSection {height: calc(100% - 64px);} */
+.sectionWrap .mapSection {width: 100%; height: 100%;}
+
+
+/* 리스트 */
+.mobileMapList {display: none;}
+.sectionWrap .mapSection .mapListLayer {position: absolute; top: 145px; left: 0; bottom: 0; z-index: 200; box-shadow: 1px 0 6px rgb(0 0 0 / 10%);}
+.sectionWrap .mapSection .mapListLayer .listContentWrap {position: relative; width: 400px; height: 100%; background: #fff; border-right: solid 1px #E2DDDA;}
+.sectionWrap .mapSection .mapListLayer .listContentWrap .listItem {overflow-y: auto; height: 100%;}
+.sectionWrap .mapSection .mapListLayer .listContentWrap .listItem .item, .contentWrap .detailItemArea .aroundListWrap .listItem .item {border-bottom: solid 1px #E2DDDA;}
+.sectionWrap .mapSection .mapListLayer .listContentWrap .listItem .item:hover, .contentWrap .detailItemArea .aroundListWrap .listItem .item:hover, .listContentWrap .listItem .item:hover {background: #F6F6F6; transition: all 0.2s;}
+.sectionWrap .mapSection .mapListLayer .listContentWrap .listItem .item a, .contentWrap .detailItemArea .aroundListWrap .listItem .item a {padding: 16px; display: flex; align-items: center;}
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail {position: relative; margin-right: 16px; width: 96px; height: 120px;     border: solid 1px #EEEBE9; border-radius: 6px;}
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail .layer, .listSection .listContentWrap .listItem .item .thumbnail .layer, .detailItemArea .anotherWrap .listContentWrap .listItem .item .thumbnail .layer,  .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .layer {position: absolute; background: #000; opacity: 0.4; width: 100%; height: 100%; border-radius: 6px;}
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail .thumbImg, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .thumbImg, .listSection .listContentWrap .listItem .item .thumbnail .thumbImg, .detailItemArea .anotherWrap .listContentWrap .listItem .item a .thumbnail .thumbImg, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .thumbImg {display: block; background:url('/public/images/images01.png') no-repeat center / cover; border-radius: 6px; width: 100%; height: 100%;}
+
+
+
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail .thumbIcon, .listSection .listContentWrap .listItem .item .thumbnail .thumbIcon, .detailItemArea .anotherWrap .listContentWrap .listItem .item .thumbnail .thumbIcon, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .thumbIcon {position: absolute; top: 50%; left: 50%; display: block; width: 24px; height: 24px; margin: -12px 0 0 -12px;}
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail .thumbIcon.player, .listSection .listContentWrap .listItem .item .thumbnail .thumbIcon.player, .detailItemArea .anotherWrap .listContentWrap .listItem .item .thumbnail .thumbIcon.player, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .thumbIcon.player {background-position: -24px -176px;}
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail .thumbIcon.viewer, .listSection .listContentWrap .listItem .item .thumbnail .thumbIcon.viewer, .detailItemArea .anotherWrap .listContentWrap .listItem .item .thumbnail .thumbIcon.viewer, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .thumbIcon.viewer {background-position: 0 -176px;}
+.sectionWrap .mapListLayer .listContentWrap .item .thumbnail .thumbIcon.vr, .listSection .listContentWrap .listItem .item .thumbnail .thumbIcon.vr, .detailItemArea .anotherWrap .listContentWrap .listItem .item .thumbnail .thumbIcon.vr, .contentWrap .detailItemArea .aroundListWrap .item .thumbnail .thumbIcon.vr {background-position: -48px -176px;}
+
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap {max-width: 255px;}
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap .titleArea, .contentWrap .detailItemArea .aroundListWrap .item .textWrap .titleArea {font-size: 18px; line-height: 22px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap .priceArea, .contentWrap .detailItemArea .aroundListWrap .item .textWrap .priceArea {font-size: 18px; line-height: 26px; color: #3E7CBB; font-weight: 600; letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap .infoArea, .contentWrap .detailItemArea .aroundListWrap .item .textWrap .infoArea{display: flex; font-size: 14px; line-height: 20px; color: #797472; padding-bottom: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap .infoArea .info, .contentWrap .detailItemArea .aroundListWrap .item .textWrap .infoArea .info{position: relative;}
+.listContentWrap .item .textWrap .infoArea .info::after, .detailItemArea .aroundListWrap .item .textWrap .infoArea .info::after {content: '·'; clear: both; padding: 0 3px;}
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap .infoArea .info:last-child::after, .contentWrap .detailItemArea .aroundListWrap .item .textWrap .infoArea .info:last-child::after {content: none;}
+.sectionWrap .mapListLayer .listContentWrap .item .textWrap .stateArea {display: flex; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sectionWrap .mapListLayer .listContentWrap .noListInfo {position: absolute; top: 20%; width: 100%; color: #797472;}
+.sectionWrap .mapListLayer .listContentWrap .noListInfo .noListIcon, .listContentWrap .listNodataWrap .noListInfo .noListIcon {display: block; width: 40px; height: 46px; background-position: -480px -96px; margin: auto;}
+.sectionWrap .mapListLayer .listContentWrap .noListInfo .text {text-align: center; padding-top: 16px; color: #3A3736; font-size: 16px; line-height: 24px; font-weight: 400;}
+
+.sectionWrap .mapListLayer .listContentWrap .item.nodata .thumbnail {display: none;}
+.sectionWrap .mapListLayer .listContentWrap .item.nodata .textWrap {max-width: none; width: 100%;}
+
+.sectionWrap .listSection .listContentWrap .listNodataWrap {padding: 80px 0;}
+.sectionWrap .listSection .listContentWrap .listNodataWrap .noListInfo {text-align: center; }
+.sectionWrap .listSection .listContentWrap .listNodataWrap .noListInfo .noListIcon {}
+.sectionWrap .listSection .listContentWrap .listNodataWrap .noListInfo .text {padding-top: 24px;}
+
+.stateArea .stateLabel {font-size:13px; line-height: 16px; padding: 3px 6px; border-radius: 2px; border: solid 1px #797472; display: inline-block; color: #3A3736; background: #fff; margin-right: 4px;}
+.stateArea .stateLabel[aria-label="청약중"] {background-color: #DD3A3A; color: #fff; border-color: #DD3A3A;}
+.stateArea .stateLabel[aria-label="분양중"] {background-color: #3E7CBB; color: #fff; border-color: #3E7CBB;}
+.stateArea .stateLabel[aria-label="분양계획"] {background-color: #9556C7; color: #fff; border-color: #9556C7;}
+.stateArea .stateLabel[aria-label="재건축"] {background-color: #219653; color: #fff; border-color: #219653;}
+.stateArea .stateLabel[aria-label="재개발"] {background-color: #6783CD; color: #fff; border-color: #6783CD;}
+.stateArea .stateLabel[aria-label="입주탐방"] {background-color: #FF9D2B; color: #fff; border-color: #FF9D2B;}
+.stateArea .stateLabel[aria-label="부동산꿀팁"] {background-color: #fff; color:#3A3736; border-color: #3A3736;}
+.stateArea .stateLabel[aria-label="오늘"] {background-color: #fff; color:#3E7CBB; border-color: #3E7CBB;}
+.stateArea .stateLabel[aria-label="HOT"] {background-color: #fff; color:#DD3A3A; border-color: #DD3A3A;}
+
+/* map control */ 
+.mapSection .mapArea {width: 100%; height: 100%;}
+.mapSection .mapControlWrap {position: fixed; top: 168px; right: 24px; }
+.mapSection .mapControlWrap .mapControl {}
+.mapSection .mapControlWrap .mapControl .controlBtn:not(:nth-child(1)) { margin-top: -1px;}
+.mapSection .mapControlWrap .mapControl .controlBtn {display: block; font-size: 12px; line-height: 16px; text-align: center; padding: 5px 11px; border: solid 1px #E2DDDA; background: #fff;}
+.mapSection .mapControlWrap .mapControl .controlBtn .controlIcon {display: block; width: 24px; height: 24px;}
+.mapSection .mapControlWrap .mapControl .controlBtn[aria-label="분양"] .controlIcon {background-position: 0 -72px;}
+.mapSection .mapControlWrap .mapControl .controlBtn[aria-label="개발"] .controlIcon {background-position: -24px -72px;}
+.mapSection .mapControlWrap .mapControl .controlBtn[aria-label="APT"] .controlIcon {background-position: -48px -72px;}
+.mapSection .mapControlWrap .mapControl .controlBtn[aria-label="학교"] .controlIcon {background-position: -72px -72px;}
+
+
+
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="분양"]  .controlIcon{background-position: 0 -96px;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="개발"]  .controlIcon {background-position: -24px -96px;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="APT"]  .controlIcon {background-position: -48px -96px;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="학교"]  .controlIcon {background-position: -72px -96px;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"] {color: white;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="분양"] {background: #F5627D; border-color: #F5627D;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="개발"] {background: #5863CB; border-color: #5863CB;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="APT"] {background: #F6B203; border-color: #F6B203;}
+.mapControlWrap .mapControl .controlBtn[aria-pressed="true"][aria-label="학교"] {background: #299B57; border-color: #299B57;}
+
+.mapControlWrap .tooltipBox .selectItem[aria-pressed="false"]+.selectList { display: none; } 
+.mapControlWrap .tooltipBox .selectItem[aria-pressed="true"]+.selectList { display: block; } 
+
+.mapControlWrap .tooltipBox {position: absolute; top: 8px; right: 64px; width: 120px; border: solid 1px #797472;  border-radius: 6px; background: #fff;}
+.mapControlWrap .tooltipBox::before {content: ""; position: absolute; top: 13px; right: -8px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid; border-left-color: #797472;}
+.mapControlWrap .tooltipBox::after {content: ""; position: absolute; top: 14px; right: -6px; border-top: 4px solid transparent; border-bottom: 4px solid transparent; border-left: 7px solid; border-left-color: #fff;}
+.mapControlWrap .tooltipBox .selectItem { position: relative; display: flex; align-items: center; font-size: 14px; line-height: 20px; padding: 8px 16px; justify-content: space-between}
+.mapControlWrap .tooltipBox .selectItem::after {position: absolute; content: ""; display: block; width: 16px; height: 16px; background-position: -80px 0; right: 14px;}
+.mapControlWrap .tooltipBox .selectList {position: absolute; top: 40px; width: 100%; border: solid 1px #797472; border-radius: 6px; background: #fff; z-index: 77;}
+.mapControlWrap .tooltipBox .selectList a {display: block; font-size: 14px; line-height: 20px; padding: 8px 16px;}
+.mapControlWrap .tooltipBox .selectList a:hover {background: #F6F6F6; border-radius: 6px;}
+
+/* marker */
+.mapSection .marker {}
+.mapSection .marker .markerTip {position: absolute; top: -15px; right: -100px; font-size: 12px; padding: 3px 6px; border-radius: 20px; background: #F98342; color: #fff; z-index: 999;}
+.mapSection .marker .markerComplex {position: absolute; top: 0; left: 0; border-radius: 2px; border-bottom-left-radius: 0; white-space: nowrap; cursor: pointer;}
+.mapSection .marker .markerComplex .markerInner .markerInfo .complexPrice {font-size: 14px; line-height: 18px;}
+.mapSection .marker .markerComplex .markerInner .markerInfo .complexSize {font-size: 16px; line-height: 22px; font-weight: 500;}
+.mapSection .marker .markerComplex .markerInner .markerSelect {font-size: 14px; line-height: 20px; color: #3A3736; padding: 4px 8px; background: #fff; border: solid 1px #ADA6A3; border-bottom: none; }
+.mapSection .marker .markerComplex[aria-label="마커_아파트"] .markerInner {position: relative; height: 100%; border-radius: 2px; border-bottom-left-radius: 0;}
+.mapSection .marker .markerComplex[aria-label="마커_아파트"] .markerInner::after {position: absolute; bottom: -12px; left: 0; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left-width: 11px; border-left-style: solid; border-left-color: #ADA6A3; content: ''; clip: rect(12px 11px 23px 0); border-left-color: #333E53}
+.mapSection .marker .markerComplex[aria-label="마커_아파트"] .markerInner .markerInfo {background-color: #333E53; color: #fff; padding: 4px 8px;}
+.mapSection .marker .markerComplex[aria-label="마커_오피스텔"] .markerInner {position: relative; height: 100%; border-radius: 2px; border-bottom-left-radius: 0;}
+.mapSection .marker .markerComplex[aria-label="마커_오피스텔"] .markerInner::after {position: absolute; bottom: -12px; left: 0; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left-width: 11px; border-left-style: solid; border-left-color: #ADA6A3; content: ''; clip: rect(12px 11px 23px 0); border-left-color: #EE6C5F}
+.mapSection .marker .markerComplex[aria-label="마커_오피스텔"] .markerInner .markerInfo {background-color: #EE6C5F; color: #fff; padding: 4px 8px; border: solid 1px #EE6C5F;}
+.mapSection .marker .markerComplex[aria-label="마커_도시생활형"] .markerInner {position: relative; height: 100%; border-radius: 2px; border-bottom-left-radius: 0;}
+.mapSection .marker .markerComplex[aria-label="마커_도시생활형"] .markerInner::after {position: absolute; bottom: -12px; left: 0; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left-width: 11px; border-left-style: solid; border-left-color: #ADA6A3; content: ''; clip: rect(12px 11px 23px 0); border-left-color: #E4730A}
+.mapSection .marker .markerComplex[aria-label="마커_도시생활형"] .markerInner .markerInfo {background-color: #E4730A; color: #fff; padding: 4px 8px; border: solid 1px #E4730A;}
+.mapSection .marker .markerComplex[aria-label="마커_상가"] .markerInner {position: relative; height: 100%; border-radius: 2px; border-bottom-left-radius: 0;}
+.mapSection .marker .markerComplex[aria-label="마커_상가"] .markerInner::after {position: absolute; bottom: -12px; left: 0; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left-width: 11px; border-left-style: solid; border-left-color: #ADA6A3; content: ''; clip: rect(12px 11px 23px 0); border-left-color: #24B2C5}
+.mapSection .marker .markerComplex[aria-label="마커_상가"] .markerInner .markerInfo {background-color: #24B2C5; color: #fff; padding: 4px 8px; border: solid 1px #24B2C5;}
+
+
+/* 학군마커 */
+.mapSection .schoolMarker {}
+.mapSection .schoolMarker .mapSchool {cursor: pointer;}
+.mapSection .schoolMarker .mapSchool .schoolIcon {position: relative; width: 32px; height: 32px; display: block; background-position: -624px -144px;}
+.mapSection .schoolMarker .mapSchool .schoolTip {position: absolute; bottom: 48px; left: 15px; white-space: nowrap;}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner {position: relative; height: 100%; border-radius: 2px; border-bottom-left-radius: 0; border: solid 1px #ADA6A3;}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner::before {position: absolute; bottom: -14px; left: -1px; border-top: 14px solid transparent; border-bottom: 14px solid transparent; border-left: 13px solid #ADA6A3; content: ''; clip: rect(14px 13px 26px 0);}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner::after {position: absolute; bottom: -12px; left: 0; width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left-width: 10px; border-left-style: solid; content: ''; clip: rect(12px 11px 23px 0); border-left-color: #fff;}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner .markerInfo {background-color: #fff; color: #3A3736; padding: 6px 10px;}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner .markerInfo.school {}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner .markerInfo .schoolName {font-size: 15px; line-height: 24px;}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner .markerInfo .schoolInfo {font-size: 13px; line-height: 18px;}
+.mapSection .schoolMarker .mapSchool .schoolTip .markerInner .markerInfo .schoolInfo span {font-weight: 500; padding-left: 4px;}
+
+
+
+
+/* 목록보기버튼 */
+
+.mapSection .mobileFixedBtnWrap {display: none;}
+
+/* detial */
+.mapSection .detailLayer {position: absolute; top: 145px; left: 400px; bottom:0;  z-index: 200;}
+.mapSection .detailLayer .close {position: absolute; top: 0; left: 559px; padding: 8px; border: solid 1px #E2DDDA; background: #fff;} 
+.mapSection .detailLayer .close .closeIcon {display: block; width: 24px; height: 24px; background-position: -120px -200px;}
+.detailLayer .detailContentWrap {position: relative; width: 560px; height: 100%; background: #fff; border-right: solid 1px #E2DDDA; overflow-y: auto;}
+.detailContentWrap .detailInfoArea {border-bottom: solid 1px #E2DDDA;}
+.mapSection .detailContentWrap .detailInfoArea {padding-top: 24px;}
+.detailContentWrap .detailInfoArea .infoWrap  {padding: 0 16px 24px; position: relative;}
+.detailContentWrap .detailInfoArea .infoWrap .alarmArea {display: flex; padding-bottom: 6px;}
+.detailContentWrap .detailInfoArea .infoWrap .alarmArea .text {color: #DD3A3A; font-size: 16px; line-height: 24px; padding: 0 4px;}
+.mapSection .detailContentWrap .detailInfoArea .infoBtnArea {position: absolute; top: 24px; right: 16px;}
+.detailContentWrap .detailInfoArea button {background: #fff; margin-left: 6px; cursor: pointer;}
+.detailContentWrap .detailInfoArea .MSicon {display: block; width: 24px; height: 24px; background-position: 0 -120px;}
+.detailContentWrap .detailInfoArea .inquiryBtn .callIcon {display: block; width: 24px; height: 24px; background-position: -144px -176px;}
+.detailContentWrap .detailInfoArea .shareIcon {display: block; width: 32px; height: 32px; background-position: 0 -144px;}
+/* .detailContentWrap .detailInfoArea button[aria-pressed="false"] .shareIcon {display: block; width: 32px; height: 32px; background-position: -592px -64px;} */
+.detailContentWrap .detailInfoArea button[aria-pressed="false"] .favoriteIcon {display: block; width: 32px; height: 32px; background-position: -624px -64px;}
+.detailContentWrap .detailInfoArea .favoriteIcon {display: block; width: 32px; height: 32px; background-position: -32px -144px;}
+.detailContentWrap .detailInfoArea .infoTitle {font-size: 22px; line-height: 26px; font-weight: 500;}
+.detailContentWrap .detailInfoArea .infoSubTitle .detailContentWrap .detailInfoArea .infoSubTitle {font-size: 16px; line-height: 24px; color: #797472; padding-top: 8px;}
+.detailContentWrap .detailInfoArea .infoPrice {font-size: 22px; line-height: 26px; font-weight: 600; color: #3E7CBB; padding-top: 6px;}
+.detailContentWrap .detailInfoArea .inquiryBtn {position: absolute; right: 16px; bottom: 24px;}
+.detailContentWrap .detailInfoArea .inquiryBtn .agencyInfoWrap {display: flex;}
+
+.detailContentWrap .detailInfoArea .complexTitleArea {display: flex; justify-content: space-between; align-items: flex-end;}
+.detailContentWrap .detailInfoArea .complexTitleArea .mainTitleWrap {display: flex;}
+.detailContentWrap .detailInfoArea .complexTitleArea .complexView {border-radius: 6px; background: #F98342; color: #fff; font-size: 12px; line-height: 16px; padding: 3px 6px; margin-left: 8px; cursor: pointer;}
+.detailContentWrap .detailInfoArea .infoSubTitle {font-size: 16px; line-height: 24px; padding-top: 4px;}
+.detailContentWrap .detailInfoArea .mobileAgency {display: none; }
+
+.detailContentWrap .detailTab {position:relative; display: flex; justify-content: space-around;}
+.detailContentWrap .detailTab::after {position: absolute; bottom: -1px; content: ''; background-color: #E2DDDA; height: 1px; width: 100%;}
+.detailContentWrap .detailTab .tablinks {padding: 0 30px; cursor: pointer;}
+.detailContentWrap .detailTab .tablinks p {padding: 12px 0;}
+.detailContentWrap .detailTab .tablinks.active p{color: #F98342; border-bottom: solid 2px #F98342;}
+
+.tabContent {padding-top: 24px;}
+.tabContent .detailImgArea {position: relative; padding: 0;}
+.tabContent .detailImgArea.nodata {display: none;}
+.tabContent .detailImgArea .infoImgSlider .mySwiper2 .imgAll {position: absolute; top: 10px; right: 10px; background: #fff; border: solid 1px #3A3736; border-radius: 6px; font-size: 14px; line-height: 20px; padding: 4px 12px; z-index: 777; cursor: pointer;}
+/* .swiper { width: 100%; height: 100%; }  */
+.tabContent .infoImgSlider .mySwiper2 .mainImg .imgBox {display: block; background:url('/public/images/images01.png') no-repeat center / cover; width: 100%; margin:0 auto; padding-top: 56.25%; border-top: solid 1px #E2DDDA; border-bottom: solid 1px #E2DDDA;}
+.tabContent .infoImgSlider .thumbSwiper {padding-top: 4px;}
+.tabContent .infoImgSlider .mySwiper .thumb {margin-right: 4px !important; width: 120px !important;}
+.tabContent .infoImgSlider .mySwiper .thumb .imgBox {display: block; background:url('/public/images/images01.png') no-repeat center / cover; width: 100%; padding-top: 70%; border: solid 1px #E2DDDA;}
+
+/* .mySwiper .swiper-slide {width: 25%; height: 100%; opacity: 1;}
+.mySwiper .swiper-slide-thumb-active {opacity: 1;}
+.thumbSwiper {margin-top: 4px !important;}
+ */
+
+
+
+.tabContent .detailItemArea {position: relative; padding-top: 40px;}
+.tabContent .detailItemArea.line {border-bottom: solid 10px #EEEBE9; padding-bottom: 40px;}
+.tabContent .detailItemArea .itemTitle {font-size: 20px; line-height: 28px; font-weight: 600; padding: 0 24px 16px;}
+.tabContent .detailItemArea .itemTitleWrap {display: flex; justify-content: space-between; padding: 0 24px 16px}
+.tabContent .detailItemArea .itemTitleWrap .itemTitle {padding: 0;}
+.tabContent .detailItemArea .homeLink, .detailItemArea .more {display: flex; align-items: center; padding: 6px 12px; border-radius: 6px; background: #fff; cursor: pointer; border: solid 1px #3A3736;}
+.tabContent .detailItemArea .iconArea {display: flex; border: solid 1px #E2DDDA; border-radius: 12px; margin: 0 24px; padding: 24px; justify-content: space-around;}
+.tabContent .detailItemArea .iconArea .basicItem, .tabContent .detailItemArea .iconArea .schoolItem, .sizeContent .detailItemArea .iconArea .sizeItem, .contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem {text-align: center; width: 25%;}
+.tabContent .detailItemArea .iconArea .text.Tit {font-size: 12px; color: #9A9390; line-height: 16px;}
+.tabContent .detailItemArea .iconArea .text, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .text {font-size: 15px; color: #3A3736; line-height: 22px;}
+.tabContent .detailItemArea .iconArea .basicItem .MSicon, .tabContent .detailItemArea .iconArea .schoolItem .MSicon, .sizeContent .detailItemArea .iconArea .sizeItem .MSicon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem .MSicon {display: block; width: 48px; height: 48px; margin: 0 auto 6px;}
+.tabContent .detailItemArea .iconArea .basicItem[aria-label="물건종류"] .MSicon {background-position: -400px 0;}
+.tabContent .detailItemArea .iconArea .basicItem[aria-label="분양형태"] .MSicon {background-position: -448px 0;}
+.tabContent .detailItemArea .iconArea .basicItem[aria-label="분양세대수"] .MSicon {background-position: -496px 0;}
+.tabContent .detailItemArea .iconArea .basicItem[aria-label="입주시기"] .MSicon {background-position: -544px 0;}
+
+.tabContent .detailItemArea .textArea {padding: 24px 24px 0; }
+.tabContent .detailItemArea .textArea .textItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap {font-size: 16px; line-height: 24px; border-bottom: solid 1px #E2DDDA; padding: 16px; display: flex; justify-content: space-between;}
+.tabContent .detailItemArea .textArea .textItemWrap.character {display: block;}
+.tabContent .detailItemArea .textArea .textItemWrap.character .text {text-align: left; padding-top: 8px;}
+.tabContent .detailItemArea .textArea .textItemWrap:last-child, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap:last-child {border-bottom: none;}
+.tabContent .detailItemArea .textArea .textItemWrap .title, .sizeContent .detailItemArea .textBoxArea .textItemWrap .title, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap .title {font-size: 16px; line-height: 24px; font-weight: 400; color: #797472;}
+
+.tabContent .detailItemArea .textArea .textItemWrap .text {text-align: right; display: block;}
+.tabContent .detailItemArea .textArea .textItemWrap .txtWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap .txtWrap {display: flex;}
+.tabContent .detailItemArea .textArea .textItemWrap .txtWrap .info, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap .txtWrap .info {position: relative;}
+.tabContent .detailItemArea .textArea .textItemWrap .txtWrap .info::after, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap .txtWrap .info::after {content: '·'; clear: both; padding: 0 3px;}
+.tabContent .detailItemArea .textArea .textItemWrap .txtWrap .info:last-child::after, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap .txtWrap .info:last-child::after {content: none;}
+.tabContent .detailItemArea .textArea .textItemWrap:last-child .text a {position: relative;}
+.tabContent .detailItemArea .textArea .textItemWrap:last-child .text a:hover {color: #F98342; transition: all 0.2s;}
+.tabContent .detailItemArea .textArea .textItemWrap:last-child .text a::after {content: ''; display: block; width: 100%; height: 1px; background-color: #3A3736; position: absolute; bottom: -1px;}
+.tabContent .detailItemArea .textArea .textItemWrap:last-child .text a:hover::after {background-color: #F98342; transition: all 0.2s;}
+
+.tabContent .detailItemArea .advertise {display: block; background: #E2DDDA; width: 100%; height: 120px;}
+.tabContent .detailItemArea .homeLink:hover, .detailItemArea .more:hover, .detailWrap .detailItemArea .textArea .detailBtnWrap .homeLink:hover, .detailWrap .detailItemArea .unitDetailCon .detailBtnWrap .videoBtn:hover {background: #F6F6F6; transition: all 0.2s;}
+.tabContent .detailItemArea .homeLink .homeIcon {display: block; width: 16px; height: 16px; background-position: -16px -56px;}
+.tabContent .detailItemArea .dateItemArea {padding: 24px 24px 16px;}
+.tabContent .detailItemArea .dateItemArea .dateItem {display: flex; justify-content: space-between; border: solid 1px #E2DDDA; border-radius: 12px; background: #F6F6F6; font-size: 16px; line-height: 24px; padding: 12px 24px; margin-bottom: 12px;}
+.tabContent .detailItemArea .dateItemArea .dateItem.done {color: #9A9390;}
+.tabContent .detailItemArea .dateItemArea .dateItem.ing {border-color: #F98342; background: #FFF4EE; color: #F98342; font-weight: 500;}
+.tabContent .detailItemArea .dateItemArea .dateItem.yet {background: #fff; color: #3A3736;}
+.tabContent .detailItemArea .dateItemArea .dateItem .date {}
+.tabContent .detailItemArea .dateItemArea .dateItem .text {text-align: right;}
+.tabContent .detailItemArea .detailBtnWrap {padding: 0 24px;}
+.tabContent .detailItemArea .detailBtnWrap .detailBtn {display: flex; align-items: center; justify-content: center; padding: 10px; border: solid 1px #3A3736; border-radius: 6px; background: #fff; width: 100%; font-size: 16px; line-height: 24px; cursor: pointer; margin-top: 8px;}
+.tabContent .detailItemArea .detailBtnWrap .vrVeiwBtn {margin-right: 8px;}
+.tabContent .detailItemArea .detailBtnWrap .detailBtn:hover {background: #F6F6F6; transition: all 0.2s;}
+.tabContent .detailItemArea .detailBtnWrap .alarmBtn {background: #DD3A3A; color: #fff; border-color: #DD3A3A;}
+.tabContent .detailItemArea .detailBtnWrap .alarmBtn:hover {background: #C92C2C; border-color: #C92C2C;}
+.tabContent .detailItemArea .detailBtnWrap .detailBtn i, .detailWrap .detailItemArea .unitDetailCon .detailBtnWrap .videoBtn .vrIcon {display: block; width: 24px; height: 24px; margin-right: 4px;}
+.tabContent .detailItemArea .detailBtnWrap .detailBtn .vrIcon, .detailWrap .detailItemArea .unitDetailCon .detailBtnWrap .videoBtn .vrIcon {background-position: -48px -120px;}
+.tabContent .detailItemArea .detailBtnWrap .detailBtn .alarmIcon{background-position: -24px -120px;}
+
+.tabContent .detailItemArea .iconArea.school {justify-content: center;} 
+.tabContent .detailItemArea .iconArea.school .schoolItem {margin: 0 24px;} 
+
+.tabContent .detailItemArea .schoolName, .schoolInfoWrap .schoolInfoContent .contentArea .schoolName {font-size: 18px; line-height: 24px; padding: 16px 24px;}
+.tabContent .detailItemArea .schoolName .schoolType, .schoolInfoWrap .schoolInfoContent .contentArea .schoolName .schoolType {border: solid 1px #3E7CBB; color: #3E7CBB; border-radius: 2px; font-size: 14px; line-height: 16px; padding: 2px 6px; margin-right: 8px;}
+.tabContent .detailItemArea .iconArea .schoolItem[aria-label="배정동"] .MSicon {background-position: -400px -48px;}
+.tabContent .detailItemArea .iconArea .schoolItem[aria-label="거리"] .MSicon {background-position: -448px -48px;}
+.tabContent .detailItemArea .iconArea .schoolItem[aria-label="학급당학생수"] .MSicon {background-position: -496px -48px;}
+.tabContent .detailItemArea .iconArea .schoolItem[aria-label="교사당학생수"] .MSicon {background-position: -544px -48px;}
+
+.tabContent .detailItemArea .locationWrap {padding: 0 24px;}
+.tabContent .detailItemArea .locationWrap .location, .tourDetail .detailItemArea .locationWrap .location {position: relative; width: 100%; height: auto; border: solid 1px #E2DDDA;}
+.tabContent .detailItemArea .locationWrap .location .locationControlBtn {position: absolute; top: 16px; right: 16px;}
+.tabContent .detailItemArea .locationWrap .location .locationControlBtn a {}
+.tabContent .detailItemArea .locationWrap .location .locationControlBtn a .enlarge {display: block; content: ''; width: 32px; height: 32px; background-position: -464px -144px;}
+.tabContent .detailItemArea .locationWrap .location .locationControlBtn a .loadView {display: block; content: ''; width: 32px; height: 32px; background-position: -496px -144px; margin-top: -1px;}
+.tabContent .detailItemArea .locationWrap .location .imgBox, .tourDetail .detailItemArea .locationWrap .location .imgBox {display: block; background: url('../images/location.png') no-repeat center / cover; width: 100%; padding-top: 56.25%;}
+.tabContent .detailItemArea .locationWrap .location .locationMarker, .tourDetail .detailItemArea .locationWrap .location .locationMarker {position: absolute; top: 0; left: 0; display: block; width: 32px; height: 32px; background-position: -529px -144px;}
+.tabContent .detailItemArea .locationWrap .text, .tourDetail .detailItemArea .locationWrap .text {padding-top: 8px; font-size: 16px; line-height: 24px; text-align: right;}
+
+/* 도시생활형 */
+.contentWrap .detailItemArea .facilitiesWrap {}
+.contentWrap .detailItemArea .facilitiesWrap .facilitiesContent {}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea {display: inline-flex; border: none; margin: 0; padding: 0 24px; width: 100%; flex-wrap: wrap; justify-content: flex-start;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem {width: 33.3%; padding-top: 24px; }
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem .MSicon {display: block; width: 60px; height: 60px; margin: 0 auto 6px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="엘리베이터"] .MSicon {background-position: 0 -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="빌트인가전"] .MSicon{background-position: -60px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="시스템에어컨"] .MSicon{background-position: -120px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="인터폰"] .MSicon{background-position: -180px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="중문"] .MSicon{background-position: -240px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="테라스"] .MSicon{background-position: -300px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="자전거보관소"] .MSicon{background-position: -360px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="무인택배함"] .MSicon{background-position: -420px -344px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="드레스룸"] .MSicon{background-position: 0 -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="붙박이장"] .MSicon{background-position: -60px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="파우더룸"] .MSicon{background-position: -120px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="시스템키친"] .MSicon{background-position: -180px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="아일랜드식탁"] .MSicon{background-position: -240px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="빌트인냉장고"] .MSicon{background-position: -300px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="부부욕실"] .MSicon{background-position: -360px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="욕조"] .MSicon{background-position: -420px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="비데"] .MSicon{background-position: -480px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="샤워부스파티션"] .MSicon{background-position: -540px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="베란다"] .MSicon{background-position: -600px -404px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="일괄소등키"] .MSicon{background-position: 0 -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="반자동빨래건조대"] .MSicon{background-position: -60px -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="복층"] .MSicon{background-position: -120px -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="CCTV"] .MSicon{background-position: -180px -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="보안출입문"] .MSicon{background-position: -240px -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="개별창고"] .MSicon{background-position: -300px -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="텃밭"] .MSicon{background-position: -360px -464px;}
+.contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem[aria-label="현관보완"] .MSicon{background-position: -420px -464px;}
+
+
+/* 평형정보 */
+.tabContent .sizeContentWrap {padding-bottom: 24px;}
+.tabContent .sizeContentWrap .sizeSelectWrap{position: relative; padding: 0 38px 32px;}
+.tabContent .sizeContentWrap .sizeSelectWrap .sizeBtnWrap, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeSelectWrap .sizeBtnWrap {display: flex; overflow: hidden; white-space: nowrap;}
+.tabContent .sizeContentWrap .sizeSelectWrap .sizeBtnWrap::-webkit-scrollbar, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeSelectWrap .sizeBtnWrap::-webkit-scrollbar {display: none;}
+.tabContent .sizeContentWrap .sizeSelectWrap .sizeBtnWrap .sizelinks, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeSelectWrap .sizeBtnWrap .sizelinks {margin-right: 6px; padding: 5px 6px; background: #fff; color: #797472; font-size: 14px; line-height: 20px; border-radius: 2px; border: solid 1px #ADA6A3; cursor: pointer; width: auto;}
+.tabContent .sizeContentWrap .sizeSelectWrap .sizeBtnWrap .sizelinks:last-child, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeSelectWrap .sizeBtnWrap .sizelinks:last-child {margin-right: 0;}
+.tabContent .sizeContentWrap .sizeSelectWrap .sizeBtnWrap .sizelinks.active, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeSelectWrap .sizeBtnWrap .sizelinks.active {background: #F98342; color: #fff; border-color: #F98342;}
+.tabContent .sizeContentWrap .tabPaginationWrap {}
+
+/* 페이지네이션 수정 */
+.tabContent .sizeContentWrap .tabPaginationWrap button, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap button, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap button, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .button, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap button, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent button {position: absolute; width: 24px; height: 24px; background: url('../images/MSbg_ver01.svg') no-repeat; cursor: pointer;}
+
+.tabContent .sizeContentWrap .tabPaginationWrap .tabPrev, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .tabPrev, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabPrev, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .tabPrev  {position: absolute; display: block; width: 24px; height: 24px; background-position: 0 -200px; top: 6px; left: 8px;}
+.tabContent .sizeContentWrap .tabPaginationWrap .tabNext, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .tabNext, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabNext, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .tabNext {position: absolute; display: block; width: 24px; height: 24px; background-position: -24px -200px; top:6px; right: 8px;}
+
+.tabContent .sizeContentWrap .sizeContent {}
+.tabContent .sizeContentWrap .sizeContent .sizeImg, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .sizeImg {width: 100%; height: auto;}
+.tabContent .sizeContentWrap .sizeContent .sizeImg img, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .sizeImg img {width: 100%; height: 100%; padding: 16px;}
+.sizeContent .detailItemArea {}
+.sizeContent .detailItemArea .detailBtnWrap {display: block;}
+.sizeContent .detailItemArea .detailBtnWrap .detailBtn {width: 100%;}
+.sizeContent .detailItemArea .detailBtnWrap .detailBtn:first-child {margin-right: 0; margin-bottom: 8px;}
+.sizeContent .detailItemArea .detailBtnWrap .voteBtn {color: #3A3736; border: solid 1px #3A3736; background: #fff;}
+.sizeContent .detailItemArea .detailBtnWrap .detailBtn .playBicon {background-position: -72px -120px;}
+.sizeContent .detailItemArea .detailBtnWrap .detailBtn .voteIcon{background-position: -192px -176px;}
+.sizeContent .detailItemArea .detailBtnWrap .voteBtn:hover {background: #F6F6F6; transition: all 0.2s; border-color: #3A3736;}
+
+.sizeContent .detailItemArea .iconArea .sizeItem[aria-label="공급면적"] .MSicon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem[aria-label="공급면적"] .MSicon {background-position: -208px -96px;}
+.sizeContent .detailItemArea .iconArea .sizeItem[aria-label="전용면적"] .MSicon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem[aria-label="전용면적"] .MSicon {background-position: -256px -96px;}
+.sizeContent .detailItemArea .iconArea .sizeItem[aria-label="방"] .MSicon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem[aria-label="방"] .MSicon {background-position: -304px -96px;}
+.sizeContent .detailItemArea .iconArea .sizeItem[aria-label="욕실수"] .MSicon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem[aria-label="욕실수"] .MSicon{background-position: -352px -96px;}
+.sizeContent .detailItemArea .iconArea .sizeItem[aria-label="분양호실수"] .MSicon, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .sizeItem[aria-label="분양세대수"] .MSicon {background-position: -496px 0;}
+.sizeContent .detailItemArea .iconArea .sizeItem[aria-label="입주시기"] .MSicon {background-position: -554px 0;}
+.sizeContent .detailItemArea .textArea .textItemWrap .strong, .sizeContent .detailItemArea .textBoxArea .textItemWrap .strong {color: #3E7CBB; font-weight: 600;}
+
+.sizeContent .detailItemArea .textBoxArea, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .textBoxArea {margin: 0 24px; padding: 8px 24px; border: solid 1px #E2DDDA; border-radius: 12px; background: #F6F6F6; }
+.sizeContent .detailItemArea .textBoxArea .textItemWrap .competitionIcon {display: block; width: 24px; height: 24px; background-position: -144px -120px;}
+.sizeContent .detailItemArea .textBoxArea .textItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea .textItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .textBoxArea .textItemWrap {font-size: 16px; line-height: 24px; border-bottom: solid 1px #E2DDDA; padding: 16px 8px; display: flex; justify-content: space-between;}
+.sizeContent .detailItemArea .textBoxArea .textItemWrap:last-child, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea .textItemWrap:last-child, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .textBoxArea .textItemWrap:last-child {border-bottom: none;}
+.tabContent .detailItemArea .bannerWrap {}
+.tabContent .detailItemArea .bannerWrap .reportBanner {display: block; background: url('../images/banner01.png') no-repeat center / cover; width: 100%; height: 120px;}
+
+.sizeContent .detailItemArea .paymentOrderWrap {padding: 0 24px; }
+.sizeContent .paymentOrderWrap .paymentOrder {padding: 12px; width: 100%; display: flex; justify-content: space-around; background: #FFEBDF; border-radius: 24px;}
+.sizeContent .paymentOrderWrap .paymentOrder li {position: relative;}
+.sizeContent .paymentOrderWrap .paymentOrder li::after {position: absolute; content: '-'; clear: both; padding: 0 32px;}
+.sizeContent .paymentOrderWrap .paymentOrder li:last-child:after {content:none;}
+.sizeContent .paymentInfoWrap {padding: 20px 24px;}
+.sizeContent .paymentInfoWrap .paymentInfoTable {width: 100%;}
+.sizeContent .paymentInfoWrap .paymentInfoTable .paymentRow {border-bottom: solid 1px #E2DDDA; display: flex; width: 100%;}
+.sizeContent .paymentInfoWrap .paymentInfoTable .paymentRow:last-child {border-bottom: none;}
+.sizeContent .paymentInfoWrap .paymentInfoTable .paymentRow .paymentItem {padding: 20px 16px;}
+.sizeContent .paymentInfoWrap .paymentInfoTable .paymentRow .paymentItem:nth-child(1) {width: 35%;}
+.sizeContent .paymentInfoWrap .paymentInfoTable .paymentRow .paymentItem:nth-child(2) {width: 35%;}
+.sizeContent .paymentInfoWrap .paymentInfoTable .paymentRow .paymentItem:nth-child(3) {width: 30%; text-align: right;}
+
+
+/* 현장방문 */
+.sectionWrap.visit, .sectionWrap.tip, .sectionWrap.tour {height: auto;}
+.sectionWrap .sectionContentWrap {position: relative; width: 1128px; margin: 0 auto; padding-top: 80px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap:last-child {border: none;}
+.detailWrap .detailItemArea .textArea .detailBtnWrap, .detailWrap .detailItemArea .unitDetailCon .detailBtnWrap {width: 100%; margin-top: 24px;}
+.detailWrap .detailItemArea .textArea .detailBtnWrap .homeLink, .detailWrap .detailItemArea .unitDetailCon .detailBtnWrap .videoBtn {background: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; line-height: 24px; width: 100%; cursor: pointer; border: solid 1px #E2DDDA; border-radius: 6px; padding: 10px;}
+.detailWrap .detailItemArea .textArea .detailBtnWrap .homeLink .homeIconLarge {display: block; width: 24px; height: 24px; background-position: -192px -200px; margin-right: 4px;}
+
+
+/* 지역선택스크롤 */
+.sectionWrap .areaScrollWrap {position: relative;}
+.sectionWrap .areaScrollWrap .scrollNavWrap {overflow: hidden; white-space: nowrap;}
+.sectionWrap .areaScrollWrap .scrollNav {position: relative; display: flex; height: 38px; align-items: center;}
+.sectionWrap .areaScrollWrap .scrollNav li {margin-right: 8px; width: auto; height: auto;}
+.sectionWrap .areaScrollWrap .scrollNav li .areaNav {position: relative; padding: 8px 12px; border: solid 1px #E2DDDA; border-radius: 30px; font-size: 15px; line-height: 24px}
+.sectionWrap .areaScrollWrap .scrollNav li:not(:first-child) .areaNav {padding-right: 30px;}
+.sectionWrap .areaScrollWrap .scrollNav li:not(:first-child) .areaNav::after {position: absolute; top: 50%; right: 10px; content: ''; display: block; background-position: -80px 0; width: 16px; height: 16px; transform: translateY(-50%);} 
+.sectionWrap .areaScrollWrap .scrollNav li[aria-pressed="true"]:first-child .areaNav {background: #F98342; border-color: #F98342; color: #fff;}
+.sectionWrap .areaScrollWrap .scrollNav li[aria-pressed="true"]:not(:first-child) .areaNav {border: solid 1px #F98342; color: #f98342; background: #fff;}
+.sectionWrap .areaScrollWrap .scrollNav li[aria-pressed="true"]:not(:first-child) .areaNav::after {background-position: -80px -16px;} 
+.sectionWrap .areaScrollWrap .scrollNav li[aria-selected="true"] .areaNav {background: #F98342; border-color: #F98342; color: #fff; } 
+.sectionWrap .areaScrollWrap .scrollNav li[aria-selected="true"]:not(:first-child) .areaNav::after {background-position: -96px 0;} 
+
+.sectionWrap .mainImgWrap {padding-top: 80px;}
+.sectionWrap .mainImgWrap .mainTitleWrap {padding-bottom: 10px; width: 552px; margin: 0 auto;}
+.sectionWrap .mainImgWrap .mainTitleWrap .title {font-size: 22px; line-height: 28px; font-weight: 600;}
+.sectionWrap .mainImgWrap .mainTitleWrap .subTitle {font-size: 16px; line-height: 24px; color: #797472;}
+.sectionWrap .mainImgWrap .slideWrap {position: relative;}
+.sectionWrap .mainImgWrap .slideWrap .swiper {width: 552px; height: auto; border-radius: 6px;}
+
+.sectionWrap .mainImgWrap .slideWrap .mySwiper .swiper-slide {opacity: 1; position: relative;}
+.sectionWrap .mainImgWrap .slideWrap .swiper-pagination {position: relative; padding-top: 24px;}
+.sectionWrap .mainImgWrap .slideWrap .swiper-pagination-bullet-active {--swiper-theme-color: #f98342 !important}
+.imgViewerPopup .infoImgSlider .swiper-button-prev, .sectionWrap .mainImgWrap .slideWrap .swiper-button-prev {background: url('../images/MSbg_ver01.svg'); width: 32px; height: 32px; display: block; background-position: -400px -144px; left: 240px;}
+.imgViewerPopup .infoImgSlider .swiper-button-next, .sectionWrap .mainImgWrap .slideWrap .swiper-button-next {background: url('../images/MSbg_ver01.svg'); width: 32px; height: 32px; display: block; background-position: -432px -144px; right: 240px;}
+.imgViewerPopup .infoImgSlider .swiper-button-prev::after, .imgViewerPopup .infoImgSlider .swiper-button-next::after, .sectionWrap .mainImgWrap .slideWrap .swiper-button-prev::after, .sectionWrap .mainImgWrap .slideWrap .swiper-button-next::after {display: none;}
+.imgViewerPopup .infoImgSlider .swiper-button-prev {left: -48px;}
+.imgViewerPopup .infoImgSlider .swiper-button-next {right: -48px;}
+
+.sectionWrap .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .imgBox {display: block; background:url('/public/images/images02.png') no-repeat center / cover; width: 100%; height: 100%; padding-top: 65%;}
+.sectionWrap .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap, .tip .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap {position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.03) 23.44%, rgba(0, 0, 0, 0.1) 44.27%, rgba(0, 0, 0, 0.8) 100%);}
+.sectionWrap .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap .textItem, .tip .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap .textItem {position: absolute; bottom: 0; left: 0; padding: 24px; width: 100%;}
+.sectionWrap .mainImgWrap .textWrap .stateArea {}
+.sectionWrap .mainImgWrap .textWrap .stateArea .stateLabel {font-size: 16px; padding: 4px 8px;}
+.sectionWrap .mainImgWrap .textWrap .titleArea {color: #fff; font-size: 30px; line-height: 40px; font-weight: 600; padding-top: 8px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2;  -webkit-box-orient: vertical; white-space: normal;}
+.sectionWrap .mainImgWrap .textWrap .addressArea {color: #fff; font-size: 20px; line-height: 30px;}
+
+
+.sectionWrap .listSection {padding-top: 100px;}
+.sectionWrap .listSection .listHeader {display: flex; align-items: center; justify-content: space-between; border-bottom: solid 1px #E2DDDA; padding: 0 8px 8px;}
+.sectionWrap .listSection .listHeader .listCount {font-size: 18px; line-height: 26px; font-weight: 600;}
+.sectionWrap .listSection .listContentWrap {}
+.sectionWrap .listSection .listContentWrap .listItem, .detailContentWrap .detailItemArea .anotherWrap .listContentWrap .listItem {display: flex; flex-wrap: wrap; padding-top: 16px;}
+.sectionWrap .listSection .listContentWrap .listItem .item {flex-basis:48.5%; border: solid 1px #E2DDDA; border-radius: 12px; margin: 8px; background: #fff;}
+ .detailContentWrap .detailItemArea .anotherWrap .listContentWrap .listItem .item {flex-basis:47.8%; border: solid 1px #E2DDDA; border-radius: 12px; margin: 8px; background: #fff;}
+.sectionWrap .listSection .listContentWrap .listItem .item a, .detailItemArea .anotherWrap .listContentWrap .listItem .item a, .tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item a {padding: 16px; display: flex; align-items: center;}
+.sectionWrap .listSection .listContentWrap .listItem .item a .thumbnail, .detailItemArea .anotherWrap .listContentWrap .listItem .item a .thumbnail, .tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item a .thumbnail {position: relative; display: block; width: 112px; height: 112px; border-radius: 6px; border: solid 1px #EEEBE9;}
+
+.sectionWrap .listSection .listContentWrap .item .textWrap {max-width: 386px; padding-left: 16px;}
+.detailItemArea .anotherWrap .listContentWrap .listItem .item .textWrap {max-width: 210px; padding-left: 16px;}
+.sectionWrap .listSection .listContentWrap .item .textWrap .stateArea, .detailItemArea .anotherWrap .listContentWrap .listItem .item .textWrap .stateArea {margin-bottom: 6px;}
+.sectionWrap .listSection .listContentWrap .item .textWrap .titleArea, .detailItemArea .anotherWrap .listContentWrap .listItem .item .textWrap .titleArea {width: 100%; font-size: 20px; line-height: 30px; font-weight: 500;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.sectionWrap .listSection .listContentWrap .item .textWrap .addressArea, .detailItemArea .anotherWrap .listContentWrap .listItem .item .textWrap .addressArea {font-size: 15px; line-height: 23px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.detailItemArea .anotherWrap .listContentWrap .listItem .item .textWrap .titleArea, .addressArea {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+.sectionWrap .listSection .paginationWrap {padding-top: 80px;}
+.sectionWrap .listSection .paginationWrap .paginationContent {display: flex; justify-content: center;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item {cursor: pointer; width: 24px; height: 24px; margin: 0 4px; text-align: center; border-radius: 2px;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item:hover {background: #F6F6F6;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item a {font-size: 16px; line-height: 24px;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item[aria-pressed="true"] {background: #F98342; transition: all 0.2s;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item[aria-pressed="true"] a {color: #fff; transition: all 0.2s;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item a .backIcon {display: block; width: 24px; height: 24px; background-position: -144px -144px;}
+.sectionWrap .listSection .paginationWrap .paginationContent .item a .nextIcon{display: block; width: 24px; height: 24px; background-position: -168px -144px;}
+
+.footerWrap {margin-top: 160px; width: 100%; background: #EEEBE9;}
+.footerWrap .footerInner {position: relative; width: 1128px; margin: 0 auto; font-size: 13px; line-height: 18px; color: #797472; padding: 48px 0; display: flex; justify-content: space-between;}
+.footerWrap .footerInner .footerLeft {display: flex;}
+.footerWrap .footerInner .footerLogoWrap {margin-right: 64px;}
+.footerWrap .footerInner .footerLogoWrap .footerLogo .MSicon {display: block; width: 100px; height: 40px; background-position: -520px -96px; margin: 0 auto;}
+.footerWrap .footerInner .footerInfoWrap {}
+.footerWrap .footerInner .footerInfoWrap .companyInfoWrap {padding-bottom: 16px;}
+.footerWrap .footerInner .footerInfoWrap .companyInfoWrap .text {}
+.footerWrap .footerInner .footerInfoWrap .companyInfoWrap .companyInfo {display: flex;}
+.footerWrap .footerInner .footerInfoWrap .companyInfoWrap .companyInfo .text {margin-right: 16px;}
+.footerWrap .footerInner .footerInfoWrap .inquireWrap {}
+.footerWrap .footerInner .footerInfoWrap .inquireWrap .text {margin-right: 8px;}
+.footerWrap .footerInner .footerInfoWrap .contactWrap {display: inline-flex;}
+.footerWrap .footerInner .footerInfoWrap .contactWrap .text {position: relative; padding-right: 16px;}
+.footerWrap .footerInner .footerInfoWrap .contactWrap .text::after { position:absolute; content: ''; clear: both; display: block; width: 1px; height: 10px; background: #797472; top: 5px; right: 7px;}
+.footerWrap .footerInner .footerInfoWrap .contactWrap .text:last-child:after { content: none;}
+.footerWrap .footerInner .footerInfoWrap .cautionWrap {}
+.footerWrap .footerInner .footerInfoWrap .copyright {padding-top: 16px;}
+.footerWrap .footerInner .footerInfoWrap .inquireWrap .text span, .footerWrap .footerInner .footerInfoWrap .copyright .text span {font-weight: 600;}
+
+.footerWrap .footerInner .footerRight {display: flex; justify-content: flex-end;}
+.footerWrap .footerInner .footerRight .snsWrap {display: flex; align-items: flex-end;}
+.footerWrap .footerInner .footerRight .snsWrap a {margin: 0 3px;}
+.footerWrap .footerInner .footerRight .snsWrap a .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a .SNSicon {display: block; width: 32px; height: 32px;}
+.footerWrap .footerInner .footerRight .snsWrap a[aria-label="블로그"] .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a[aria-label="블로그"] .SNSicon {background-position: -208px -144px;}
+.footerWrap .footerInner .footerRight .snsWrap a[aria-label="포스트"] .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a[aria-label="포스트"] .SNSicon {background-position: -240px -144px;}
+.footerWrap .footerInner .footerRight .snsWrap a[aria-label="네이버티비"] .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a[aria-label="네이버티비"] .SNSicon {background-position: -272px -144px;}
+.footerWrap .footerInner .footerRight .snsWrap a[aria-label="페이스북"] .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a[aria-label="페이스북"] .SNSicon {background-position: -304px -144px;}
+.footerWrap .footerInner .footerRight .snsWrap a[aria-label="카카오스토리"] .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a[aria-label="카카오스토리"] .SNSicon {background-position: -336px -144px;}
+.footerWrap .footerInner .footerRight .snsWrap a[aria-label="카카오티비"] .SNSicon, .gnbMobileLayer .contentItem .snsItemWrap .snsItem .sns a[aria-label="카카오티비"] .SNSicon {background-position: -368px -144px;}
+
+.detailWrap {width: 1128px; margin: 0 auto; padding-top: 80px;}
+.detailWrap .detailContentWrap .detailInfoArea {position: relative;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea {padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .labelInfoWrap {display: flex; align-items: center;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .labelInfoWrap .labelArea {border: solid 1px #E2DDDA; padding: 4px 8px; border-radius: 2px; margin-right: 4px; font-size: 14px; line-height: 20px;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .labelInfoWrap .date {margin-left: 4px; color: #F98342; font-weight: 500;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .labelInfoWrap .infoBtnArea {display: flex; align-items: center; color: #ADA6A3;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .labelInfoWrap .infoBtnArea div {display: flex; line-height: 24px; margin-right: 8px;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .infoBtnArea {display: flex; align-items: center;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .infoBtnArea .views {display: flex; align-items: center; font-size: 14px;}
+.detailWrap .detailContentWrap .detailInfoArea .stateInfoArea .infoBtnArea .views .viewsIcon {display: block; width: 24px; height: 24px; background-position: -120px -176px; margin-right: 4px;}
+
+.detailWrap .detailContentWrap .detailInfoArea .inquiryBtn {}
+.detailWrap .detailContentWrap .detailInfoArea .inquiryBtn .agencyInfoWrap {display: flex; align-items: center;}
+.detailWrap .detailContentWrap .detailInfoArea .inquiryBtn .agencyInfoWrap .callIcon {display: block; width: 24px; height: 24px; background-position: -144px -176px;}
+.detailWrap .detailContentWrap .detailInfoArea .inquiryBtn .agencyInfoWrap .agencyData, .detailContentWrap .detailInfoArea .inquiryBtn .agencyInfoWrap .agencyData {font-size: 20px; font-weight: 600; color: #f98342; margin-left: 4px; line-height: 24px;}
+
+.detailWrap .detailContentWrap .detailInfoArea .inquiry {display: none; color: #F98342; border: solid 1px #F98342; border-radius: 6px; padding: 6px 8px; align-items: center; background: #fff; cursor: pointer;}
+.detailWrap .detailContentWrap .detailInfoArea .inquiry:hover {color: #fff; background: #F98342; transition: all 0.2s;}
+.detailWrap .detailContentWrap .detailInfoArea .inquiry .MSicon {display: block; width: 24px; height: 24px; background-position: -144px -176px;}
+.detailWrap .detailContentWrap .detailInfoArea .inquiry:hover .MSicon {background-position: -168px -176px; transition: all 0.2s;}
+
+.detailWrap .detailContentWrap .detailItemWrap {}
+.detailWrap .detailContentWrap .detailItemWrap .detailImgArea {width: 744px; margin: 0 auto; padding-top: 100px; }
+.detailWrap.tourDetail .detailContentWrap .detailItemWrap .detailImgArea {width: 552px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailImgArea .imgBox {width: 100%; height: 100%; background: url('../images/images02.png') no-repeat center / cover ; border-radius: 6px; padding-top: 70%;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea {width: 552px; margin: 0 auto;} 
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea.line {padding-top: 120px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .itemTitle, .tip .detailContentWrap .detailItemWrap .detailItemArea .itemTitle {font-size: 24px; line-height: 30px; text-align: center; padding-bottom: 56px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap {padding: 24px 16px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap {position:relative; display: flex; margin-bottom: 40px; align-items: center;}
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabPrev, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .tabPrev {left: -4px; top: 50%; transform: translateY(-50%);}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabNext, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .tabNext {right: -4px; top: 50%; transform: translateY(-50%);}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton {display: flex; align-items: center;overflow: hidden; white-space: nowrap; margin: 0 24px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton::-webkit-scrollbar {display: none;}
+/* .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton.tabCenter {justify-content: center; width: 744px; } */
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton .priceTab, .unitTab, .aroundPriceTab, .surroundTab {width: auto; border-radius: 2px; border: solid 1px #E2DDDA; color: #797472; font-size: 14px; line-height: 20px; padding: 6px 10px; margin-right: 4px; text-align: center; cursor: pointer;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton .promotionTab {border-radius: 2px; border: solid 1px #E2DDDA; color: #797472; font-size: 14px; line-height: 20px; padding: 6px 10px; margin: 0 4px; text-align: center; cursor: pointer;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton .priceTab.active, .unitTab.active, .aroundPriceTab.active, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton .promotionTab.active, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton .surroundTab.active {border-color: #F98342; color: #fff; background: #F98342 ;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .unitDetailCon .unitImgWrap {width: 552px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .unitDetailCon .unitImgWrap .imgBox {display: block; background: url('../images/images02.png') no-repeat center / cover; width: 100%; padding-top: 56.25%; border-radius: 6px;}
+
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .itemNameWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .itemNameWrap {text-align: center; padding-bottom: 24px; font-size: 18px; font-weight: 500; line-height: 26px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .itemNameWrap .itemName {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .itemNameWrap .type {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textArea {display: flex; justify-content: space-between; padding: 24px 8px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textItemColumn  {display: flex;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textItemColumn .title {margin-right: 24px; color: #797472;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textArea .textItemWrap {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textArea .textItemWrap .title {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textArea .textItemWrap .text {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .textBoxArea {margin: 0; background: #fff;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea .textItemWrap {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea .textItemWrap .title {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea .textItemWrap .text {font-weight: 400; color: #3A3736;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textBoxArea .textItemWrap .text.price {font-weight: 600; color: #DD3A3A;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .caution, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .caution, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .caution {font-size: 12px; line-height: 16px; color: #ADA6A3; padding-top: 8px;}
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceTitle { padding: 8px 16px; font-size: 16px; line-height: 24px; background: #FFF4EE; margin-bottom: 32px; border-radius: 2px;}
+
+.detailWrap .detailContentWrap .detailItemWrap .detailImageItemWrap, .detailWrap .detailContentWrap .detailItemWrap .developItemWrap {width: 744px; margin: 0 auto;}
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .itemTitle {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap {position: relative;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap {border-top: solid 1px #3A3736;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .complexInfo .swiper-wrapper, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundImgWrap .swiper-wrapper, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon .promoItemWrap .swiper-wrapper, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .locationContent .locationItemWrap .swiper-wrapper, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundImgWrap .swiper-wrapper, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .complexInfo .swiper-wrapper {height: auto !important;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable {width: 100%; border-collapse: collapse}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .title, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .title {background: #FFF4EE; height: 48px; text-align: left; }
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .title tr {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .title tr th, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .title tr th {padding: 8px; font-weight: 400; }
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .textHeader {height: 56px; border-bottom: solid 1px #E2DDDA;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .textHeader td {color: #797472; padding: 16px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .text, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .text {height: 56px; border-bottom: solid 1px #E2DDDA;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .text td, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .text td {padding: 16px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .text:last-child, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .text:last-child {border-bottom: solid 1px #3A3736;}
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .locationContent, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundImgWrap, .complexInfo {position:relative;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon .promoItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .locationContent .locationItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundImgWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .complexInfo {display: flex; overflow: hidden; white-space: normal;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon .promoItemWrap .item, .promotionCon .promoItemWrap .item, .locationContent .locationItemWrap .item, .surroundContent .surroundImgWrap .item, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .complexInfo .item {border: solid 1px #E2DDDA; border-radius: 6px; margin-right: 16px; width: 240px;}
+/* .surroundContent .surroundImgWrap .item {width: 220px;} */
+.surroundContent .surroundImgWrap .item .itemImg {width: 240px; height: 140px; margin-left: -1px;}
+.promotionCon .promoItemWrap .item .itemImg, .locationContent .locationItemWrap .item .itemImg, .complexInfoWrap .complexInfo .item .itemImg {width: 240px; height: 160px;}
+.promotionCon .promoItemWrap .item .itemImg .imgBox, .locationContent .locationItemWrap .item .itemImg .imgBox, .surroundContent .surroundImgWrap .item .itemImg .imgBox, .complexInfoWrap .item .itemImg .imgBox {display: block; background: url('../images/images02.png') no-repeat center / cover; width: 100%; height: 100%; border-radius: 6px 6px 0 0;}
+
+.promotionCon .promoItemWrap .item .textArea, .locationContent .locationItemWrap .item .textArea, .surroundContent .surroundImgWrap .item .textArea, .complexInfoWrap .complexInfo .item .textArea  {padding: 10px; font-size: 15px; line-height: 24px; width: 240px;}
+/* .promotionCon .promoItemWrap .item .textArea .text {overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  -webkit-box-orient: vertical; white-space: normal;} */
+.promotionCon .promoItemWrap .item .textArea .title, .locationContent .locationItemWrap .item .textArea .title, .surroundContent .surroundImgWrap .item .textArea .title, .complexInfoWrap .complexInfo .item .textArea .title {font-weight: 500;}
+.promotionCon .promoItemWrap .item .textArea .text, .surroundContent .surroundImgWrap .item .textArea .text, .complexInfoWrap .complexInfo .item .textArea .text {color: #797472; font-size: 15px; line-height: 20px; padding-top: 4px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  -webkit-box-orient: vertical; white-space: normal;}
+.promotionCon .promotionConWrap {position: relative;}
+.promotionCon .promotionConWrap button, .locationContent button {position: absolute; display: block; width: 24px; height: 24px; cursor: pointer;}
+.promotionCon .promotionConWrap .tabPrev, .locationContent .tabPrev, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .tabPrev, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .tabPrev {background-position: -144px -144px; top: 50%; transform: translateX(-50%); left: -32px;}
+.promotionCon .promotionConWrap .tabNext, .locationContent .tabNext, .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .tabNext, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .tabNext {background-position: -168px -144px; top: 50%; transform: translateX(-50%); right: -56px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent {position: relative;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundItem {padding: 16px; font-size: 16px; line-height: 24px; background: #FFF4EE; border-radius: 6px; margin-bottom: 24px;}
+
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopImg {position: relative; margin: 0 auto 16px; width: 552px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopImg .imgBox {display: block; background: url('../images/images02.png') no-repeat center / cover; width: 100%; padding-top: 56.25%; border-radius: 6px;}
+/* .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopImg:after {content: '출처: 국토교통부'; display: block; font-size: 12px; line-height: 16px; position: absolute; bottom: 16px; right: 16px; color: #fff;} */
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable tr td:nth-child(1) {width: 20%;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable tr td:nth-child(2) {width: 80%;}
+
+.detailItemArea .itemTitle span {color: #F98342;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon .promoItemWrap::-webkit-scrollbar, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .locationContent .locationItemWrap::-webkit-scrollbar, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundImgWrap::-webkit-scrollbar, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .complexInfoWrap .complexInfo::-webkit-scrollbar { display: none; }
+
+.detailWrap .detailContentWrap .detailItemArea.advertiseWrap {width: 824px; margin: 0 auto; padding-top: 120px;}
+.detailItemArea.advertiseWrap .advertiseDA {width: 100%; margin: 0 auto;}
+.detailItemArea.advertiseWrap .advertiseDA .DAbanner img {width: 100%; height: auto; backface-visibility: hidden; image-rendering: -webkit-optimize-contrast;}
+
+
+/* 개발환경 */
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea.developItemWrap .detailBtnTabWrap .tabButton {margin: 0; overflow: visible;}
+.developItemWrap .itemContentWrap {border-radius: 2px; border: solid 1px #E2DDDA; padding: 64px 0; position: relative;}
+.developItemWrap .detailBtnTabWrap .tabButton {position: relative; width: 100%; justify-content: space-between;}
+.developItemWrap .detailBtnTabWrap .tabButton::after {position:absolute; display: block; content: '';  width: 100%; height: 1px; background: #E2DDDA; bottom: -1px;}
+.developItemWrap .detailBtnTabWrap .developTab {width: 100%; color: #797472; cursor: pointer; text-align: center; height: 54px;}
+.developItemWrap .detailBtnTabWrap .developTab p {padding: 16px 0; }
+.developItemWrap .detailBtnTabWrap .developTab.active p { border-bottom: solid 2px #f98342; color: #3A3736; }
+.developItemWrap .aroundDevelopImg .from {font-size: 12px; line-height: 16px; padding-top: 6px; color: #797472; text-align: right;}
+.developItemWrap .developTableWrap {width: 552px; margin: 0 auto; padding-bottom: 16px;}
+.developItemWrap .developTableWrap .tableRow {display: flex; width: 100%; padding: 16px 8px; font-size: 14px; line-height: 20px;}
+.developItemWrap .developTableWrap .tableRow:first-child {background: #FFF4EE; border-top: solid 1px #3A3736;}
+.developItemWrap .developTableWrap .tableRow {border-bottom: solid 1px #E2DDDA; }
+.developItemWrap .developTableWrap .tableRow:last-child {border-color: #3A3736; }
+.developItemWrap .developTableWrap .tableRow .thead {font-size: 16px; color: #3A3736; }
+.developItemWrap .developTableWrap .tableRow .tableTitle {width: 20%;}
+.developItemWrap .developTableWrap .tableRow .tableTxt {width: 80%;}
+
+.developItemWrap .itemContentWrap .swiper .swiper-slide {position: relative;}
+.developItemWrap .itemContentWrap .swiper-button-prev {background: url('../images/MSbg_ver01.svg'); width: 24px; height: 24px; display: block; background-position: -144px -144px; z-index: 11; left: -48px;}
+.developItemWrap .itemContentWrap .swiper-button-next {background: url('../images/MSbg_ver01.svg'); width: 24px; height: 24px; display: block; background-position: -168px -144px; z-index: 11; right: -48px;}
+.developItemWrap .itemContentWrap .swiper-pagination-fraction {bottom: 32px !important;}
+
+/* 꿀팁 */
+.tip .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .imgBox {background:url('/public/images/content01.png') no-repeat center / cover; width: 100%; padding-top: 100%;}
+.tip .listSection .selectBox {width:160px;}
+.tip .tipHashtagWrap {position: relative;}
+.tip .tipHashtagWrap .hashtagContent {padding: 16px 8px;}
+.tip .tipHashtagWrap .hashtagContent .hashtagNav::-webkit-scrollbar { display: none; }
+.tip .tipHashtagWrap .hashtagNav {position: relative; display: flex; overflow: hidden; white-space: nowrap;}
+.tip .tipHashtagWrap .hashtagNav li {margin-right: 8px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea.tipItemArea {width: 774px; margin: 0 auto;}
+.tip .tipHashtagWrap .hashtagNav li .hashtag {padding: 6px 14px; border: solid 1px #E2DDDA; border-radius: 30px; font-size: 16px; line-height: 24px; display: flex; align-items: center;}
+.tip .listSection .listContentWrap .listItem .item {flex: 0 1 31.9%;}
+.tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item .thumbnail .thumbImg {display: block; background:url('/public/images/thumb01.png') no-repeat center / cover; border-radius: 6px; width: 100%; height: 100%;}
+.tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item {border: solid 1px #E2DDDA; border-radius: 12px; margin: 8px; background: #fff;}
+.tip .listSection .listContentWrap .listItem .item .textWrap, .tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item .textWrap {max-width: 205px; padding-left: 16px;}
+.tip .listSection .listContentWrap .listItem .item .textWrap .titleArea, .tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item .textWrap .titleArea {width: 100%; font-size: 18px; line-height: 24px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3;  -webkit-box-orient: vertical; white-space: normal;}
+.tip .tipHashtagWrap .hashtagNav li[aria-pressed="true"] a {background: #F98342; color: #fff; border-color: #F98342;}
+.tip .listSection .selectBox .downIcon {margin-left: 24px;}
+.tip .detailContentWrap .detailItemWrap .itemContent {width: 552px; margin: 0 auto; padding-top: 80px;}
+.tip .detailContentWrap .detailItemWrap .itemContent .tipImgWrap {width: 552px; height: 552px;}
+.tip .detailContentWrap .detailItemWrap .itemContent .tipImgWrap .imgBox { display: block; background:url('/public/images/content01.png') no-repeat center / cover; width: 100%; height: 100%; border-radius: 6px;  margin-top: 40px;}
+.tip .detailContentWrap .detailItemWrap .itemContent .tipImgWrap:first-child .imgBox {margin-top: 0;}
+.tip .listSection .listContentWrap .listItem .item .textWrap .stateArea, .tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item .textWrap .stateArea  {margin-bottom: 12px;}
+
+/* 입주탐방 */
+.tour .listSection .listContentWrap .item .textWrap .stateArea, .tourDetail .detailItemArea .listContentWrap .item .textWrap .stateArea {display: flex; align-items: center;}
+.tour .listSection .listContentWrap .item .textWrap .stateArea .date, .tourDetail .detailItemArea .listContentWrap .item .textWrap .stateArea .date {margin-left: 4px; color: #F98342; font-weight: 600;}
+
+.detailWrap .detailContentWrap .detailItemWrap .sizeItemArea {width: 744px; margin: 0 auto;}
+.tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap {border: solid 1px #E2DDDA; border-radius: 2px; padding: 24px;}
+.tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeSelectWrap {position: relative; padding: 0 32px; margin: 24px 0 56px;}
+
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap {padding: 24px; background: #FFF4EE; border-radius: 6px; display: flex; margin-top: 24px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap .title {flex-grow: 1;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap .textWrap {flex-grow: 4;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap .textWrap .infoList {}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap .textWrap .infoList li {position: relative; font-size: 16px; line-height: 24px; padding-left: 10px;}
+.detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap .textWrap .infoList li::before {position: absolute; content: ''; display: block; width: 2px; height: 2px ; border-radius: 50%; background: #3A3736; top: 10px; left: 0;}
+/* .tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .pageBtn .prevIcon {top: 24px; left: 0;}
+.tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .pageBtn .nextIcon {top: 24px; right: 0;} */
+.tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea {display: flex; justify-content: space-around; padding: 56px 56px 24px;}
+.tourDetail .detailContentWrap .detailItemWrap .detailItemArea .sizeContentWrap .sizeContent .iconArea .text.Tit {font-size: 14px; color: #9A9390; line-height: 20px;}
+
+
+/* 현장방문 - 단지선택 팝업 */
+.MSpopupWrap.complexSelectPopup .popupWrap {width: auto; height: auto; padding: 24px;}
+.complexSelectPopup .popupContentWrap .popupTitleArea {position:relative; padding-bottom: 8px; border-bottom: solid 1px #E2DDDA;}
+.complexSelectPopup .popupContentWrap .popupTitleArea .title { font-size: 18px; line-height: 26px;}
+.complexSelectPopup .popupContentWrap .popupTitleArea .closeBtn {position: absolute; right: 0; top: 0;}
+.complexSelectPopup .popupContentWrap .popupTitleArea .closeBtn .MSicon {display: block; width: 24px; height: 24px; background-position: -120px -200px;}
+.complexSelectPopup .popupContentWrap .selectWrap {padding-top: 16px;}
+.complexSelectPopup .popupContentWrap .selectWrap .selectBtn {background: #fff; border: solid 1px #E2DDDA; border-radius: 6px; text-align: center; font-size: 16px; line-height: 24px; padding: 8px; width: 100%; margin-bottom: 8px; cursor: pointer;}
+.complexSelectPopup .popupContentWrap .selectWrap .selectBtn:hover {background: #F6F6F6;}
+
+/* 검색어완성 */
+.searchBarLayer {position: absolute; top: 144px; left: 0; background: #fff; border: solid 1px #E2DDDA; box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); width: 400px;}
+.searchBarLayer .searchBoxWrap {display: none;}
+.searchBarLayer .latelyWrap, .searchBarLayer .resultWrap, .searchBarLayer .recommendWrap {padding: 24px; max-height: 520px;}
+.searchBarLayer .latelyWrap .title, .searchBarLayer .resultWrap .resultCount {font-size: 16px; line-height: 24px; font-weight: 600;}
+.searchBarLayer .latelyWrap .nodata {color: #ADA6A3; padding: 24px 8px;}
+.searchBarLayer .latelyWrap .searchListWrap, .searchBarLayer .resultWrap .resultListWrap {padding: 16px 8px;}
+.searchBarLayer .latelyWrap .searchListWrap .searchList {}
+.searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap {display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 15px;}
+.searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap .text {}
+.searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap .rightItem {display: flex; align-items: center;}
+.searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap .rightItem .date {color: #9A9390; padding: 0 8px; font-size: 14px;}
+.searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap .rightItem .delete {cursor: pointer; background: #fff;}
+.searchBarLayer .latelyWrap .searchListWrap .searchList .itemWrap .rightItem .delete .deleteBtn {display: block; content: ''; background-position: -120px -200px; width: 24px; height: 24px;}
+.searchBarLayer .latelyWrap .searchControlWrap {border-top: solid 1px #E2DDDA; padding-top: 10px; text-align: right;}
+.searchBarLayer .latelyWrap .searchControlWrap .control {position: relative; background: #fff; padding: 2px 6px; cursor: pointer;}
+.searchBarLayer .latelyWrap .searchControlWrap .control::after {position: absolute; content: ''; display: block; width: 1px; height: 12px; background: #3A3736; right: -3px; top: 4px;}
+.searchBarLayer .latelyWrap .searchControlWrap .control:last-child::after {content: none;}
+.searchBarLayer .resultWrap {overflow: hidden; overflow-y: auto; white-space: nowrap;}
+.searchBarLayer .resultWrap .resultListWrap .resultList {}
+.searchBarLayer .resultWrap .resultListWrap .resultList .itemWrap:not(:last-child), .searchBarLayer .recommendWrap .recommendListWrap .recommendList .itemWrap:not(:last-child) {margin-bottom: 16px;}
+.searchBarLayer .resultWrap .resultListWrap .resultList .itemWrap .textWrap {}
+.searchBarLayer .resultWrap .resultListWrap .resultList .itemWrap .textWrap .text {}
+.searchBarLayer .resultWrap .resultListWrap .resultList .itemWrap .textWrap .address {font-size: 14px; line-height: 20px; color: #9A9390;}
+
+.searchBarLayer .recommendWrap {}
+.searchBarLayer .recommendWrap .recommendListWrap {}
+.searchBarLayer .recommendWrap .recommendListWrap .recommendList {}
+.searchBarLayer .recommendWrap .recommendListWrap .recommendList .itemWrap .item {display: flex; width: 100%; }
+.searchBarLayer .recommendWrap .recommendListWrap .recommendList .itemWrap .item .MSicon {display: block; width: 24px; height: 24px; background-position: -168px -200px;}
+.searchBarLayer .recommendWrap .recommendListWrap .recommendList .itemWrap .item .text {padding-left: 8px;font-size: 16px; line-height: 24px; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+/* 이미지전체보기 */
+.imgListLayer {position: absolute; top: 145px; left: 400px; width: 560px; background: #fff; border-radius: 0; border: none; border-right: solid 1px #E2DDDA; bottom: 0; overflow: hidden; overflow-y: auto; white-space: nowrap;}
+.imgListLayer .mobileSubHeader, .schoolInfoLayer .mobileSubHeader {padding: 24px 16px; position: relative; display: block; border-bottom: solid 1px #E2DDDA;}
+.imgListLayer .mobileSubHeader .backIcon, .schoolInfoLayer .mobileSubHeader .backIcon {display: block; width: 32px; height: 32px; background-position: -64px -144px ; position: absolute;}
+.imgListLayer .mobileSubHeader .title, .schoolInfoLayer .mobileSubHeader .title {font-size: 18px; line-height: 32px; text-align: center; font-weight: 600;}
+.imgListLayer .imgListContentWrap {padding: 16px;}
+.imgListLayer .imgListContentWrap .imgListWrap {padding-bottom: 40px;}
+.imgListLayer .imgListContentWrap .imgListWrap .titleWrap {display: flex; font-size: 16px; line-height: 24px; font-weight: 500; padding-bottom: 4px; padding-left: 4px;}
+.imgListLayer .imgListContentWrap .imgListWrap .titleWrap .title {}
+.imgListLayer .imgListContentWrap .imgListWrap .titleWrap .count {padding-left: 8px; font-weight: 500;}
+.imgListLayer .imgListContentWrap .imgListWrap .imgListItem {display: inline-flex; flex-wrap: wrap; width: 100%;}
+.imgListLayer .imgListContentWrap .imgListWrap .imgListItem .imgList  {width: 31.7%; height: auto; margin: 4px;}
+.imgListLayer .imgListContentWrap .imgListWrap .imgListItem .imgList .imgBox {position:relative; display: block; background: url('../images/images01.png') no-repeat center / cover; width: 100%; height: 100%; padding-top: 70%; border-radius: 2px; border: solid 1px #E2DDDA;}
+.imgListLayer .imgListContentWrap .imgListWrap .imgListItem .imgList .imgBox .text {position: absolute; color: #fff; font-size: 14px; bottom: 8px; left: 8px; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.30);}
+
+/* main */
+
+/* 메인검색배너 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch {position:relative; border: solid 1px #FFBF9A; background: #FFF4EE; border-radius: 12px; padding: 24px;}
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch, .mainWrap .articleRowWrap .articleRow .articleColumn.mainCompetition, .mainWrap .articleRowWrap .articleRow .articleColumn.mainTour {flex: 1 0 470px; width: 470px;}
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainComplex, .mainWrap .articleRowWrap .articleRow .articleColumn.mainReport, .mainWrap .articleRowWrap .articleRow .articleColumn.mainPremium {flex: 4 1 auto; width: 634px;}
+
+.mainWrap .articleRowWrap .articleRow .mainSearch::after {position: absolute; display: block; content: ''; background-position: -712px 0; width: 118px; height: 102px; bottom: 24px; right: 24px;}
+.mainSearch .textWrap {display: flex; padding: 16px 64px 16px 16px; align-items: center;}
+.mainSearch .textWrap p {font-size: 28px; line-height: 30px; font-weight: 500; padding-right: 12px;}
+.mainSearch .textWrap .selectBox {width: 100%; max-width: 560px;}
+.mainSearch .textWrap .selectBox .selectItem {position: relative; display: flex; border-bottom: solid 1px #3A3736; padding: 6px; font-size: 24px; line-height: 30px;}
+.mainSearch .textWrap .selectBox .selectItem::after {position: absolute; display: block; width: 16px; height: 16px; content: ''; top: 50%; transform: translateY(-50%); right: 8px; background-position: -80px 0;}
+.mainSearch h1 {color: #F98342; font-size: 40px; line-height: 48px; font-weight: 600; padding: 5px 16px;}
+
+.mainSearch .searchBoxWrap {position:relative; border: solid 1px #F98342; border-radius: 30px; background: #fff; display: flex; margin: 16px 128px 16px 12px;}
+.mainSearch .searchBoxWrap input.searchBox, .searchBarLayer .searchBoxWrap input.searchBox {padding: 14px 20px; border-radius: 30px; flex: 1 1 0%;}
+.mainSearch .searchBoxWrap input.searchBox:focus, .searchBarLayer .searchBoxWrap input.searchBox input:focus, .searchResultPopup .popupContentWrap .searchBoxWrap input.searchBox:focus {outline: none;}
+.mainSearch .searchBoxWrap input::placeholder, .searchBarLayer .searchBoxWrap input::placeholder {color: #9A9390;}
+.mainSearch .searchBoxWrap .labelInfo, .searchBarLayer .searchBoxWrap .labelInfo, .searchResultPopup .popupContentWrap .searchBoxWrap .labelInfo {position: absolute; ; right: 12px; top: 5px;}
+.mainSearch .searchBoxWrap .labelInfo button, .searchBarLayer .searchBoxWrap .labelInfo button, .searchResultPopup .popupContentWrap .searchBoxWrap .labelInfo button {background: #fff; cursor: pointer;}
+.mainSearch .searchBoxWrap .labelInfo .search, .searchBarLayer .searchBoxWrap .labelInfo .search, .searchResultPopup .popupContentWrap .searchBoxWrap .labelInfo .search {display: block; width: 32px; height: 32px; background-position: -624px -32px;}
+/* .mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch {flex: 1 0 10%;}
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainComplex {flex: 2 0 0%;} */
+.mainWrap {position: relative; width: 1128px; margin: 0 auto; padding-top: 100px;}
+.mainWrap .articleRowWrap {margin-bottom: 48px;}
+.mainWrap .articleRowWrap .articleRow {display: flex; position: relative;}
+.mainWrap .articleRowWrap .articleRow .articleColumn {overflow: hidden; white-space: nowrap;}
+.mainWrap .articleRowWrap .articleRow .articleColumn:not(:last-child) {margin-right: 24px;}
+
+/* 관심지역툴팁 */
+.mainSearch .myArea {display: none;}
+.mainSearch .myArea .bookmarkBtn {position:absolute; right: 24px; background: none; cursor: pointer;}
+.mainSearch .myArea .bookmarkBtn .bookmark {display: block; background-position: -592px -32px; width: 32px; height: 32px;}
+.mainSearch .myArea .tooltip {width: 64px; font-size: 13px; background-color: #9556C7; color: #FFFFFF; text-align: center; border-radius: 5px; padding: 6px; position: absolute; z-index: 1; transform: translate(-50%, -50%); top: 30%; right: -24px; letter-spacing: 0.3px;}
+.mainSearch .myArea .tooltip::after {content: ""; position: absolute; top: -11px; left: 50%; margin-left: -6px; border-width: 6px; border-style: solid; border-color: transparent transparent #9556C7 transparent; } 
+.articleColumn .mainContentWrap .articleTitle {font-size: 20px; line-height: 26px; font-weight: 500; padding-bottom: 16px;}
+.articleColumn .mainContentWrap .articleTitle a {display: flex; align-items: center;}
+.articleColumn .mainContentWrap .articleTitle a .MSicon {display: block; width: 24px; height: 24px; background-position: -72px -32px; margin-left: 8px;}
+
+/* 일정별 주요단지 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainComplex {}
+.mainComplex .complexCategoryWrap .CategoryNav {display: flex;}
+.mainComplex .complexCategoryWrap .CategoryNav::-webkit-scrollbar { display: none; }
+.mainComplex .complexCategoryWrap .CategoryNav li {margin-right: 6px;}
+.mainComplex .complexCategoryWrap .CategoryNav li .category {padding: 6px 14px; border: solid 1px #E2DDDA; border-radius: 30px; font-size: 15px; line-height: 24px; display: flex; align-items: center;}
+.mainComplex .complexCategoryWrap .CategoryNav li[aria-pressed="true"] .category {background: #F98342; color: #fff; border-color: #F98342;}
+.mainComplex .complexContentWrap {padding-top: 16px;}
+.mainComplex .complexContentWrap .complexContent {display: flex; white-space: nowrap;}
+/* .mainComplex .complexContentWrap .complexContent::-webkit-scrollbar, .mainPremium .premiumContentWrap .premiumContent::-webkit-scrollbar {display: none;} */
+.mainComplex .complexContentWrap .complexContent.nodataWrap, .mainCompetition .mainContentWrap .competitionTableWrap .nodataWrap {display: block; text-align: center; color: #797472; border: solid 1px #EEEBE9; border-radius: 12px; background: #fff; box-sizing: border-box;}
+.mainComplex .complexContentWrap .complexContent.nodataWrap .nodata {height: 163px; font-size: 16px; line-height: 24px; justify-content: center; align-items: center; display: flex;}
+.mainComplex .complexContentWrap .complexContent .item {position:relative; border: solid 1px #E2DDDA; border-radius: 13px; margin-right: 10px; min-height: 165px;}
+.mainComplex .complexContentWrap .complexContent .item:hover {border-color: #ADA6A3; transition: all 0.2s;}
+.mainComplex .complexContentWrap .complexContent .item a {}
+.mainComplex .complexContentWrap .complexContent .item a .complexInfoArea {padding: 20px 20px 10px;}
+.mainComplex .complexContentWrap .complexContent .item a .complexInfoArea .stateArea {display: flex; padding-top: 6px;}
+.mainComplex .complexContentWrap .complexContent .item a .complexInfoArea .textWrap {width: 240px;}
+.mainComplex .complexContentWrap .complexContent .item a .complexInfoArea .textWrap .titleArea {font-size: 20px; line-height: 28px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.mainComplex .complexContentWrap .complexContent .item a .complexInfoArea .textWrap .infoAddress {line-height: 24px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #797472;}
+.mainComplex .complexContentWrap .complexContent .item a .complexInfoArea .textWrap .infoSubTitle {font-size: 16px; line-height: 24px; color: #797472; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.mainComplex .complexContentWrap .complexContent .item a .expectedPoint {position: absolute; width: 100%; bottom: 0; left: 0; display: flex; padding: 16px 20px; background: #F6F6F6; border-radius: 0 0 13px 13px;}
+.mainComplex .complexContentWrap .complexContent .item a .expectedPoint .text {position: relative;}
+.mainComplex .complexContentWrap .complexContent .item a .expectedPoint .text:first-child {padding-right: 16px;}
+.mainComplex .complexContentWrap .complexContent .item a .expectedPoint .text:first-child::after {position: absolute; content: ''; display: block; width: 1px; height: 12px; background: #E2DDDA; top: 4px; left: 64px;}
+
+/* 메인광고 */
+.mainAdvertise {width: 100%;}
+.mainAdvertise .mainContentWrap .advertise {}
+/* .mainAdvertise .mainContentWrap .advertise .DAbanner {display: block; background:url('../images/DA_test_pc_main_1128.png') no-repeat center / contain; width: 100%; height: 100px;} */
+.mainAdvertise .mainContentWrap .advertise .DAbanner {}
+.mainAdvertise .mainContentWrap .advertise .DAbanner img {width: 100%; height: auto; backface-visibility: hidden; image-rendering: -webkit-optimize-contrast;}
+.mainAdvertise .mainContentWrap .advertise .DAbanner .banner_mobile, .detailItemArea.advertiseWrap .advertiseDA .DAbanner .banner_mobile {display: none;}
+
+/* 청약 경쟁률 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainCompetition {}
+.mainCompetition .mainContentWrap {}
+.mainCompetition .mainContentWrap.banner {margin-top: 8px;}
+.mainCompetition .mainContentWrap .competitionTableWrap {height: 222px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .nodataWrap .nodata {padding: 99px 0; font-size: 16px; line-height: 24px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .tableWrap {}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow {display: flex; align-items: center; padding: 16px 0; border-bottom: solid 1px #E2DDDA; width: 100%;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow:first-child {padding-top: 8px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow:last-child {border: none;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .number {color: #797472; font-weight: 600; width: 12%; text-align: center;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .number:first-child {color: #f98342;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap {width: 68%; padding: 0 8px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap .complexTitle {font-size: 16px; line-height: 24px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap .info {display: flex;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap .info .text {position: relative; color: #797472; font-size: 14px; line-height: 20px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap .info .text:not(:last-child)::after {position: absolute; content: ''; top: 10px; right: 7px; display: block; width: 2px; height: 2px; border-radius: 50%; background: #3A3736;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap .info .text span {color: #3A3736; font-weight: 500; padding-right: 16px; padding-left: 4px;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .competition { width: 20%;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .competition .text {color: #797472; background: #D4E5F4; border-radius: 12px; text-align: center; padding: 10px; width: 80%; margin: 0 auto;}
+.mainCompetition .mainContentWrap .competitionTableWrap .competitionRow:first-child .competition .text {color: #fff; background: #3E7CBB;}
+.mainCompetition .getBlogBanner {position: relative; padding: 32px; border-radius: 12px; display: block;}
+.mainCompetition .getBlogBanner[aria-label="메인배너1"] {background: #FFF1D5;}
+.mainCompetition .getBlogBanner[aria-label="메인배너2"] {background: #D5E3FF;}
+.mainCompetition .getBlogBanner[aria-label="메인배너3"] {background: #EFD5FF;}
+.mainCompetition .getBlogBanner[aria-label="메인배너4"] {background: #B9F3C5;}
+.mainCompetition .getBlogBanner[aria-label="메인배너5"] {background: #FFD6D6;}
+.mainCompetition .getBlogBanner::after {top: 50%; transform: translateY(-50%); right: 40px;}
+.mainCompetition .getBlogBanner[aria-label="메인배너1"]::after {position: absolute; content: ''; display: block; width: 121px; height: 70px; background-position: -656px -106px;}
+.mainCompetition .getBlogBanner[aria-label="메인배너2"]::after {position: absolute; content: ''; display: block; width: 112px; height: 65px; background-position: -905px -61px;}
+.mainCompetition .getBlogBanner[aria-label="메인배너3"]::after {position: absolute; content: ''; display: block; width: 94px; height: 61px; background-position: -905px 0;}
+.mainCompetition .getBlogBanner[aria-label="메인배너4"]::after {position: absolute; content: ''; display: block; width: 115px; height: 72px; background-position: -777px -106px;}
+.mainCompetition .getBlogBanner[aria-label="메인배너5"]::after {position: absolute; content: ''; display: block; width: 112px; height: 65px; background-position: -999px 0;}
+.mainCompetition .getBlogBanner .title {font-size: 18px; line-height: 26px; font-weight: 600;}
+.mainCompetition .getBlogBanner .text {font-size: 15px; line-height: 23px; font-weight: 500;}
+
+/* 현장리포트 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainReport {}
+.mainReport .mainContentWrap {}
+.mainReport .mainContentWrap .ReportWrap {display: flex;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap {flex-grow: 1;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent {margin-right: 10px;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent, .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportSubContent {position: relative;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .imgBox { display: block; background: url('/public/images/images01.png') no-repeat center / cover; width: 100%; height: 100%; padding-top: 53.3%; border-radius: 12px;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent .imgBox {padding-top: 110%;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .textWrap {position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.03) 23.44%, rgba(0, 0, 0, 0.1) 44.27%, rgba(0, 0, 0, 0.8) 100%); color: #fff; border-radius: 12px;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .textWrap .textItem {position: absolute; bottom: 0; left: 0; padding: 16px; width: 100%; white-space: normal;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .textWrap .textItem .stateArea {display: flex; margin-bottom: 6px;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent .textWrap .textItem .stateArea .stateLabel {}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent .textWrap .textItem .titleArea {font-size: 20px; line-height: 24px; padding-bottom: 4px; font-weight: 500;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent .textWrap .textItem .text p{font-size: 15px; line-height: 22px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportSubContent .textWrap .textItem .titleArea {font-size: 16px; line-height: 20px; padding-bottom: 2px; font-weight: 500;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportSubContent .textWrap .textItem .text p {font-size: 14px; line-height: 18px; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;}
+.mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportSubContent:first-child {margin-bottom: 10px;}
+
+/* 입주탐방 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainTour {}
+.mainTour .tourListWrap {border: solid 1px #E2DDDA; padding: 7px 20px; border-radius: 12px;}
+.mainTour .tourListWrap .tourList {}
+.mainTour .tourListWrap .tourList .list {padding: 15px 4px; border-bottom: solid 1px #E2DDDA;}
+.mainTour .tourListWrap .tourList .list:last-child {border-bottom:none;}
+.mainTour .tourListWrap .tourList .list a {display: flex; align-items: center;}
+.mainTour .tourListWrap .tourList .list a .areaLabel {color: #FF9D2B; border: solid 1px #F98342; border-radius: 2px; padding: 3px 6px; margin-right: 8px; font-size: 14px; line-height: 20px;}
+.mainTour .tourListWrap ul .list a .text {width: 100%; padding-right: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+/* 프리미엄분양 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainPremium {}
+.mainPremium .mainContentWrap {}
+.mainPremium .premiumContentWrap .premiumContent {display: flex;}
+
+.mainPremium .premiumContentWrap .premiumContent .item {border: solid 1px #E2DDDA; border-radius: 12px; margin-right: 10px; width: 220px;}
+.mainPremium .premiumContentWrap .premiumContent .item .premiumImgWrap {width: 220px;}
+.mainPremium .premiumContentWrap .premiumContent .item .premiumImgWrap .imgBox {display: block; background:url('/public/images/premiumImg_01.png') no-repeat center / cover; width: 100%; height: 100%; border-radius: 6px 6px 0 0; padding-top: 70%;}
+.mainPremium .premiumContentWrap .premiumContent .item .infoWrap {padding: 12px; width: 100%;}
+.mainPremium .premiumContentWrap .premiumContent .item .infoWrap .stateArea {margin-bottom: 8px;}
+.mainPremium .premiumContentWrap .premiumContent .item .infoWrap .stateArea .stateLabel {}
+.mainPremium .premiumContentWrap .premiumContent .item .infoWrap .textArea {padding-left: 2px;}
+.mainPremium .premiumContentWrap .premiumContent .item .infoWrap .textArea .title {font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.mainPremium .premiumContentWrap .premiumContent .item .infoWrap .textArea .text {font-size: 14px; line-height: 20px; color: #797472; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+/* 지역별 커트라인 */
+.mainScore {position: relative;}
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainScore, .mainWrap .articleRowWrap .articleRow .articleColumn.mainPlanTable, .mainWrap .articleRowWrap .articleRow .articleColumn.mainConArea {flex: 1 1 33.3%;}
+.mainScore .articleTitle .title {display: flex; align-items: center;}
+.mainScore .articleTitle .title .info {background: #fff; margin-left: 8px; cursor: pointer;}
+.mainScore .articleTitle .title .info .infoIcon {display: block; width: 24px; height: 24px; background-position: -384px -176px;}
+.mainScore .scoreContentWrap {}
+.mainScore .scoreContentWrap .scoreContent {position: relative;}
+.mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-prev {display: none;}
+.mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-next {display: none;}
+.mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-prev {position: absolute; background: url('../images/MSbg_ver01.svg'); width: 16px; height: 16px; display: block; background-position: -96px -16px; left: 38%; top: auto; bottom: -37px; z-index: 11;}
+.mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-next {position: absolute; background: url('../images/MSbg_ver01.svg'); width: 16px; height: 16px; display: block; background-position: -96px -32px; right: 38%; top: auto; bottom: -37px; z-index: 11;}
+.mainScore .scoreContentWrap .scoreContent .swiper-pagination-fraction {bottom: -38px !important;}
+.mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-prev::after, .mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-next::after, .developItemWrap .itemContentWrap .swiper-button-prev::after, .developItemWrap .itemContentWrap .swiper-button-next::after {display: none;}
+.mainScore .articleTitle .info {}
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap {}
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap li {padding: 8px 0; }
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap li .area {font-size: 15px; line-height: 16px; padding-bottom: 4px;}
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap li .chartWrap {display: flex; width: 100%; align-items: center;}
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap li .chartWrap .chart {position: relative; flex-grow: 5; width: 100%; height: 10px; border-radius: 20px; background: #EEEBE9;}
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap li .chartWrap .chart .data {position: absolute; top: 0; left: 0; width: 56%; height: 10px; background: #FFA775; z-index: 1; border-radius: 20px;}
+.mainScore .scoreContentWrap .scoreTableWrap .scoreListWrap li .chartWrap .scoreTxt {font-size: 15px; line-height: 16px; flex-grow: 1; margin-left: 10px;}
+
+
+
+/* 분양예정단지 */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainPlanTable {}
+.mainPlanTable .planTableWrap .planTable {border-top: solid 1px #3A3736; border-bottom: solid 1px #3A3736; width: 100%; font-size: 14px; line-height: 20px; }
+.mainPlanTable .planTableWrap .planTable .thead {display: flex; width: 100%; background: #FAFAFA; color: #797472; font-weight: 500;}
+.mainPlanTable .planTableWrap .planTable .thead .tableTitle, .mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem {padding: 10px 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.mainPlanTable .planTableWrap .planTable .thead .tableTitle:nth-child(1), .mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem:nth-child(1) {width: 13%; text-align: center;}
+.mainPlanTable .planTableWrap .planTable .thead .tableTitle:nth-child(2), .mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem:nth-child(2) {width: 58%;}
+.mainPlanTable .planTableWrap .planTable .thead .tableTitle:nth-child(3), .mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem:nth-child(3) {width: 29%; text-align: center;}
+.mainPlanTable .planTableWrap .tbody {}
+.mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap {}
+.mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow {display: flex; width: 100%; background: #fff; border-top: solid 1px #E2DDDA;}
+.mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem:last-child {color: #f98342; font-weight: 500;}
+
+/* vr */
+.mainWrap .articleRowWrap .articleRow .articleColumn.mainConArea {}
+.mainConArea .mainContentWrap {}
+.mainConArea .mainContentWrap.vrArea {margin-bottom: 30px;}
+.mainConArea .mainContentWrap .vrContentWrap {}
+.mainConArea .mainContentWrap .vrContentWrap .vrContent, .mainConArea .mainContentWrap .tipContentWrap .tipContent {display: flex; flex-grow: 1;}
+.mainConArea .mainContentWrap .vrContentWrap .vrContent .vrItem, .mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem {width: 100%;}
+.mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem:nth-child(n+3) {display: none;}
+.mainConArea .mainContentWrap .vrContentWrap .vrContent .vrItem:not(:last-child) {margin-right: 10px;}
+.mainConArea .mainContentWrap .vrContentWrap .vrContent .vrItem .imgBox {display: block; background:url('/public/images/vrHome.jpg') no-repeat center / cover; width: 100%; height: 100%; border-radius: 6px; padding-top: 120%;}
+
+.mainConArea .mainContentWrap .tipContentWrap {}
+.mainConArea .mainContentWrap .tipContentWrap .tipContent {}
+.mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem {}
+.mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem:not(:last-child) {margin-right: 10px;}
+.mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem .imgBox {display: block; background:url('/public/images/content01.png') no-repeat center / cover; width: 100%; height: 100%; border-radius: 6px; padding-top: 100%;}
+
+
+@media (max-width: 1024px) {
+
+  /* 팝업 기본 */
+  .MSpopupWrap {}
+  .MSpopupWrap .popupWrap {position:fixed; width: 100%; height: 100%; border: none; border-radius: 0;}
+  .MSpopupWrap .popupWrap .popupContentWrap {height: auto;}
+  .MSpopupWrap .popupWrap .popupHeader .mobileBackWrap {display: block; z-index: 1;}
+  .MSpopupWrap .mobileBackWrap a {position: absolute; top: 30px; left: 16px;}
+  .MSpopupWrap .mobileBackWrap .backIcon {display: block; width: 32px; height: 32px; background-position: -64px -144px ;}
+
+  .MSpopupWrap .mobileSubHeader, .layerPopup .mobileSubHeader {padding: 24px 16px; position: relative; display: block;}
+  .MSpopupWrap .mobileSubHeader .backIcon, .layerPopup .mobileSubHeader .backIcon {display: block; width: 32px; height: 32px; background-position: -64px -144px ; position: absolute;}
+  .MSpopupWrap .mobileSubHeader .title, .layerPopup .mobileSubHeader .title {font-size: 18px; line-height: 32px; text-align: center; font-weight: 600;}
+  .MSpopupWrap .popupWrap .popupHeader .closeBtnWrap {display: none;}
+
+  /* 이미지전체보기 팝업 */
+  .MSpopupWrap.imgViewerPopup {}
+  .MSpopupWrap.imgViewerPopup .popupWrap {width:100%; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+  .MSpopupWrap.imgViewerPopup .popupWrap .popupHeader .closeBtnWrap {display: block; top: -40px; right: 8px;}
+  .imgViewerPopup .infoImgSlider .swiper-button-next, .sectionWrap .mainImgWrap .slideWrap .swiper-button-next {display: none;}
+  .imgViewerPopup .popupWrap .popupContentWrap {position:absolute; width:100%; top:50%; left:50%; transform:translate(-50%, -50%); box-shadow: none}
+
+  /* 학군정보 레이어 */
+  .layerPopup.schoolInfoLayer {position: fixed; top: 0; left: 0; width: 100%; height: 100%; border-right: none;}
+
+  /* 검색필터 팝업 */
+  .MSpopupWrap.visitFilterPopup .popupWrap, .MSpopupWrap.tourFilterPopup .popupWrap {height: 100%; padding: 0;}
+
+  /* 공유하기 팝업 */
+  .MSpopupWrap.sharePopup .popupWrap {top: auto; left: 0; bottom: 0; width: 100%; height: 320px; transform: none;}
+  .shareContentWrap .snsBtnWrap {padding: 24px;}
+  /* .MSpopupWrap.copyCompletePopup {display: none;} */
+  .copyCompletePopup .popupWrap {top: 50%; left: 50%; transform: translate(-50% -50%); right: auto; bottom: auto; border-radius: 6px;}
+
+  /* 레이어기본 */
+  .layerPopup {position: fixed;}
+
+  /* 메인 지역선택팝업 */
+  .MSpopupWrap.mainAreaPopup .popupWrap {width: 80%; border-radius: 6px;}
+  .areaLayer .selectTable .regionTableWrap {height: 100%;}
+  .mainAreaPopup .popupWrap .selectTable .regionRow .filterBtnWrap {bottom: 0; border-radius: 0 0 6px 6px;}
+
+  .areaLayer .selectTable .regionTableWrap .regionRow .regionCell {font-size: 14px;}
+
+  /* header */
+  .headerWrap .headerInner {padding: 0; display: block; border-bottom-color: #E2DDDA;}
+  .headerWrap .headerInner .logo {display: block; margin-right: 0; width: 80px;}
+  .headerWrap .headerInner .logo .MSicon {}
+  .headerWrap .headerInner .innerArea {position: relative; padding: 16px; border-bottom: solid 1px #F98342;}
+  .headerWrap .headerInner .headerNav {font-size: 16px; line-height: 24px; height: auto;}
+  .headerWrap .headerInner .headerNav .navMenu {display: flex; align-items: center; overflow: hidden; white-space: nowrap;}
+  .headerWrap .headerInner .headerNav .navMenu::-webkit-scrollbar {display: none;}
+  .headerWrap .headerInner .headerNav .navMenu .mobileHome {display: block;}
+  .headerWrap .headerInner .headerNav .navMenu .mobileHome .menu .MSicon {display: block; width: 24px; height: 24px; background-position: -96px -144px;}
+  .headerWrap .headerInner .headerNav .navMenu li .menu {position: relative; padding: 16px; line-height: 24px;}
+  .headerWrap .headerInner .headerNav .navMenu li .menu[aria-selected="true"] { color: #F98342;}
+  .headerWrap .headerInner .headerNav .navMenu li .menu[aria-selected="true"]::after {position:absolute; content:''; width: 100%; height: 2px; background: #F98342; bottom: -1px; z-index: 1; left: 0;}
+  .headerWrap .headerInner .headerNav .navMenu .mobileHome[aria-selected="true"] .MSicon{background-position: -120px -144px;}
+  .headerWrap .headerInner .headerBtnWrap {position: absolute; top: 16px; right: 16px; display: block;}
+  .headerWrap .headerInner .headerBtnWrap .btnArea {display: flex;}
+  .headerWrap .headerInner .headerBtnWrap .headerBtn {}
+  .headerWrap .headerInner .headerBtnWrap .headerBtn .searchIcon {display: block; width: 32px; height: 32px; background-position: -592px 0;}
+  .headerWrap .headerInner .headerBtnWrap .headerBtn .barIcon {display: block; width: 32px; height: 32px; background-position: -624px 0;}
+
+  /* .mobileHeader {display: block;} */
+  .mobileHeader .mobileHeaderNav {position: relative; height: 56px; background: #fff; width: 100%; border-bottom: solid 1px #E2DDDA;}
+  .mobileHeader .mobileHeaderNav .navMenu {display: flex; align-items: center; height: 56px; overflow: hidden; white-space: nowrap;}
+  .mobileHeader .mobileHeaderNav .navMenu::-webkit-scrollbar {display: none;}
+  .mobileHeader .mobileHeaderNav .navMenu li {}
+  .mobileHeader .mobileHeaderNav .navMenu li .menu {padding: 15px 16px; }
+ 
+  /* .headerWrap .headerInner .headerNav, .headerWrap .headerInner .headerAuth {display: none;} */
+  /* .headerWrap .mobileHeaderBtn .headerBtnWrap {display: flex; position: absolute; top:16px; right: 16px;}
+  .headerWrap .mobileHeaderBtn .headerBtnWrap .headerBtn {}
+  .headerWrap .mobileHeaderBtn .headerBtnWrap .headerBtn .searchIcon {display: block; width: 32px; height: 32px; background-position: -592px 0;}
+  .headerWrap .mobileHeaderBtn .headerBtnWrap .headerBtn .barIcon {display: block; width: 32px; height: 32px; background-position: -624px 0;} */
+  .mobileHeader .mobileHeaderNav .navMenu li .menu[aria-selected="true"] {color: #F98342; border-bottom: solid 2px #F98342;}
+  .mobileHeader .mobileHeaderNav .navMenu li .menu[aria-selected="true"] .MSicon{background-position: -120px -144px;}
+
+  .detailWrap.tourDetail .detailContentWrap .detailItemWrap .detailImgArea {width: 100%;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .contentInfoWrap {margin: 24px 24px 0;}
+
+  .sectionWrap .contentWrap .filterSection .areaFilterWrap {position: static;}
+  .layerPopup.areaLayer {width: 98%; left: 1%; margin: 0; top: 180px; transform: none;} 
+  .layerPopup.filterLayer {width: 100%; top:0; right: 0; background:#fff; height: 100%; padding: 0; border: none; padding-bottom: 32px;}
+
+  .filterLayer .layerContentWrap {height: 100%;}
+  .filterLayer .filterInner {height: 85%;}
+  .filterLayer .filterBtnWrap {position: fixed; bottom: 0; width: 100%; background: #fff;}
+
+  /* 목록보기버튼 */
+  .sectionWrap .mapSection {min-height: 100%;}
+  .sectionWrap .mapSection .mapListLayer {width: 100%; top: 178px;}
+  .sectionWrap .mapSection .mapListLayer .listContentWrap {width: 100%;}
+
+  .mapSection .mapControlWrap {top: 208px;}
+  .mapSection .mobileFixedBtnWrap {position: fixed; bottom: 16px; right: 16px; z-index: 201;}
+  .mapSection .mobileFixedBtnWrap .listOpenBtn {padding: 6px 10px; background: #333E53; color: #fff; border-radius: 6px; display: flex; align-items: center; font-size: 14px; line-height: 24px;}
+  .mapSection .mobileFixedBtnWrap .listOpenBtn::after {content: '지도보기';}
+  .mapSection .mobileFixedBtnWrap .listOpenBtn .listIcon {display: block; width: 24px; height: 24px; background-position: -96px -176px; margin-right: 4px;}
+  .mapSection .mobileFixedBtnWrap .listOpenBtn[aria-pressed="true"] .mapListLayer {display: none;}
+  .mapSection .mobileFixedBtnWrap .listOpenBtn[aria-pressed="true"]::after {content: '목록보기';}
+  .mapSection .mobileFixedBtnWrap .listOpenBtn[aria-pressed="true"] .listIcon {display: block; width: 24px; height: 24px; background-position: -72px -176px; margin-right: 4px;}
+
+  .sectionWrap .contentWrap .filterSection {position: fixed; top: 122px; padding: 0 16px; height: 56px;}
+  .sectionWrap .contentWrap .filterSection .mapSearchBoxWrap {display: none;}
+  .sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .selectItem {padding: 14px 0; border: none;}
+  .sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .option span {padding: 0 2px; border-right: none;}
+  .sectionWrap .contentWrap .filterSection .filterBox {padding-right: 0;}
+  .sectionWrap .contentWrap .filterSection .areaFilterWrap .selectBox .downIcon {margin-left: 32px;}
+  .mobileMapList[aria-hidden="true"] {display: none;}
+
+  .mobileMapList {position:absolute; bottom: 0; left: 0; width: 100%; display: block; border-top: solid 1px #E2DDDA;}
+  .mobileMapList .item a {padding: 16px; display: flex; align-items: center;}
+  .mobileMapList .item .thumbnail {display: block; background: #E2DDDA; width: 96px; height: 120px; border-radius: 6px;}
+  .mobileMapList .item .textWrap {max-width: 255px; padding-left: 16px;}
+  .mobileMapList .item .textWrap .titleArea {font-size: 18px; line-height: 22px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .mobileMapList .item .textWrap .priceArea {font-size: 18px; line-height: 26px; color: #3E7CBB; font-weight: 600; letter-spacing: -0.02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .mobileMapList .item .textWrap .infoArea {display: flex; font-size: 14px; line-height: 20px; color: #797472; padding-bottom: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .mobileMapList .item .textWrap .infoArea .info {position: relative;}
+  .mobileMapList .item .textWrap .infoArea .info::after {content: '·'; clear: both; padding: 0 3px;}
+  .mobileMapList .item .textWrap .stateArea {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+  .mapSection .detailLayer {width: 100%; top: 178px; left: 0; bottom: auto; background: #fff;}
+  .detailLayer .detailContentWrap {width: 100%;}
+  .detailContentWrap .detailTab .tablinks {padding: 0;}
+  /* .detailContentWrap .detailInfoArea .infoWrap  {padding: 32px 16px 24px;} */
+  .tabContent {width: 100%;}
+  .mapSection .detailLayer .close {display: none;}
+
+  .sectionWrap .sectionContentWrap, .sectionWrap.tip .tipSection {width: 100%; padding-top: 0;}
+  .sectionWrap .areaScrollWrap {padding: 8px; border-bottom: solid 1px #E2DDDA;}
+  .sectionWrap .areaScrollWrap .scrollNav li .areaNav {padding: 6px 12px;}
+  .sectionWrap .mainImgWrap {padding-top: 16px;}
+  .sectionWrap .mainImgWrap .mainTitleWrap {padding: 8px; width: 100%;}
+  .sectionWrap .mainImgWrap .slideWrap .swiper, .tip .mainImgWrap .slideWrap .swiper {width: 100%; border-radius: 0;}
+  .sectionWrap .listSection {width: 100%; padding-top: 60px;}
+  .sectionWrap .listSection .listHeader {padding: 0 16px 8px;}
+  .sectionWrap .listSection .listContentWrap .listItem, .detailContentWrap .anotherWrap .listContentWrap .listItem, .detailItemArea .anotherWrap .listContentWrap .listItem, .detailContentWrap .detailItemArea .anotherWrap .listContentWrap .listItem {display: block; padding-top: 0;}
+  .sectionWrap .listSection .listContentWrap .listItem .item, .tip .detailContentWrap .anotherWrap .listContentWrap .listItem .item, .detailItemArea .anotherWrap .listContentWrap .listItem .item, .detailContentWrap .detailItemArea .anotherWrap .listContentWrap .listItem .item {border: none; border-bottom: solid 1px #E2DDDA; border-radius: 0; margin: 0;}
+  .sectionWrap .listSection .paginationWrap {display: none;}
+  .sectionWrap .listSection .listContentWrap .item .textWrap {max-width: 230px;}
+  .sectionWrap .listSection .listContentWrap .item .textWrap .titleArea, .detailItemArea .anotherWrap .listContentWrap .listItem .item .textWrap .titleArea {font-size: 20px; line-height: 30px; font-weight: 500;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .sectionWrap .mainImgWrap .slideWrap .swiper-button-prev {display: none;}
+  .sectionWrap .mainImgWrap .slideWrap .swiper-button-next {display: none;}
+
+  .footerWrap {margin-top: 80px;}
+  .footerWrap .footerInner {width: 100%; display: block; text-align: center; padding: 40px 16px;}
+  .footerWrap .footerInner .footerLogoWrap {margin-right: 0; padding-bottom: 16px;}
+  .footerWrap .footerInner .footerLogoWrap .footerLogo .MSicon {display: block; width: 70px; height: 28px; background-position: -400px -96px; margin: 0 auto;}
+  .footerWrap .footerInner .footerLeft, .footerWrap .footerInner .footerInfoWrap .companyInfoWrap .companyInfo {display: block;}
+  .footerWrap .footerInner .footerInfoWrap {display: block; line-height: 20px;}
+  .footerWrap .footerInner .footerInfoWrap .companyInfoWrap .companyInfo .text, .footerWrap .footerInner .footerInfoWrap .inquireWrap .text {margin-right: 0;}
+  .footerWrap .footerInner .footerInfoWrap .contactWrap .text {padding-right: 10px;}
+  .footerWrap .footerInner .footerInfoWrap .contactWrap .text::after {right: 5px;}
+  .footerWrap .footerInner .footerInfoWrap .contactWrap .text:last-child {padding-right: 0;}
+  .footerWrap .footerInner .footerRight {display: block;}
+  .footerWrap .footerInner .footerRight .snsWrap {justify-content: center; padding-top: 20px;}
+  .footerWrap .footerInner .footerInfoWrap .cautionWrap {padding-top: 16px;}
+  .footerWrap .footerInner .footerRight .snsWrap a .SNSicon {display: block; width: 24px; height: 24px;}
+  .footerWrap .footerInner .footerRight .snsWrap a[aria-label="블로그"] .SNSicon {background-position: -240px -176px;}
+  .footerWrap .footerInner .footerRight .snsWrap a[aria-label="포스트"] .SNSicon {background-position: -264px -176px;}
+  .footerWrap .footerInner .footerRight .snsWrap a[aria-label="네이버티비"] .SNSicon {background-position: -288px -176px;}
+  .footerWrap .footerInner .footerRight .snsWrap a[aria-label="페이스북"] .SNSicon {background-position: -312px -176px;}
+  .footerWrap .footerInner .footerRight .snsWrap a[aria-label="카카오스토리"] .SNSicon {background-position: -336px -176px;}
+  .footerWrap .footerInner .footerRight .snsWrap a[aria-label="카카오티비"] .SNSicon {background-position: -360px -176px;}
+
+  .MSpopupWrap .filterBtnWrap {position: fixed; width: 100%; bottom: 24px;}
+
+  .detailWrap {padding-top: 32px; width: 100%;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailImgArea {padding-top: 32px; width: 100%;  height: auto; }
+  .detailWrap .detailContentWrap .detailItemWrap .detailImgArea .imgBox {border-radius: 0; padding-top: 70%;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea {width: 100%;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .itemTitle {text-align: left; padding-bottom: 24px; font-size: 20px; font-weight: 500;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea.line {padding: 40px 16px; border-bottom: solid 10px #EEEBE9;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea.tipItemArea {padding: 40px 0;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea.tipItemArea .itemTitle {padding: 0 16px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap button {display: none;}
+  .detailWrap .detailContentWrap .detailInfoArea .inquiry {position:fixed; background: #F98342; color: #fff; border-color: #F98342; width: 92%; font-size: 16px; line-height: 24px; justify-content: center;z-index: 999; right: 4%; bottom: 24px;}
+  .detailWrap .detailContentWrap .detailInfoArea .inquiry .MSicon {background-position: -168px -176px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap {padding: 16px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap {margin-bottom: 24px; padding: 0 24px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton {margin: 0;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .textBoxArea {padding: 0 16px;}
+
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceTitle {margin-bottom: 16px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .text, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .text, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .textHeader {height: 40px; font-size: 14px; line-height: 20px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .detailBtnTabWrap .tabButton.tabCenter {width: max-content;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon:before, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .promotionCon:after {content: none;}
+  .locationContent:before, .locationContent:after, .surroundContent:before, .surroundContent:after, .complexInfoWrap:after, .complexInfoWrap:before {content: none;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .caution, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .caution, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .caution {font-size: 10px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopImg img {width: 100%;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .text td, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable .text td, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundAPTTableWrap .aptTable .textHeader td {padding: 8px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable tr td:nth-child(1) {width: 25%;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopTableWrap .developTable tr td:nth-child(2) {width: 75%;}
+  .promotionCon .promoItemWrap .item .textArea, .locationContent .locationItemWrap .item .textArea, .surroundContent .surroundImgWrap .item .textArea {font-size: 14px; line-height: 20px;}
+  .sizeContent .detailItemArea .textBoxArea .textItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .priceDetailCon .textBoxArea .textItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundPriceCon .textBoxArea .textItemWrap {font-size: 14px; line-height: 20px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .surroundContent .surroundItem {font-size: 14px; line-height: 20px;}
+  .locationContent .locationItemWrap .item {min-height: 210px;}
+
+  
+  .detailItemArea .anotherWrap .listContentWrap .listItem {display: block; padding: 0;}
+  .detailItemArea .anotherWrap .listContentWrap .listItem .item { border:none; border-bottom: solid 1px #E2DDDA; border-radius: 0; margin: 0;}
+  .detailItemArea .anotherWrap .listContentWrap .listItem .item {padding: 16px;}
+  .detailItemArea .anotherWrap .listContentWrap .listItem .item a {padding: 0;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea.line:last-child {border-bottom: none;}
+  .detailWrap .detailContentWrap .detailItemArea.advertiseWrap {width: 100%; padding-top: 40px;};
+  .detailItemArea.advertiseWrap .advertiseDA {width:100%; margin: 0 auto;}
+  .tabContent .detailItemArea .bannerWrap .reportBanner {padding-top: 20%;}
+
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .unitDetailCon .unitImgWrap {width: auto;}
+  .developItemWrap .itemContentWrap {padding-top: 40px;}
+  .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .aroundDevelopImg {width: 90%;}
+
+  .sectionWrap.tip .mainImgWrap {width: 100%; padding-top: 24px;}
+  .tip .detailContentWrap .detailItemWrap .itemContent {padding: 40px 16px;}
+  .tip .detailContentWrap .detailItemWrap .itemContent .tipImgWrap {width: 100%; height: auto;}
+  .tip .detailContentWrap .detailItemWrap .itemContent .tipImgWrap .imgBox { display: block; background:url('/public/images/content01.png') no-repeat center / cover; width: 100%; height: 100%; border-radius: 6px;  margin-top: 40px; padding-top: 100%;}
+  .tip .tipHashtagWrap {padding: 0 8px;}
+  .tip .listSection .listContentWrap .listItem .item:first-child {border-top: solid 1px #E2DDDA; margin-top: 8px;}
+  .detailWrap.tip .detailContentWrap .detailItemWrap .detailItemArea.line {width: 100%; border-top: solid 10px #EEEBE9;}
+  .tip .tipHashtagWrap .hashtagNav li .hashtag {font-size: 15px; padding: 6px 12px;}
+
+
+  /* main */
+  .mainWrap {width: 100%; padding-top: 0;}
+  .mainWrap .articleRowWrap {margin-bottom: 0;}
+  .mainWrap .articleRowWrap .articleRow {display: block;}
+  .mainWrap .articleRowWrap .articleRow .articleColumn {margin-bottom: 40px; }
+  .mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch, .mainWrap .articleRowWrap .articleRow .articleColumn.mainCompetition, .mainWrap .articleRowWrap .articleRow .articleColumn.mainTour, .mainWrap .articleRowWrap .articleRow .articleColumn.mainComplex, .mainWrap .articleRowWrap .articleRow .articleColumn.mainReport, .mainWrap .articleRowWrap .articleRow .articleColumn.mainPremium {width: 100%; flex: none;}
+  .mainWrap .articleRowWrap .articleRow .articleColumn:not(:last-child) {margin-right: 0;}
+  .mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch {border: none;}
+  .articleColumn .mainContentWrap .articleTitle {padding: 0 16px 16px;}
+  .mainComplex .complexCategoryWrap .CategoryNav {padding: 0 16px;}
+  .mainComplex .complexContentWrap .complexContent {padding: 16px 16px 0 ;}
+  .mainComplex .complexContentWrap .complexContent.nodataWrap, .mainCompetition .mainContentWrap .competitionTableWrap .nodataWrap {border: none;}
+  .mainCompetition .mainContentWrap.banner {margin-top: 24px;}
+  .mainReport .mainContentWrap .ReportWrap {padding: 0 16px;}
+  .mainCompetition .getBlogBanner {border-radius: 0;}
+  .mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .competition .text {width: 60%;}
+  .mainTour .tourListWrap {border: none; padding: 0 16px;}
+  .mainCompetition .mainContentWrap .competitionTableWrap .tableWrap {padding: 0 16px;}
+  .mainPremium .premiumContentWrap .premiumContent {padding: 0 16px;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .imgBox {padding-top: 54%;}
+  .mainScore .scoreContentWrap .scoreContent {padding: 0 16px;}
+  .mainScore .scoreContentWrap .scoreContent .slideWrap {padding-bottom: 40px;}
+  .mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-next {bottom: 0;}
+  .mainScore .scoreContentWrap .scoreContent .slideWrap .swiper-button-prev {bottom: 0;}
+  .mainScore .scoreContentWrap .scoreContent .swiper-pagination-fraction {bottom: 0 !important;}
+  /* .mainScore .scoreContentWrap .scoreContent .slideWrap .scoreTableWrap {padding: 0 16px;} */
+  .mainPlanTable .planTableWrap, .mainConArea .mainContentWrap .vrContentWrap {padding: 0 16px;}
+  .mainConArea .mainContentWrap .tipContentWrap .tipContent {padding: 0 16px; overflow: hidden; white-space: nowrap;}
+  .mainConArea .mainContentWrap .tipContentWrap .tipContent::-webkit-scrollbar {display: none;}
+  .mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem {width: auto;}
+  .mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem:nth-child(n+3) {display: block;}
+  .mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem .imgBox {width: 200px;}
+
+
+  /* 검색어완성 */
+  .searchBarLayer {position: absolute; top: 0; left: 0; background: #fff; border: none; box-shadow: none; width: 100%; height: 100%;}
+  .searchBarLayer .searchBoxWrap {position:relative; border: solid 1px #E2DDDA; border-radius: 30px; background: #fff; display: flex; margin: 24px}
+
+  /* 이미지전체보기 */
+  .imgListLayer {top: 0; left: 0; width: 100%; height: 100%; border-right: none; }
+  .MSpopupWrap .filterItemWrap.theme .filterItem .checkbox {width: auto; margin: 2px 24px;}
+
+  .detailContentWrap .detailInfoArea .mobileAgency {display: block;}
+  .detailContentWrap .detailInfoArea .mobileAgency .agencyBtnWrap {position: fixed; background: #f98342; color: #fff; padding: 10px; display: flex; justify-content: center; align-items: center; width: 94%; bottom: 0; margin: 3%; border-radius: 6px; letter-spacing: 0.5px; font-size: 16px; line-height: 24px; z-index: 2;}
+  .detailContentWrap .detailInfoArea .mobileAgency .agencyBtnWrap .callIcon {display: block; width: 24px; height: 24px; background-position: -168px -176px;}
+}
+
+
+@media (max-width: 640px) {
+  .filterLayer .filterItemWrap .filterItem .checkbox, .filterLayer .filterItemWrap .filterItem .radiobox, .MSpopupWrap .filterItemWrap .filterItem .checkbox, .MSpopupWrap .filterItemWrap .filterItem .radiobox {width: 31%;}
+  /* .mainAdvertise .mainContentWrap .advertise .DAbanner {height: 160px; background: url('../images/DA_test_mobile_01.png') no-repeat center / contain;} */
+  .mainAdvertise .mainContentWrap .advertise .DAbanner .banner_pc, .detailItemArea.advertiseWrap .advertiseDA .DAbanner .banner_pc {display: none;}
+  .mainAdvertise .mainContentWrap .advertise .DAbanner .banner_mobile, .detailItemArea.advertiseWrap .advertiseDA .DAbanner .banner_mobile {display: block;}
+
+  .mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .number {width: 8%;}
+  .mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap {width:72%;}
+  .mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .competition .text {width: 80%;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .imgBox {padding-top: 53.5%;}
+
+}
+
+
+@media (max-width: 480px) {
+  /* main */
+  .mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch, .mainWrap .articleRowWrap .articleRow .articleColumn.mainCompetition, .mainWrap .articleRowWrap .articleRow .articleColumn.mainTour {min-width: auto;}
+  .articleColumn .mainContentWrap .articleTitle {font-size: 18px; line-height: 22px; padding-bottom: 10px;} 
+  .mainWrap .articleRowWrap .articleRow .articleColumn.mainSearch {padding: 24px 16px;}
+  .mainWrap .articleRowWrap .articleRow .mainSearch::after {width: 75px; height: 103px; background-position: -830px 0; bottom: 44px; right: 22px;}
+  .mainSearch .textWrap {padding: 0 70px 8px 8px;}
+  .mainSearch .textWrap .selectBox {max-width: 300px;}
+  .mainSearch .textWrap p {padding-right: 8px; font-size: 24px; line-height: 26px;}
+  .mainSearch h1 {font-size: 34px; line-height: 40px; padding: 2px 8px;}
+  .stateArea .stateLabel {font-size: 10px; padding: 3px 4px;}
+  .mainSearch .textWrap .selectBox .selectItem {font-size: 18px; padding: 4px; line-height: 24px;}
+  .mainSearch .textWrap .selectBox .selectList a {font-size: 15px; padding: 4px 12px;}
+  .mainSearch .textWrap .selectBox .selectList {top: 36px;}
+  .mainSearch .searchBoxWrap {margin: 24px 0 0 0; z-index: 1;}
+  
+  /* .mainAdvertise .mainContentWrap .advertise .DAbanner {height: 120px;} */
+  .mainReport .mainContentWrap .ReportWrap {display: block;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap:last-child{display: flex;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent {margin-right: 0; margin-bottom: 8px;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportSubContent {flex-grow: 1;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportSubContent:first-child {margin-bottom: 0; margin-right: 8px;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .reportMainContent .imgBox {padding-top: 66%;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .textWrap .textItem {padding: 12px;}
+  .mainReport .mainContentWrap .ReportWrap .reportColumnWrap .imgBox {padding-top: 100%;}
+  .mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .competition .text {width:100%;}
+  .mainCompetition .mainContentWrap .competitionTableWrap .competitionRow .complexWrap .complexTitle {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .mainCompetition .getBlogBanner {padding: 24px 16px;}
+  .mainCompetition .getBlogBanner::after {right: 12px;}
+  .mainCompetition .getBlogBanner[aria-label="메인배너1"]::after {position: absolute; content: ''; display: block; width: 87px; height: 50px; background-position: -656px -178px;}
+  .mainCompetition .getBlogBanner[aria-label="메인배너2"]::after {position: absolute; content: ''; display: block; width: 86px; height: 50px; background-position: -743px -178px;}
+  .mainCompetition .getBlogBanner[aria-label="메인배너3"]::after {position: absolute; content: ''; display: block; width: 82px; height: 53px; background-position: -829px -178px;}
+  .mainCompetition .getBlogBanner[aria-label="메인배너4"]::after {position: absolute; content: ''; display: block; width: 84px; height: 53px; background-position: -911px -178px;}
+  .mainCompetition .getBlogBanner[aria-label="메인배너5"]::after {position: absolute; content: ''; display: block; width: 83px; height: 42px; background-position: -995px -178px;}
+  .mainCompetition .getBlogBanner .title {font-size: 15px; line-height: 22px; font-weight: 600;}
+  .mainCompetition .getBlogBanner .text {font-size: 12px; line-height: 20px; font-weight: 500;}
+
+  .locationWrap .articleContent .mainContent .textArea .title p {width: 94%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+  .locationWrap .articleContent .mainContent .textArea .text {width: 94%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .moveInWrap .moveInListWrap {border: none; padding: 0}
+  .moveInWrap .moveInListWrap ul .list {padding: 12px 8px;}
+  .moveInWrap .moveInListWrap ul .list a {width: 100%;}
+  .moveInWrap .moveInListWrap ul .list a .text {width: 82%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+  .rankingTableWrap .lankingTable .tableWrap .lankingRow li {padding: 16px 8px;}
+  .filterLayer .filterItemWrap .filterItem .checkbox, .filterLayer .filterItemWrap .filterItem .radiobox, .MSpopupWrap .filterItemWrap .filterItem .checkbox, .MSpopupWrap .filterItemWrap .filterItem .radiobox {width: 48%; font-size: 15px;}
+  .imgListLayer .imgListContentWrap .imgListWrap .imgListItem .imgList {width: 47%;}
+  .sectionWrap .listSection {padding-top: 32px;}
+  .tip .listSection .selectBox {width: 120px;}
+  .tip .listSection .selectBox .selectItem, .tip .listSection .selectBox .selectList a {font-size:14px; line-height: 20px; padding: 6px 12px;}
+  .tip .listSection .selectBox .selectItem::after {top: 7px; right: 8px;}
+  .sectionWrap .listSection .listHeader .listCount {font-size: 16px; line-height: 24px;}
+}
+
+
+@media (max-width: 360px) {
+  .headerWrap .headerInner .headerNav .navMenu li .menu {padding: 12px;}
+  .mainSearch .textWrap .selectBox {min-width: none; max-width: 200px; width: 100%;}
+  .shareContentWrap .snsBtnWrap {width: 100%; flex-wrap: wrap; padding: 24px;}
+  .shareContentWrap .snsBtnWrap .snsBtn {width: 30%; padding: 4px 0;}
+  .shareContentWrap .snsBtnWrap .snsBtn .SNSicon {margin: 0 auto;}
+  .shareContentWrap .copyBtnWrap {}
+  .shareContentWrap .copyBtnWrap .urladdress {width: 90%;}
+
+  .sectionWrap .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap .textItem, .tip .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap .textItem {padding: 16px;}
+  .sectionWrap .mainImgWrap .textWrap .titleArea {font-size: 24px; line-height: 30px;}
+  .sectionWrap .mainImgWrap .textWrap .addressArea {font-size: 16px; line-height: 24px;}
+  .MSpopupWrap .filterItemWrap {padding: 16px;}
+  .filterLayer .filterItemWrap, .MSpopupWrap .filterItemWrap {padding: 16px;}
+  .filterLayer .filterItemWrap .checkboxWrap.themeWrap .checkbox {width: 23.7%;}
+}
+
+
+@media (max-width: 320px) {
+  .mainWrap .articleRow .mainColumn.mainSearch {padding: 16px;}
+  .mainSearch h1 {font-size: 30px ;}
+  .mainWrap .articleRow .mainSearch::after {bottom: 30px; right: 22px;}
+  .mainSearch .myArea .bookmarkBtn {right: 16px;}
+  .mainConArea .mainContentWrap .tipContentWrap .tipContent .tipItem .imgBox {width: 140px;}
+  .mainPlanTable .planTableWrap .planTable .thead .tableTitle, .mainPlanTable .planTableWrap .planTable .tbody .tableRowWrap .tableRow .TableItem {padding: 10px 2px; font-size: 13px;}
+  
+  .tabContent .detailItemArea .itemTitle {padding: 16px;}
+  .tabContent .detailItemArea .iconArea {margin: 16px; padding: 0; border: none;}
+  .tabContent .detailItemArea .iconArea .text {font-size: 14px; line-height: 20px;}
+  .tabContent .detailItemArea .textArea {padding: 16px 16px 0;}
+  .tabContent .detailItemArea .textArea .textItemWrap, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap {padding: 16px 8px; font-size: 14px; line-height: 20px;}
+  .tabContent .detailItemArea .textArea .textItemWrap .title, .sizeContent .detailItemArea .textBoxArea .textItemWrap .title, .detailWrap .detailContentWrap .detailItemWrap .detailItemArea .textArea .textItemWrap .title {font-size: 14px; line-height: 20px;}
+  .tabContent .detailItemArea .locationWrap .text {font-size: 14px; line-height: 20px;}
+  .contentWrap .detailItemArea .facilitiesWrap .iconArea .facilitiesItem:nth-child(-n+3) {padding: 0;}
+  .detailItemArea.advertiseWrap .advertiseDA {width: 100%; height: 200px;}
+  .detailItemArea.advertiseWrap .advertiseDA .imgBox {display: block; background: url('../images/DA_test_mobile_01.png') no-repeat center / cover; width: 100%; height: 100%;} 
+  .sectionWrap .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap .textItem, .tip .mainImgWrap .slideWrap .swiper .swiper-wrapper .swiper-slide .textWrap .textItem {padding: 16px;}
+  .sectionWrap .mainImgWrap .textWrap .titleArea, .tip .mainImgWrap .textWrap .titleArea {font-size: 20px; line-height: 26px;}
+  .sectionWrap .mainImgWrap .textWrap .addressArea {font-size: 16px; line-height: 24px;}
+}
+  
+
+
+
+
+
+
+
+
+
+.MSicon, .downIcon, .nextIcon, .labelInfo:before, .checkbox input:checked+.labelInfo:before, .changeIcon, .controlIcon, .shareIcon, .favoriteIcon, .competitionIcon, .searchIcon, .barIcon, .backIcon, .homeIcon, .thumbIcon, .SNSicon, .popupCloseIcon, .closeIcon, .listIcon, .viewsIcon, .promotionConWrap button, .locationContent button, .mainWrap .articleRow .search, .bookmark, .myPointImg, .speakerIcon, .noListIcon, .vrIcon, .alarmIcon, .playBicon, .voteIcon, .selectItem::after, .prevIcon, .enlarge, .loadView, .filterSelectIcon, .deleteBtn, .complexInfoWrap:before, .complexInfoWrap:after, .surroundImgWrap:before, .surroundImgWrap:after, .surroundContent::before, .surroundContent:after, .locationMarker, .schoolIcon, .reportBanner, .areaNav::after, .mainSearch::after, .getBlogBanner::after, .infoIcon, .search, .MSpopupWrap .close .MSicon, .layerPopup .close .MSicon, .homeIconLarge, .arrowRight, .callIcon {background-image: url('../images/MSbg_ver01.svg');}

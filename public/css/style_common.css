@@ -1,0 +1,688 @@
+@charset "utf-8";
+/*
+
+    사이트 공통으로 사용하는 css
+
+*/
+
+@font-face {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../font/SUIT-Regular.woff2) format("woff2"),
+    url(../font/SUIT-Regular.otf) format("opentype");
+}
+@font-face {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../font/SUIT-Medium.woff2) format("woff2"),
+    url(../font/SUIT-Medium.otf) format("opentype");
+}
+@font-face {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  src: url(../font/SUIT-SemiBold.woff2) format("woff2"),
+    url(../font/SUIT-SemiBold.otf) format("opentype");
+}
+@font-face {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../font/SUIT-Bold.woff2) format("woff2"),
+    url(../font/SUIT-Bold.otf) format("opentype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+  list-style: none;
+}
+body {
+  font-family: "SUIT", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #3a3736;
+}
+
+html {
+  overflow-y: auto;
+}
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html.map,
+html.map body,
+#SY {
+  height: 100%;
+}
+
+/* **user agent stylesheet가 적용이 안되는 부분이 있어 적용함.** */
+a,
+button {
+  cursor: pointer;
+}
+
+/* 공통 부분 */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+/* #SY {height:100%; overflow-y:auto;} */
+@media all and (max-width: 1220px) {
+}
+
+/* IMAGES, ICON */
+/* DETAIL */
+.Img_logo,
+.Icon_banner {
+  background-image: url("../images/220823_Image.svg");
+  content: "";
+  display: block;
+}
+
+.Icon_share,
+.Icon_home,
+.Icon_phone,
+.Icon_download,
+.Icon_thumb,
+.Icon_play,
+.Icon_rotation,
+.Icon_tip,
+.Icon_large,
+.Icon_zoomIn,
+.Icon_zoomOut,
+.Icon_more,
+.Icon_btn,
+.Icon_planInfo,
+.Icon_next,
+.Icon_check,
+.Icon_unfold,
+.Icon_checkCircle,
+.selectItem::after,
+.Icon_aroundFacility,
+.Icon_plus,
+.Icon_noData,
+.Icon_marker,
+.SYicon,
+.SYfilterWrap .filtering .filterCell:first-child:before,
+.selectBox .selectInfo:after,
+.new .applyList li a .num:after,
+.new .faqWrap .faqContentWrap .faqContent .box:after,
+.Icon_shortcut,
+.new .faqWrap .calculationWrap .box:after,
+.Icon_star,
+.Icon_download,
+.MuiSlider-thumb,
+.Icon_info,
+.modal button,
+.Icon_list,
+.Icon_control {
+  background-image: url("../images/220823_Icon.svg");
+  content: "";
+}
+
+.Icon_facility {
+  background-image: url("../images/220901_facilityIcon.svg");
+  content: "";
+  display: block;
+}
+
+.Icon_list {
+  display: block;
+  margin: -16px auto 0;
+  width: 24px;
+  height: 24px;
+  background-position: -482px -208px;
+}
+.listBtn {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  background: #f98342;
+  border-radius: 50%;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+.listBtn span {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.controlBtn {
+  width: 48px;
+  height: 48px;
+}
+.controlBtn .Icon_control {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.imgBox {
+  /* background: url("/images/thumb_test.png") no-repeat center / cover; */
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* 체크박스, 라디오박스 */
+.checkbox.type,
+.radiobox.type {
+  display: inline-block;
+  height: 28px;
+  padding: 0 5px;
+  border: 1px solid #d4cdcb;
+  border-radius: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.checkbox.type .text,
+.radiobox.type .text {
+  width: 100%;
+  display: inline-block;
+  line-height: 26px;
+  font-size: 14px;
+}
+.checkbox.type[aria-selected="true"] {
+  border-color: #f47630;
+}
+.checkbox.type[aria-selected="true"] .text {
+  color: #f47630;
+}
+
+/* 필터부분 */
+.SYfilterWrap {
+  position: relative;
+  background-color: #fff;
+  /* border-top: 1px solid #e7e2df; */
+  /* border-bottom: 1px solid #e7e2df; */
+}
+.SYfilterWrap .filtering {
+  position: relative;
+  z-index: 3336;
+  height: 64px;
+}
+.SYfilterWrap .filtering:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 53px;
+  width: 16px;
+  height: 100%;
+  /* background-image: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); */
+}
+.apt .SYfilterWrap .filtering:before,
+.apt .SYfilterWrap .filtering:after {
+  display: none;
+}
+.SYfilterWrap .filtering:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 53px;
+  height: 100%;
+  /* background-color: #fff; */
+}
+.SYfilterWrap .filtering .filteringScroll {
+  padding: 16px 60px 16px 16px;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.SYfilterWrap .filtering .filterCell {
+  margin-right: 6px;
+  padding: 0 8px;
+  line-height: 30px;
+  color: #7b726f;
+  font-family: "SUIT", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #f3f0ed;
+  border: 1px solid #f3f0ed;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.SYfilterWrap .filtering .reset {
+  position: absolute;
+  z-index: 2;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #d5cdcb;
+  border-radius: 4px;
+  right: 16px;
+  top: 16px;
+  font-size: 0;
+  background: url(../images/220823_Icon.svg) #fff no-repeat;
+  background-position: -73px -265px;
+}
+.SYfilterWrap .filtering .filterCell[aria-selected="true"]:not(:first-child),
+.SYfilterWrap .filtering .filterCell[aria-pressed="true"]:not(:first-child) {
+  color: #fa7630;
+  background-color: #fff;
+  border: 1px solid #f47630;
+}
+.SYfilterWrap .filtering .filterCell:first-child {
+  position: relative;
+  margin-right: 16px;
+  padding: 0 16px 0 36px;
+  color: #3a3736;
+  background-color: #fff;
+  border: 1px solid #d5cdcb;
+  border-radius: 20px;
+}
+.SYfilterWrap .filtering .filterCell:first-child:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  display: inline-block;
+  width: 12px;
+  height: 14px;
+  margin-top: -7px;
+  background-position: -58px -273px;
+}
+.SYfilterWrap .filterButton {
+  position: absolute;
+  top: 11px;
+  right: 0;
+  width: 53px;
+  height: 42px;
+  background-color: #fff;
+  border-radius: 50% 0 0 50%;
+}
+.SYfilterWrap .filterButton .more {
+  position: absolute;
+  top: 5px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  font-size: 0;
+  text-indent: -999px;
+  background-color: #fff;
+  border: 1px solid #d4cdcb;
+  border-radius: 100%;
+  cursor: pointer;
+}
+.SYfilterWrap .filterButton .more .SYicon {
+  display: block;
+  width: 12px;
+  height: 7px;
+  margin: 13px auto;
+  background-position: -174px -249px;
+}
+.SYfilterWrap .filteringlistWrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+.SYfilterWrap .moreFiltering {
+  display: none;
+}
+.SYfilterWrap .filteringlistWrap .filterWrap {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 50%;
+  padding: 10px 0;
+  text-align: center;
+  border-top: 1px solid #e7e2df;
+}
+.SYfilterWrap .filteringlistWrap .filterWrap:nth-child(odd) {
+  border-right: 1px solid #e7e2df;
+}
+.SYfilterWrap .filteringlistWrap .filterWrap .title {
+  display: block;
+  line-height: 20px;
+  color: #3a3736;
+  font-size: 13px;
+}
+.SYfilterWrap .filteringFooter {
+  position: relative;
+  display: none;
+  height: 40px;
+  background-color: #f6f6f7;
+}
+.SYfilterWrap .filtering[aria-expanded="true"] + .filterButton + .moreFiltering,
+.SYfilterWrap
+  .filtering[aria-expanded="true"]
+  + .filterButton
+  + .moreFiltering
+  + .filteringFooter {
+  display: block;
+}
+.SYfilterWrap .filteringFooter .reset {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  font-size: 0;
+  text-indent: -999px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.SYfilterWrap .filteringFooter .reset .SYicon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 8px auto;
+  background-position: -81px -273px;
+}
+.SYfilterWrap .filteringFooter .close {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  font-size: 0;
+  text-indent: -999px;
+  background-color: #fafafa;
+  border: 1px solid #e7e2df;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.SYfilterWrap .filteringFooter .close .SYicon {
+  display: block;
+  width: 12px;
+  height: 7px;
+  margin: 8px auto;
+  background-position: -206px -249px;
+}
+.SYfilterWrap .SYfilterLayerWrap {
+  /*position: fixed;
+  z-index: 3335;
+  top: 0;
+  right:0;
+  bottom:0;
+  left: 0;*/
+}
+.SYfilterWrap .SYfilterLayerWrap[aria-hidden="true"] {
+  display: none;
+}
+.SYfilterWrap .SYfilterLayerWrap .SYfilterLayerComponent {
+  position: absolute;
+  z-index: 4444;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.regionFilterwrap {
+  width: 100%;
+}
+.regionFilterwrap .regionNavigation {
+  padding: 10px 16px;
+}
+.regionFilterwrap .regionNavigation .region {
+  width: auto;
+  height: 32px;
+  padding: 0 15px;
+  line-height: 31px;
+  font-size: 14px;
+  border: 1px solid #d5cdcb;
+  border-radius: 18px;
+}
+.regionFilterwrap .regionNavigation .region[aria-pressed="true"] {
+  color: #f47630;
+  border-color: #f47630;
+}
+.regionFilterwrap .regionNavigation .region[aria-selected="true"] {
+  color: #fff;
+  background-color: #f47630;
+  border-color: #f47630;
+}
+.regionFilterwrap .regionList {
+  display: flex;
+  flex-wrap: wrap;
+}
+.regionFilterwrap .regionListWrap .region {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 40px;
+  font-size: 14px;
+  border-top: 1px solid #e7e2df;
+  border-right: 1px solid #e7e2df;
+}
+.regionFilterwrap .regionListWrap .region:nth-child(3n) {
+  border-right: 0;
+}
+.regionFilterwrap .regionListWrap .region[aria-label="NoData"] {
+  background-color: #f3f0ed;
+}
+.regionFilterwrap .swiper-pagination {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border-top: 1px solid #e7e2df;
+}
+.innerFilterwrap {
+  padding: 16px;
+}
+.innerFilterwrap.rangeFilterwrap {
+  padding: 16px 32px 32px; /* width: 500px; */
+}
+.innerFilterwrap .filterContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.innerFilterwrap .filterContainer.priceRange {
+  margin-top: 20px;
+}
+.innerFilterwrap .filterContainer .filterItem {
+  padding: 0 8px;
+  line-height: 26px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #d4cdcb;
+  background: #fff;
+  font-family: "SUIT", sans-serif;
+}
+.innerFilterwrap .filterContainer .filterItem[aria-pressed="true"] {
+  color: #fa7630;
+  background-color: #fff;
+  border: 1px solid #f47630;
+}
+
+/* 가격슬라이더 */
+.sectionWrap .MuiSlider-thumb {
+  color: #ffffff;
+  width: 18px;
+  height: 18px;
+  border-color: #f3f0ed;
+  pointer-events: none;
+  background-position: -392px -210px;
+}
+.sectionWrap .MuiSlider-rail {
+  color: #fff5ef;
+  opacity: 1;
+}
+.MuiSlider-track {
+  color: #f47630;
+}
+.MenuItem.Mui-focused {
+  color: transparent;
+}
+
+/*필터 checkbox*/
+.innerFilterwrap .checkboxWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.innerFilterwrap .checkboxWrap .checkbox {
+  white-space: normal;
+  text-align: center; /* padding: 0 2px; margin: 2px 0; */
+}
+
+@media all and (min-width: 680px) {
+  .SYfilterWrap {
+   
+  }
+  .SYfilterWrap .filtering .filteringScroll {
+    border: 1px solid #e7e2df;
+    border-radius: 8px;
+  }
+  .map .SYfilterWrap .filtering .filteringScroll {
+    border: 0;
+    border-radius: 0;
+  }
+  .SYfilterWrap .filteringlistWrap {
+    padding-bottom: 16px;
+  }
+  .SYfilterWrap .filteringlistWrap .filterWrap {
+    justify-content: left;
+    height: 40px;
+    padding: 6px 0 6px 76px;
+    border: none !important;
+  }
+  .SYfilterWrap .filteringlistWrap .filterWrap .title {
+    position: absolute;
+    top: 8px;
+    left: 24px;
+    line-height: 24px;
+    font-size: 16px;
+  }
+  .SYfilterWrap .SYfilterLayerWrap {
+    /*top: 70px;*/
+  }
+  .SYfilterWrap .SYfilterLayerWrap .SYfilterLayerComponent {
+    width: 486px;
+    border: 1px solid #e7e2df;
+    border-radius: 8px;
+  }
+}
+
+@media all and (max-width: 680px){
+  .SYfilterWrap .SYfilterLayerWrap .SYfilterLayerComponent {
+    top: calc(100% + 10px);
+  }
+  .SYfilterWrap .filtering:after {
+    background-color: #ffffff;
+  }
+}
+
+/* 콘텐츠 영역 */
+/* CONTENTS */
+.contentWrap {
+  background: #fafafa;
+}
+.contentWrap .sectionWrap {
+  padding: 32px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.newDetail.sectionWrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media all and (min-width: 680px) {
+  .contentWrap .sectionWrap {
+    padding: 40px 0;
+  }
+  .contentInfoWrap {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .contentWrap.develop {
+    background: #fafafa;
+  }
+}
+
+@media all and (max-width: 1220px) {
+  /* 컨텐츠 영역 */
+  .contentWrap .sectionWrap {
+    /* padding: 40px 16px; */
+    padding: 40px 0;
+  }
+  .contentWrap .sectionWrap.newDetail {
+    padding-top: 16px;
+  }
+  .contentWrap .sectionWrap.new {
+    padding: 40px 16px;
+    padding-top: 0;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .contentWrap .sectionWrap {
+    padding: 40px 20px;
+  }
+  .contentWrap .sectionWrap.apt {
+    padding: 40px 0;
+  }
+  .contentWrap.atoz .sectionWrap {
+    padding: 40px 16px;
+  }
+}
+
+@media all and (max-width: 680px) {
+  .contentWrap.atoz .sectionWrap {
+    padding: 40px 0px;
+  }
+  .contentWrap.develop {
+    background-color: #ffffff;
+  }
+  .contentWrap.develop .sectionWrap,
+  .contentWrap.atoz.detail .sectionWrap,
+  .contentWrap.movein .sectionWrap,
+  .contentWrap.sitereport .sectionWrap,
+  .contentWrap.bunyang .sectionWrap {
+    padding: 0;
+  }
+  .contentWrap.atoz .sectionWrap,
+  .tour .sectionWrap.detail {
+    padding: 40px 0 0;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .contentWrap .sectionWrap {
+    padding: 20px 15px;
+  }
+}
+
+/* 탭부분 */
+.tabListItem,
+.tabListItem:focus {
+  border-color: #fff;
+}
+.tabListSubItem:focus,
+.tabListSubItem:active {
+  border: 1px solid #fff;
+}

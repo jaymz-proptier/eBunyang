@@ -1,0 +1,1093 @@
+body.popupView {
+  position: static;
+  overflow: hidden;
+}
+#SY,
+html.map {
+  height: 100%;
+}
+/* marker */
+.mapSection .SYmarkerWrap {
+  transform: translateY(-100%);
+}
+.mapSection .marker .markerTip {
+  position: absolute;
+  top: -16px;
+  right: -80px;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 20px;
+  background: #f98342;
+  color: #fff;
+  z-index: 999;
+  display: none;
+}
+.mapSection .marker .markerComplex {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.mapSection .marker .markerComplex::before {
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-left: 21px solid rgba(0, 0, 0, 0.25);
+  content: "";
+  clip: rect(0 13px 25px 0);
+}
+.mapSection .marker .markerComplex::after {
+  position: absolute;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.25) 0%,
+    transparent 100%
+  );
+  right: 0;
+  bottom: -3px;
+  left: 13px;
+  height: 3px;
+  content: "";
+}
+.mapSection .marker .markerComplex .markerInner .markerInfo .complexPrice {
+  font-size: 12px;
+  line-height: 16px;
+}
+.mapSection .marker .markerComplex .markerInner .markerInfo .complexSize {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 500;
+}
+.mapSection .marker .markerComplex .markerInner .markerSelect {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: #3a3736;
+  padding: 4px 6px;
+  background: #fff;
+  border: solid 1px #ada6a3;
+  border-bottom: none;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.mapSection .marker .markerComplex[aria-label="마커_아파트"] .markerInner {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_아파트"]
+  .markerInner::before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-bottom: 11px solid transparent;
+  border-left: 13px solid transparent;
+  content: "";
+  border-bottom-left-radius: 6px;
+  border-left-color: #1b2331;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_아파트"]
+  .markerInner::after {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left-width: 12px;
+  border-left-style: solid;
+  content: "";
+  clip: rect(12px 11px 23px 0);
+  border-left-color: #333e53;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_아파트"]
+  .markerInner
+  .markerInfo {
+  background-color: #333e53;
+  color: #fff;
+  padding: 4px 6px;
+  border-bottom-right-radius: 4px;
+  border: solid 1px #1b2331;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_아파트"]
+  .markerInner
+  .markerSelect {
+  border-color: #1b2331;
+}
+
+.mapSection .marker .markerComplex[aria-label="마커_오피스텔"] .markerInner {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_오피스텔"]
+  .markerInner::before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-bottom: 11px solid transparent;
+  border-left: 13px solid transparent;
+  content: "";
+  border-bottom-left-radius: 6px;
+  border-left-color: #f34837;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_오피스텔"]
+  .markerInner::after {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left-width: 12px;
+  border-left-style: solid;
+  content: "";
+  clip: rect(12px 11px 23px 0);
+  border-left-color: #ee6c5f;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_오피스텔"]
+  .markerInner
+  .markerInfo {
+  background-color: #ee6c5f;
+  color: #fff;
+  padding: 4px 6px;
+  border: solid 1px #f34837;
+  border-bottom-right-radius: 4px;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_오피스텔"]
+  .markerInner
+  .markerSelect {
+  border-color: #f34837;
+}
+
+.mapSection .marker .markerComplex[aria-label="마커_도시생활형"] .markerInner {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_도시생활형"]
+  .markerInner::before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-bottom: 11px solid transparent;
+  border-left: 13px solid transparent;
+  content: "";
+  border-bottom-left-radius: 6px;
+  border-left-color: #da6e0b;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_도시생활형"]
+  .markerInner::after {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left-width: 12px;
+  border-left-style: solid;
+  content: "";
+  clip: rect(12px 11px 23px 0);
+  border-left-color: #e4730a;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_도시생활형"]
+  .markerInner
+  .markerInfo {
+  background-color: #e4730a;
+  color: #fff;
+  padding: 4px 6px;
+  border: solid 1px #da6e0b;
+  border-bottom-right-radius: 4px;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_도시생활형"]
+  .markerInner
+  .markerSelect {
+  border-color: #da6e0b;
+}
+.mapSection .marker .markerComplex[aria-label="마커_상가/업무"] .markerInner {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_상가/업무"]
+  .markerInner::before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-bottom: 11px solid transparent;
+  border-left: 13px solid transparent;
+  content: "";
+  border-bottom-left-radius: 6px;
+  border-left-color: #109fb2;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_상가/업무"]
+  .markerInner::after {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left-width: 12px;
+  border-left-style: solid;
+  content: "";
+  clip: rect(12px 11px 23px 0);
+  border-left-color: #24b2c5;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_상가/업무"]
+  .markerInner
+  .markerInfo {
+  background-color: #24b2c5;
+  color: #fff;
+  padding: 4px 6px;
+  border: solid 1px #109fb2;
+  border-bottom-right-radius: 4px;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_상가/업무"]
+  .markerInner
+  .markerSelect {
+  border-color: #109fb2;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_생활숙박시설"]
+  .markerInner
+  .markerSelect {
+  border-color: #4f00b5;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_생활숙박시설"]
+  .markerInner {
+  position: relative;
+  height: 100%;
+  border-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_생활숙박시설"]
+  .markerInner::before {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  border-bottom: 11px solid transparent;
+  border-left: 13px solid transparent;
+  content: "";
+  border-bottom-left-radius: 6px;
+  border-left-color: #4f00b5;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_생활숙박시설"]
+  .markerInner::after {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 0;
+  height: 0;
+  border-top: 11px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left-width: 12px;
+  border-left-style: solid;
+  content: "";
+  clip: rect(12px 11px 23px 0);
+  border-left-color: #9747ff;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_생활숙박시설"]
+  .markerInner
+  .markerInfo {
+  background-color: #9747ff;
+  color: #fff;
+  padding: 4px 6px;
+  border: solid 1px #4f00b5;
+  border-bottom-right-radius: 4px;
+}
+.mapSection
+  .marker
+  .markerComplex[aria-label="마커_생활숙박시설"]
+  .markerInner
+  .markerSelect {
+  border-color: #4f00b5;
+}
+
+.mapSection .marker .markerComplex .markerInner .stateArea,
+.mapSection .marker .markerComplex .markerInner .complexTitle,
+.mapSection .marker .markerComplex .markerInner .complexInfo,
+.mapSection .marker [aria-hidden="true"] {
+  display: none;
+}
+
+/* 마커 마우스오버 */
+.mapSection .marker:hover {
+}
+.mapSection .marker:hover .markerComplex,
+.mapSection .marker[aria-pressed="true"] .markerComplex {
+}
+.mapSection .marker:hover .markerComplex .markerInner,
+.mapSection .marker[aria-pressed="true"] .markerComplex .markerInner {
+  border-radius: 4px;
+  padding: 10px;
+  background: #fff;
+  border: solid 1px #3a3736;
+  border-bottom-left-radius: 0;
+}
+/* 그림자 */
+.mapSection .marker:hover .markerComplex::before {
+}
+.mapSection .marker:hover .markerComplex::after {
+}
+
+.mapSection .marker:hover .markerComplex .markerInner::before,
+.mapSection .marker[aria-pressed="true"] .markerComplex .markerInner::before {
+  border-left-color: #3a3736;
+  left: -1px;
+  bottom: -11px;
+  border-bottom-left-radius: 6px;
+}
+.mapSection .marker:hover .markerComplex .markerInner::after,
+.mapSection .marker[aria-pressed="true"] .markerComplex .markerInner::after {
+  border-left-color: #fff;
+  left: 0;
+  border-left-width: 13px;
+  clip: rect(13px 11px 20px 0);
+}
+.mapSection .marker:hover .markerComplex .markerInner .markerInfo,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .markerInfo {
+  background-color: #fff;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  color: #3a3736;
+  overflow: hidden;
+}
+
+.mapSection .marker:hover .markerComplex .markerInner .complexTitle,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .complexTitle {
+  display: block;
+  font-size: 15px;
+  line-height: 22px;
+}
+.mapSection .marker:hover .markerComplex .markerInner .markerSelect,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .markerSelect {
+  display: none;
+}
+.mapSection .marker:hover .markerComplex .markerInner .markerInfo .complexPrice,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .markerInfo
+  .complexPrice {
+  font-size: 16px;
+  color: #3e7cbb;
+  font-weight: 700;
+  line-height: 23px;
+}
+.mapSection .marker:hover .markerComplex .markerInner .stateArea,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .stateArea {
+  display: flex;
+  margin-bottom: 4px;
+}
+.mapSection .marker:hover .markerComplex .markerInner .stateArea .stateLabel,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .stateArea
+  .stateLabel {
+  font-size: 11px;
+  padding: 2px 4px;
+  line-height: 15px;
+}
+.mapSection .marker:hover .markerComplex .markerInner .markerInfo .complexSize,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .markerInfo
+  .complexSize {
+  display: none;
+}
+.mapSection .marker:hover .markerComplex .markerInner .markerInfo .complexInfo,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .markerInfo
+  .complexInfo {
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+}
+.mapSection
+  .marker:hover
+  .markerComplex
+  .markerInner
+  .markerInfo
+  .complexInfo
+  span:not(:last-child)::after,
+.mapSection
+  .marker[aria-pressed="true"]
+  .markerComplex
+  .markerInner
+  .markerInfo
+  .complexInfo
+  span:not(:last-child)::after {
+  content: "·";
+  clear: both;
+  padding: 0 2px;
+}
+.SYheader.map {
+  position: fixed;
+  width: 100%;
+}
+.contentWrap.map {
+  height: 100%;
+  padding-top: 133px;
+}
+.contentWrap.map .SYfilterWrap {
+  position: fixed;
+  z-index: 3335;
+  top: 71px;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+}
+.contentWrap.map .SYfilterWrap .filtering .filterCell:first-child {
+  display: none;
+}
+.contentWrap.map .mapArea {
+  width: 100%;
+  height: 100%;
+}
+.mapSection {
+  position: relative;
+  height: 100%;
+}
+.mapAreaSelectBoxWrap {
+  position: absolute;
+  z-index: 3334;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+.mapAreaSelectBoxWrap .mapAreaSelect {
+  display: flex;
+}
+.mapAreaSelectBoxWrap .mapAreaSelect .region {
+  position: relative;
+  padding: 0 10px;
+  line-height: 1.2;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.mapAreaSelectBoxWrap .mapAreaSelect .region:not(:first-child):before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4px;
+  height: 8px;
+  margin-top: -4px;
+  background: url(../images/220823_Icon.svg) -302px -276px;
+}
+.SYlayerPopupWrap .layerPopupContent {
+  position: absolute;
+  z-index: 3334;
+  top: 185px;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+.areaSelectLayerPopup .areaSelectWrap {
+  display: flex;
+  height: 35px;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+.areaSelectLayerPopup .areaSelectWrap .region {
+  position: relative;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.mapAreaSelectBoxWrap .areaSelectWrap .region:not(:first-child):before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 4px;
+  height: 8px;
+  margin-top: -4px;
+  background: url(../images/220823_Icon.svg) -302px -276px;
+}
+.areaSelectLayerPopup ul {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 252px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.areaSelectLayerPopup li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.333%;
+  height: 42px;
+  line-height: 18px;
+  font-size: 14px;
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+.areaSelectLayerPopup .areaButtonWrap {
+  padding: 10px;
+}
+.areaSelectLayerPopup .areaButtonWrap button {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  color: #fff;
+  font-family: "SUIT", sans-serif;
+  font-size: 15px;
+  background-color: #f98342;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.mapFunctionWrap {
+  position: absolute;
+  z-index: 3333;
+  top: 50px;
+  right: 20px;
+}
+.mapFunctionWrap .mapFunction .functionButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+}
+.mapFunctionWrap
+  .mapFunction
+  .functionButton[aria-label="분양"][aria-pressed="true"] {
+  background-color: #f5627d;
+}
+.mapFunctionWrap .mapFunction .functionButton[aria-label="분양"] .SYicon {
+  display: block;
+  width: 20px;
+  height: 18px;
+  background-position: -362px -275px;
+}
+.mapSection .tooltipBox {
+  position: absolute;
+  top: 4px;
+  right: 50px;
+  width: 100px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.mapSection .tooltipBox:before {
+  content: "";
+  position: absolute;
+  top: 13px;
+  right: -5px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid rgba(0, 0, 0, 0.2);
+}
+.mapSection .tooltipBox:after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  right: -4px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid #fff;
+}
+.mapSection .tooltipBox .facilityItem {
+  position: relative;
+  width: 100%;
+  height: 34px;
+  padding-left: 10px;
+  line-height: 34px;
+  font-family: "SUIT", sans-serif;
+  font-size: 13px;
+  text-align: left;
+  background-color: transparent;
+  cursor: pointer;
+}
+.mapSection .tooltipBox .facilityItem:after {
+  content: "";
+  position: absolute;
+  z-index: 555;
+  top: 50%;
+  right: 10px;
+  width: 8px;
+  height: 5px;
+  margin-top: -2px;
+  background: url(../images/220823_Icon.svg) -132px -278px;
+}
+.mapSection .tooltipBox .facilityItem[aria-expanded="false"] + .facilityList {
+  display: none;
+}
+.mapSection .tooltipBox .facilityItem[aria-expanded="true"]:after {
+  background-position: -156px -278px;
+}
+.mapSection .tooltipBox .facilityList {
+  position: relative;
+  margin-top: -34px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.mapSection .tooltipBox .facilityList a {
+  display: block;
+  height: 34px;
+  padding-left: 10px;
+  line-height: 34px;
+  font-size: 13px;
+  border-radius: 5px;
+}
+.mapSection .tooltipBox .facilityList a:hover {
+  background-color: #f6f6f6;
+}
+.mapSection .tooltipBox .facilityList a[aria-selected="true"] {
+  color: #f98342;
+}
+
+.articleContent
+  .complexLocation
+  .locationMapWrap
+  .mapImg[aria-pressed="false"]
+  + .mapImg {
+  height: 300px;
+}
+.articleContent
+  .complexLocation
+  .locationMapWrap
+  .locationBtnWrap
+  .locationBtn[aria-hidden="true"] {
+  display: none;
+}
+.articleContent .chartWrap .chartItemList .chartLineWrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 160px;
+}
+.articleContent .chartWrap .chartItemList .chartLine {
+  right: 7%;
+  left: 7%;
+  width: 86%;
+}
+.mapViewButton,
+.listViewButton {
+  position: fixed;
+  z-index: 2000;
+  right: 20px;
+  bottom: 20px;
+  width: 54px;
+  height: 54px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  background-color: #f98342;
+  border-radius: 100%;
+  opacity: 1;
+  transition: all 0.3s;
+  -webkit-transition-delay: 0.05s;
+  transition-delay: 0.05s;
+}
+
+
+.SYpopupLayerWrap {
+  position: fixed;
+  z-index: 7777;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.popupContentWrap {
+  position: absolute;
+  z-index: 7777;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+}
+.popupHeader {
+  position: relative;
+  padding: 16px 20px 15px;
+  text-align: center;
+}
+.popupHeader .headerTitle {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+.popupHeader .headerTitle strong {
+  color: #f47630;
+  font-weight: 500;
+}
+.SYrateListContents .popupHeader .headerTitle {
+  text-align: left;
+}
+.popupHeader .close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+}
+.popupHeader .close .SYicon {
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 8px auto;
+  background-position: -237px -213px;
+}
+.popupContent {
+  padding: 20px;
+}
+.shareContentWrap {
+  width: 300px;
+}
+.shareContentWrap .snsButtonWrap {
+  display: flex;
+  justify-content: space-between;
+}
+.shareContentWrap .snsButton {
+  background-color: transparent;
+}
+.shareContentWrap .snsButton .SYicon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  background-position: -8px -296px;
+}
+.shareContentWrap .snsButton[aria-label="페이스북"] .SYicon {
+  background-position: -72px -296px;
+}
+.shareContentWrap .snsButton[aria-label="카카오스토리"] .SYicon {
+  background-position: -136px -296px;
+}
+.shareContentWrap .snsButton[aria-label="네이버블로그"] .SYicon {
+  background-position: -200px -296px;
+}
+.shareContentWrap .snsButton[aria-label="밴드"] .SYicon {
+  background-position: -264px -296px;
+}
+.shareContentWrap .copyButtonWrap {
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: center;
+}
+.shareContentWrap .copyButtonWrap .copyUrl {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  line-height: 20px;
+  overflow: hidden;
+  font-size: 14px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  background-color: #f6f4f2;
+  border: 1px solid #d3cecc;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.photoViewContentWrap {
+  position: relative;
+  max-width: 680px;
+}
+.photoViewContentWrap .photoWrap img {
+  width: 100%;
+}
+.photoViewContentWrap .photoTitle {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+.SYrateListContents .rateListWrap {
+  min-width: 280px;
+}
+.SYrateListContents .rateListWrap .listTitle {
+  display: flex;
+  height: 40px;
+  background-color: #fafafa;
+  border-top: 1px solid #e7e2df;
+  border-bottom: 1px solid #e7e2df;
+}
+.SYrateListContents .rateListWrap .listTitle span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  color: #3a3736;
+  font-size: 14px;
+  font-weight: 600;
+}
+.SYrateListContents .rateListWrap li {
+  display: flex;
+  height: 40px;
+}
+.SYrateListContents .rateListWrap li span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  color: #3a3736;
+  font-size: 14px;
+}
+.SYrateListContents .rateListWrap ul {
+  border-bottom: 1px solid #d5cdcb;
+}
+.SYrateListContents .rateListWrap li .scoreBarWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+.SYrateListContents .rateListWrap li .scoreBar {
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-color: #fafafa;
+}
+.SYrateListContents .rateListWrap li .scoreBar:first-child {
+  border-radius: 2px 0 0 2px;
+}
+.SYrateListContents .rateListWrap li .scoreBar:last-child {
+  border-radius: 0 2px 2px 0;
+}
+.SYrateListContents
+  .rateListWrap
+  li
+  .scoreBar[aria-label="경쟁률1"][aria-hidden="false"] {
+  background-color: #ffaeae;
+}
+.SYrateListContents
+  .rateListWrap
+  li
+  .scoreBar[aria-label="경쟁률2"][aria-hidden="false"] {
+  background-color: #fc7b7b;
+}
+.SYrateListContents
+  .rateListWrap
+  li
+  .scoreBar[aria-label="경쟁률3"][aria-hidden="false"] {
+  background-color: #e85353;
+}
+.SYrateListContents
+  .rateListWrap
+  li
+  .scoreBar[aria-label="경쟁률4"][aria-hidden="false"] {
+  background-color: #db3838;
+}
+.SYrateListContents
+  .rateListWrap
+  li
+  .scoreBar[aria-label="경쟁률5"][aria-hidden="false"] {
+  background-color: #d40c0c;
+}
+.SYoverheatContents .overheatWrap .listTitle {
+  display: flex;
+  height: 48px;
+  background-color: #fff5ef;
+  border-top: 1px solid #3a3736;
+}
+.SYoverheatContents .overheatWrap .listTitle span {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  color: #f47630;
+  font-size: 18px;
+  font-weight: 600;
+}
+.SYoverheatContents .overheatWrap li {
+  display: flex;
+  border-top: 1px solid #e7e2df;
+}
+.SYoverheatContents .overheatWrap li .title {
+  display: flex;
+  align-items: center;
+  width: 80px;
+  padding-left: 8px;
+  line-height: 18px;
+  color: #3a3736;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #fafafa;
+}
+.SYoverheatContents .overheatWrap li .contents {
+  width: calc(100% - 80px);
+  padding: 12px;
+}
+.SYoverheatContents .overheatWrap li p {
+  position: relative;
+  line-height: 20px;
+  color: #3a3736;
+  font-size: 14px;
+}
+.SYoverheatContents .overheatWrap li p:before {
+  content: "• ";
+}
+.SYoverheatContents .overheatWrap li label {
+  display: block;
+  line-height: 16px;
+  color: #7b726f;
+  font-size: 12px;
+}
+
+.SYcomplexListContents {
+  min-width: 280px;
+}
+.SYcomplexListContents .complexListContent {
+  padding-bottom: 20px;
+}
+.SYcomplexListContents li a {
+  display: block;
+  margin-top: 8px;
+  padding: 8px;
+  border: 1px solid #e7e2df;
+  border-radius: 4px;
+}
+.SYcomplexListContents li a:hover {
+  background-color: #fafafa;
+}
+
+@media (min-width: 768px) {
+  .popupContentWrap {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: auto;
+    height: auto;
+    border-radius: 6px;
+  }
+  .SYoverheatContents {
+    height: 80%;
+  }
+  .SYoverheatContents .overheatWrap {
+    width: 712px;
+  }
+  .SYoverheatContents .overheatWrap .listTitle span {
+    padding-left: 24px;
+  }
+  .SYoverheatContents .overheatWrap li .title {
+    width: 200px;
+    line-height: 20px;
+    padding: 22px 27px;
+    font-size: 14px;
+  }
+  .SYoverheatContents .overheatWrap li .contents {
+    width: 512px;
+  }
+}
+@media (min-width: 680px) {
+  .mapAreaSelectBoxWrap {
+    top: 10px;
+  }
+  .SYlayerPopupWrap .layerPopupContent {
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+  }
+  .mapFunctionWrap {
+    top: 20px;
+  }
+  .areaSelectLayerPopup ul {
+    max-height: 340px;
+  }
+  .SYfilterWrap .filteringInfoWrap {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  } 
+  .map .SYfilterWrap .filteringInfoWrap {
+    position: relative;
+  }
+   .mapViewButton {
+    right: calc(50% - 590px);
+  }
+}

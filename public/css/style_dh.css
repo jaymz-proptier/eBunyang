@@ -1,0 +1,2157 @@
+/* reset 부분 */
+/* **user agent stylesheet가 적용이 안되는 부분이 있어 적용함.** */
+a,
+button {
+  cursor: pointer;
+}
+
+/* 공통 부분 */
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.commonImgBg {
+  background: url(../images/220823_Image.svg);
+}
+.commonIconBg {
+  background: url(../images/220823_Icon.svg);
+}
+
+.commonLineBxWrap {
+  display: flex;
+  justify-content: space-between;
+}
+.commonLineBx {
+  border: 1px solid #e7e2df;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.homeCol02 > div {
+  width: 49%;
+}
+.homeCol03 > div:first-child {
+  width: 49%;
+}
+.homeCol03 > div:nth-child(2) {
+  width: 24%;
+}
+.homeCol03 > div:last-child {
+  width: 24%;
+}
+
+.commonColorBx {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 8px;
+}
+.commonColorBx dt {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+  width: calc(100% - 80px);
+}
+.commonColorBx dd {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+  width: 75px;
+  text-align: right;
+}
+.commonColorBx dd span {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+}
+.commonColorBx.color01 {
+  background-color: #f4f9ff;
+  border: 1px solid #dff0fb;
+}
+.commonColorBx.color02 {
+  background-color: #fff5ef;
+  border: 1px solid #fce1d2;
+}
+
+/* 홈화면 공통 타이틀 */
+.commonHomeHeader {
+  position: relative;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  margin-bottom: 16px;
+}
+.commonHomeHeader .pointColor {
+  color: #f47630;
+}
+.commonHomeHeader .btnMore {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 26px;
+  color: #7b726f;
+  padding-right: 21px;
+}
+.commonHomeHeader .btnMore::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -8px;
+  width: 16px;
+  height: 16px;
+  background: url(../images/220823_Icon.svg);
+  background-position: -8px -272px;
+}
+
+/* 라운드형 버튼 스타일 */
+.btnRnd01 {
+  display: inline-block;
+  vertical-align: middle;
+}
+.btnRnd01 span {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+  padding: 2px 12px;
+  background-color: #fff;
+  border: 1px solid #d4cdcb;
+  border-radius: 4px;
+}
+.btnRnd02 {
+  display: inline-block;
+  vertical-align: middle;
+}
+.btnRnd02 span {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+  padding: 4px 8px;
+  background-color: #fff;
+  border: 1px solid #d4cdcb;
+  border-radius: 4px;
+}
+.btnRnd03 {
+  display: inline-block;
+  vertical-align: middle;
+}
+.btnRnd03 span {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  padding: 4px 12px;
+  background-color: #f47630;
+  border-radius: 4px;
+}
+.btnRnd04 {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.btnRnd04 span {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #3a3736;
+  padding: 4px 8px;
+  background-color: #fafafa;
+  border: 1px solid #e7e2df;
+  border-radius: 4px;
+}
+
+/* 분양 AI */
+.homeBunyangAiTitle {
+  background: #fafafa;
+  border-top: 1px solid #e7e2df;
+  border-bottom: 1px solid #e7e2df;
+  padding: 18px 16px;
+  margin: 0 0 16px 0;
+}
+.homeBunyangAiTitle .title {
+  display: inline-block;
+  max-width: calc(100% - 70px);
+  vertical-align: middle;
+  margin-left: 10px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+
+.homeBunyangAiList {
+  display: flex;
+  justify-content: space-between;
+}
+.homeBunyangAiList .listBx {
+  width: 31%;
+  border: 1px solid #e7e2df;
+  border-radius: 4px;
+  padding: 16px;
+}
+.homeBunyangAiList .listBx .title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #7b726f;
+  border-bottom: 1px solid #e7e2df;
+  text-align: center;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.homeBunyangAiList .listBx .info {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+  text-align: center;
+}
+
+/* 분양 AI :: pagination */
+.homeBunyangAi .swiper-pagination {
+  position: relative;
+  text-align: center;
+  -webkit-transition: 0.3s opacity;
+  -o-transition: 0.3s opacity;
+  transition: 0.3s opacity;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  font-size: 15px;
+  margin-top: 24px;
+  height: 8px;
+}
+.homeBunyangAi .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #e7e2df;
+  border-radius: 5px;
+  -webkit-transition: 0.3s linear;
+  transition: 0.3s linear;
+}
+.homeBunyangAi .swiper-pagination-clickable .swiper-pagination-bullet {
+  cursor: pointer;
+}
+.homeBunyangAi .swiper-pagination-bullet-active {
+  background-color: #f47630;
+}
+/* .homeBunyangAi .swiper, .homeBunyangAi .swiper-slide { height: 300px; } */
+
+/* 분양 AI :: 예상 경쟁률 */
+.homeBunyangAi .competit {
+  padding: 0 8px;
+}
+.homeBunyangAi .scoreBarWrap {
+  display: flex;
+  border: 1px solid #f8c8c8;
+  border-radius: 2px;
+  background: #fafafa;
+  min-height: 24px;
+  overflow: hidden;
+}
+.homeBunyangAi .scoreBarWrap .scoreBar:first-child {
+    border-left: 0;
+}
+.homeBunyangAi .scoreBarWrap .scoreBar {
+  width: 20%;
+  height: 24px;
+  border-left: 1px solid #f8c8c8;
+}
+.homeBunyangAi
+  .scoreBarWrap
+  .scoreBar[aria-hidden="false"][aria-label="경쟁률5"] {
+  background: #d40c0c;
+  border-left: 0;
+}
+.homeBunyangAi
+  .scoreBarWrap
+  .scoreBar[aria-hidden="false"][aria-label="경쟁률4"] {
+  background: #db3838;
+}
+.homeBunyangAi
+  .scoreBarWrap
+  .scoreBar[aria-hidden="false"][aria-label="경쟁률3"] {
+  background: #e85353;
+}
+.homeBunyangAi
+  .scoreBarWrap
+  .scoreBar[aria-hidden="false"][aria-label="경쟁률2"] {
+  background: #fc7b7b;
+}
+.homeBunyangAi
+  .scoreBarWrap
+  .scoreBar[aria-hidden="false"][aria-label="경쟁률1"] {
+  background: #ffaeae;
+}
+
+/* 분양지도로 보기 */
+.commonLineBx.homeBunyangMap {
+  position: relative;
+  padding: 0;
+}
+.commonLineBx.homeBunyangMap a {
+  position: relative;
+  z-index: 1;
+  display: block;
+  padding: 24px;
+  height: 100%;
+}
+.homeBunyangMap::after {
+  content: "";
+  position: absolute;
+  width: 66%;
+  height: 145px;
+  background: url(../images/ic_home_map.png) no-repeat right bottom;
+  background-size: contain;
+  right: 24px;
+  bottom: 20px;
+}
+
+.homeBunyangMapCount {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.homeBunyangMapCount .count {
+  font-family: "SUIT";
+  font-style: normal;
+  font-size: 22px;
+  line-height: 30px;
+  color: #3a3736;
+}
+.homeBunyangMapCount .count span {
+  font-size: 40px;
+  line-height: 48px;
+}
+
+/* home 배너 */
+.homeBannerSlider {
+  margin-bottom: 24px;
+}
+.homeBannerSlider .homeBanner img {
+  max-width: 100%;
+}
+
+/* e분양 Pick */
+.homePickWrap {
+  display: flex;
+  justify-content: space-between;
+}
+.homePickWrap > div {
+  width: 32%;
+}
+
+.homePickVisit {
+  position: relative;
+}
+.homePickVisit .homePickVisitImage {
+  height: 328px;
+  background-size: cover;
+}
+.homePickVisit .homePickVisitTxt {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  padding: 24px;
+}
+.homePickVisit .homePickVisitTxt .title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 28px;
+  color: #fff;
+  margin: 12px 0 8px 0;
+}
+.homePickVisit .homePickVisitTxt .link a {
+  position: relative;
+  display: inline-block;
+  padding: 9px 48px 9px 16px;
+  background: #f4f9ff;
+}
+.homePickVisit .homePickVisitTxt .link a::after {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 12px;
+  background: url(../images/220823_Icon.svg);
+  background-position: -369px -214px;
+  right: 25px;
+  top: 19px;
+}
+.homePickVisit .homePickVisitTxt .link a span {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #3a3736;
+}
+
+.homePickVisit .swiper-pagination {
+  right: 32px;
+  bottom: 22px;
+  height: 8px;
+  text-align: right;
+}
+.homePickVisit .swiper-pagination-bullet {
+  background-color: #fff;
+}
+.homePickVisit .swiper-pagination-bullet-active {
+  width: 8px;
+  background-color: #f47630;
+}
+
+.homePickVisit .homePickBtnBx {
+  position: absolute;
+  right: 24px;
+  bottom: 22px;
+  z-index: 1;
+}
+.homePickVisit .homePickBtnBx button {
+  display: block;
+  width: 7px;
+  height: 10px;
+}
+.homePickVisit .homePickBtnBx .btnPause button {
+  background: url(../images/btn_pause.png) no-repeat;
+}
+.homePickVisit .homePickBtnBx .btnPlay button {
+  display: none;
+  background: url(../images/btn_play.png) no-repeat;
+}
+.homePickVisit .homePickBtnBx .btnPause.pause button {
+  display: none;
+}
+.homePickVisit .homePickBtnBx .btnPlay.pause button {
+  display: block;
+}
+
+.homePickBanner {
+  border: 1px solid #e7e2df;
+  border-radius: 8px;
+}
+.homePickBanner a {
+  display: block;
+  padding: 16px;
+}
+.homePickBanner .homePickBannerImage {
+  height: 240px;
+  background-color: #ddd;
+  margin-bottom: 8px;
+}
+.homePickBanner .homePickBannerInfo {
+  display: flex;
+}
+.homePickBanner .homePickBannerInfo .infoBx {
+  padding-left: 8px;
+}
+.homePickBanner .homePickBannerInfo .infoBx .title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+.homePickBanner .homePickBannerInfo .infoBx .location {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7b726f;
+  margin-top: 2px;
+}
+
+.homePickList .homePickListInner:first-child {
+  margin-bottom: 24px;
+}
+.homePickList .homePickListInner a {
+  display: flex;
+  border: 1px solid #e7e2df;
+  border-radius: 4px;
+  padding: 16px;
+  height: 152px;
+}
+.homePickList .homePickListInner .homePickListImg {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 2px;
+  background-color: #ddd;
+}
+.homePickList .homePickListInner .homePickListImg::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.2);
+}
+.homePickList .homePickListInner .homePickListImg.video::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url(../images/220823_Icon.svg);
+  background-position: -8px -8px;
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  z-index: 1;
+}
+.homePickList .homePickListInner .homePickListImg.vr::after {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: url(../images/220823_Icon.svg);
+  background-position: -104px -8px;
+  left: 50%;
+  margin-left: -20px;
+  top: 50%;
+  margin-top: -20px;
+  z-index: 1;
+}
+.homePickList .homePickListInner .homePickListInfo {
+  width: calc(100% - 136px);
+  padding: 8px 0 0 16px;
+}
+.homePickList .homePickListInner .homePickListInfo .btnRnd02 {
+  margin-bottom: 8px;
+}
+.homePickList .homePickListInner .homePickListInfo .title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+.homePickList .homePickListInner .homePickListInfo .location,
+.homePickList .homePickListInner .homePickListInfo .info {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #7b726f;
+}
+
+/* 분양임박단지 */
+.homeApproachLIst .homeApproachListInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border: 1px solid #e7e2df;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+.homeApproachLIst .homeApproachListInner:first-child {
+  margin-top: 0;
+}
+.homeApproachLIst .homeApproachListInner .infoBx .title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+.homeApproachLIst .homeApproachListInner .infoBx .info {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #7b726f;
+}
+.homeApproachLIst .homeApproachListInner .date {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+}
+
+/* 서울 아파트 입주물량 */
+.homeApartmentGraph {
+  margin-top: 45px;
+}
+.homeApartmentGraph .articleTitle,
+.homeApartmentGraph .articleWrap:last-child {
+  display: none;
+}
+
+/* 전국 재건축 · 재개발 현황 */
+#chartjs-tooltip {
+  transition: all 0.5s;
+  padding: 4px 12px 6px;
+  border: 1px solid #e7e2df;
+  border-radius: 4px;
+  background-color: #fff;
+}
+#chartjs-tooltip table {
+  border-collapse: collapse;
+  padding: 0;
+  border: 0;
+  border-spacing: 0px;
+}
+#chartjs-tooltip table tbody td {
+  vertical-align: middle;
+}
+#chartjs-tooltip table tbody td .colorBx {
+  display: inline-block;
+  vertical-align: middle;
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  margin-right: 4px;
+}
+#chartjs-tooltip table tbody td .title {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7b726f;
+  margin-right: 8px;
+}
+#chartjs-tooltip table tbody td .info {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+}
+
+@media all and (max-width: 500px){
+  .SYhomeWholeGraph {max-width: 100%; overflow-y: auto;}
+  .SYhomeWholeGraph .chartBox {width: 1000px;}
+}
+
+/* 분양 유상옵션 계산 */
+.homeOptionList .homeOptionListInner a {
+  display: flex;
+  align-items: center;
+  padding: 11px 8px;
+  border-top: 1px solid #e7e2df;
+}
+.homeOptionList .homeOptionListInner:first-child a {
+  border-top: 0;
+  padding-top: 0;
+}
+.homeOptionList .homeOptionListInner .title {
+  max-width: calc(100% - 60px);
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+  padding-left: 8px;
+}
+
+/* Real Trend */
+.homeRealTrend {
+  overflow: hidden;
+}
+.homeRealTrend .homeRealTrendInner {
+  float: left;
+  width: 49%;
+  margin-left: 2%;
+}
+.homeRealTrend .homeRealTrendInner:first-child {
+  margin-left: 0;
+}
+.homeRealTrend .homeRealTrendInner a {
+  display: block;
+}
+.homeRealTrend .homeRealTrendImg {
+  width: 100%;
+  height: 253px;
+  border-radius: 6px;
+}
+.homeRealTrend .homeRealTrendTitle {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: #3a3736;
+  margin-top: 8px;
+}
+
+/* home 모바일 화면 작업 */
+
+@media all and (max-width: 1024px) {
+  .contentWrap .sectionWrap {
+    padding: 40px 20px;
+  }
+
+  .commonLineBxWrap {
+    display: block;
+  }
+  .commonLineBxInner .commonLineBx {
+    width: 49%;
+  }
+  .homeCol02 > div {
+    width: 100%;
+  }
+  .homeCol03 > div:first-child {
+    width: 100%;
+  }
+  .homeCol03 > div:nth-child(2) {
+    width: 100%;
+  }
+  .homeCol03 > div:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .homeBunyangMap::after {
+    width: 135px;
+    right: auto;
+    left: 148px;
+    bottom: 15px;
+  }
+
+  .homePickWrap {
+    flex-wrap: wrap;
+  }
+  .homePickWrap > .homePickVisit,
+  .homePickWrap > .homePickBanner {
+    width: 49%;
+  }
+  .homePickWrap > .homePickList {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media all and (max-width: 678px) {
+  .homePickWrap > .homePickVisit {
+    margin-bottom: 15px;
+  }
+  .homePickWrap > .homePickVisit,
+  .homePickWrap > .homePickBanner {
+    width: 100%;
+  }
+}
+@media all and (max-width: 500px) {
+  .contentWrap .sectionWrap {
+    padding: 20px 15px;
+  }
+  .commonLineBx {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  .commonLineBxInner .commonLineBx {
+    width: 100%;
+  }
+
+  .homeCol03 > div:last-child {
+    display: block;
+  }
+
+  .homeBunyangAiList {
+    display: block;
+  }
+  .homeBunyangAiList .listBx {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+  }
+  .homeBunyangAi .scoreBarWrap {
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  .homeBunyangMap::after {
+    right: 24px; left: auto;
+  }
+  .homeBunyangMapCount {width: 50%;}
+  .homeBunyangMapCount .count span {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .homeRealTrend .homeRealTrendImg {height: 199px;}
+}
+
+@media all and (max-width: 375px){
+  .homeBunyangMap::after {display: none;}
+  .homeBunyangMapCount {width: 100%;} 
+}
+
+/* 필터박스 */
+.filterBx {
+  padding: 16px;
+  box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.1);
+}
+.filterBx .filterBxInner {
+  display: inline-block;
+  height: 28px;
+  padding: 0 5px;
+  margin: 0 4px;
+  border: 1px solid #d4cdcb;
+  border-radius: 4px;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+/* 추가작업 :: 입주탐방 뷰페이지 탭 작업 */
+.plantabWrap .tabList .tabListItemWrap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+.plantabWrap .tabList .tabListItemWrap::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #e7e2df;
+  left: 0;
+  bottom: 0;
+}
+.plantabWrap .tabList .tabListItemWrap .planListItem {
+  position: relative;
+  font-size: 14px;
+  line-height: 20px;
+  width: auto;
+  min-width: 128px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+}
+.plantabWrap .tabList .tabListItemWrap .planListItem[aria-selected="true"] {
+  color: #f47630;
+  font-weight: 600;
+}
+.plantabWrap
+  .tabList
+  .tabListItemWrap
+  .planListItem[aria-selected="true"]::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #f47630;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.articleContentWrap .tabContentWrap .planTypepanel[aria-hidden="true"] {
+  display: none;
+}
+
+/* 입주탐방 인기 입주단지 작업 */
+.ADcontentWrap {
+  position: relative;
+}
+.ADcontentWrap .articleTitle {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #3a3736;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e7e2df;
+}
+.ADcontentWrap .ADinfoWrap .title {
+  font-size: 16px;
+  line-height: 24px;
+  color: #0863b7;
+  font-weight: 600;
+  margin-top: 24px;
+  min-height: 48px;
+}
+.ADcontentWrap .ADinfoWrap .buildName {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+  margin-bottom: 8px;
+}
+.ADcontentWrap .ADimageBx {
+  overflow: hidden;
+  height: 200px;
+}
+.ADcontentWrap .ADimage {
+  float: left;
+}
+.ADcontentWrap .ADimage-0 {
+  width: 274px;
+  height: 200px;
+  margin-right: 4px;
+}
+.ADcontentWrap .ADimage-1,
+.ADcontentWrap .ADimage-2,
+.ADcontentWrap .ADimage-3 {
+  width: 96px;
+  height: 64px;
+  overflow: hidden;
+}
+.ADcontentWrap .ADimage-2,
+.ADcontentWrap .ADimage-3 {
+  margin-top: 4px;
+}
+.ADcontentWrap .noImage {
+  position: relative;
+  float: left;
+  background: #d9d9d9;
+}
+.ADcontentWrap .noImage::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: url(../images/220823_Image.svg);
+  background-position: -8px -169px;
+  left: 50%;
+  margin-left: -60px;
+  top: 50%;
+  margin-top: -60px;
+}
+
+.ADwrap .ADlinkButton {
+  text-align: center;
+  margin-top: 24px;
+}
+.ADwrap .ADlinkButton a {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+  background: #f6f6f7;
+  padding: 12px 169px;
+  border: 1px solid #f3f0ed;
+  border-radius: 8px;
+}
+.ADwrap .ADlinkButton a span {
+  position: relative;
+  display: inline-block;
+  padding-left: 28px;
+}
+.ADwrap .ADlinkButton a span::before {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  background: url(../images/220823_Icon.svg);
+  left: 0;
+  top: 0;
+  background-position: -296px -208px;
+}
+
+/* swiper custom */
+.ADcontentWrap .swiper {
+  width: 374px;
+  margin: 0 auto;
+}
+.ADcontentWrap .swiper-pagination {
+  position: relative;
+  margin-top: 24px;
+}
+.ADcontentWrap .swiper-pagination-bullet-active {
+  width: 8px;
+}
+.AD-button-prev,
+.AD-button-next {
+  position: absolute;
+  z-index: 5;
+  width: 10px;
+  height: 18px;
+  background: url(../images/220823_Icon.svg);
+  top: 236px;
+  cursor: pointer;
+}
+.AD-button-prev {
+  background-position: -138px -175px;
+  left: 0;
+}
+.AD-button-next {
+  background-position: -180px -175px;
+  right: 0;
+}
+
+/* 입주탐방 뷰페이지 이미지 슬라이드 */
+.detailLayerPopup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  background: rgba(0, 0, 0, 0.5);
+}
+.detailLayerPopup.open {
+  opacity: 1;
+  visibility: visible;
+}
+.detailLayerPopup .detailLayer {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+}
+.detailLayerPopup .popupLayer {
+  position: relative;
+  display: inline-block;
+  padding: 30px;
+}
+.detailLayerPopup .popupLayer .popupSlider {
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.2);
+}
+.detailLayerPopup .popupLayer .popupSlider .swiper {
+  width: 680px;
+}
+.detailLayerPopup .popupLayer .popupSlider .swiper img {
+  width: 100%;
+}
+.detailLayerPopup .popupLayerClose {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  background: url(../images/220823_Icon.svg);
+  background-position: -237px -213px;
+}
+.detailLayerPopup .popupLayer .popupSlider .popupTitle {
+  text-align: left;
+  padding: 11px 16px;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+
+.popup-button-prev,
+.popup-button-next {
+  position: absolute;
+  z-index: 5;
+  width: 10px;
+  height: 18px;
+  background: url(../images/220823_Icon.svg);
+  top: 210px;
+  cursor: pointer;
+}
+.popup-button-prev {
+  background-position: -138px -175px;
+  left: 0;
+}
+.popup-button-next {
+  background-position: -180px -175px;
+  right: 0;
+}
+
+/* 아파트 입주 물량 */
+.aptWrap.contentWrap {
+  background-color: #fff;
+}
+.apt .contentInfoWrap .complexColumn .complexContentArea {
+  padding: 24px;
+}
+.apt .headerInfo .complexTitle {
+  display: flex;
+}
+.apt .headerInfo .areafilterWrap .selectBox {
+  display: flex;
+  width: auto;
+  margin-left: 16px;
+  align-items: center;
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: solid 1px #d4cdcb;
+  font-size: 14px;
+  line-height: 20px;
+  background: #fff;
+  font-weight: 400;
+}
+.apt .areafilterWrap .Icon_marker {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-top: -3px;
+  vertical-align: middle;
+  background-position: -472px -6px;
+}
+.apt .headerInfo .areafilterWrap .selectBox span:after {
+  display: inline-block;
+  width: 6px;
+  height: 10px;
+  margin: 0 10px;
+  background-position: -370px -215px;
+}
+.apt .headerInfo .areafilterWrap .selectBox span:last-child:after {
+  content: none;
+}
+.apt .swiper-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: #e7e2df;
+  opacity: 1;
+}
+.apt .swiper-pagination .swiper-pagination-bullet-active {
+  width: 18px;
+  background-color: #f47630;
+}
+.apt .contentInfoWrap .complexColumn {
+  width: 49%;
+  box-sizing: border-box;
+}
+.apt .contentInfoWrap .householdListWrap {
+  position: relative;
+}
+.apt .articleTitle {
+  position: relative;
+}
+.apt .articleTitle .title {
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e7e2df;
+}
+.apt .chartContent {
+  width: 100%;
+  height: 228px;
+  margin-bottom: 32px;
+  background: #ccc;
+}
+.apt .articleTitle .count {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 16px;
+}
+.apt .articleTitle .count .num {
+  color: #f47630;
+}
+.apt .householdList {
+  position: relative;
+  overflow-x: scroll;
+}
+.apt .unit {
+  position: absolute;
+  top: -23px;
+  right: 0;
+  color: #9c9694;
+  font-size: 12px;
+}
+.apt .householdList .tableRow {
+  display: flex;
+}
+.apt .householdList .tableRow .thead {
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  background: #f4f9ff;
+  border: 1px solid #d4cdcb;
+  border-right: none;
+  text-align: center;
+  flex-basis: 80px;
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+.apt .householdList .tableRow .thead:last-child {
+  border-right: 1px solid #d4cdcb;
+}
+.apt .householdList .householdContent {
+  display: flex;
+}
+.apt .householdList .householdContent .tableTxt {
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #d4cdcb;
+  border-top: none;
+  border-right: none;
+  flex-basis: 80px;
+  flex: 0 0 auto;
+  font-size: 14px;
+}
+.apt .householdList .householdContent .tableTxt:last-child {
+  border-right: 1px solid #d4cdcb;
+}
+.apt .adContentArea {height: auto;}
+.apt .adContentArea .bannerBox {
+  display: block;
+  width: 100%;
+  height: 90px;
+  padding: 32px;
+  background-color: #faf5ff;
+  border-radius: 4px;
+  border: 1px solid #eee3f5;
+  box-sizing: border-box;
+  font-size: 18px;
+  font-weight: 600;
+}
+.apt .householdList::-webkit-scrollbar {
+  width: 2px;
+  height: 5px;
+}
+.apt .householdList::-webkit-scrollbar-track {
+  background: #fff5ef;
+}
+.apt .householdList::-webkit-scrollbar-thumb {
+  background: #dcdcdc;
+  border-radius: 10px;
+}
+.apt .householdList::-webkit-scrollbar-thumb:hover {
+  background: #dcdcdc;
+  border-radius: 10px;
+}
+.apt .complexColumn:last-child {
+  position: relative;
+  margin-left: 2%;
+}
+.apt .articleTitle + .selectBox {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 130px;
+}
+.apt .articleTitle + .selectBox a {
+  display: block;
+}
+.apt .totalCountArea {
+  width: 100%;
+  height: 48px;
+  background-color: #f4f9ff;
+  padding: 12px 0;
+  margin-bottom: 12px;
+  text-align: center;
+  line-height: 24px;
+}
+.apt .totalCountArea .num {
+  color: #0864b7;
+  font-weight: 600;
+}
+
+.apt .totalCountListWrap .totalCountList .tableHead,
+.new .supplyList .tableHead {
+  border-bottom: 1px solid #e7e2df;
+}
+.apt .totalCountListWrap .totalCountList .tableHead .tableRow,
+.new .supplyList .tableHead .tableRow {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  background: #fafafa;
+  border-top: 1px solid #e7e2df;
+}
+.apt .totalCountListWrap .totalCountList .tableHead .tableRow .tableData,
+.new .supplyList .tableHead .tableRow .tableData {
+  font-weight: 600;
+}
+.apt .totalCountListWrap .totalCountList .tableContent .tableRow,
+.new .supplyList .tableContent .tableRow {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 4px 0;
+  border-bottom: 1px solid #e7e2df;
+}
+.apt .totalCountListWrap .totalCountList .tableData,
+.new .supplyList .tableContent .tableRow .tableData {
+  flex: 1 0 0;
+  line-height: 22px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+}
+.apt .totalCountListWrap .totalCountList .tableHead .tableData:nth-child(1),
+.apt
+  .totalCountListWrap
+  .totalCountList
+  .listContents
+  .tableRow
+  .tableData:nth-child(1) {
+  width: 100px;
+  width: 18.691%;
+}
+.apt .totalCountListWrap .totalCountList .tableHead .tableData:nth-child(2),
+.apt
+  .totalCountListWrap
+  .totalCountList
+  .listContents
+  .tableRow
+  .tableData:nth-child(2) {
+  width: 220px;
+  width: 41.121%;
+}
+.apt .totalCountListWrap .totalCountList .tableHead .tableData:nth-child(3),
+.apt
+  .totalCountListWrap
+  .totalCountList
+  .listContents
+  .tableRow
+  .tableData:nth-child(3) {
+  width: 120px;
+  width: 22.429%;
+}
+.apt .totalCountListWrap .totalCountList .tableHead .tableData:nth-child(4),
+.apt
+  .totalCountListWrap
+  .totalCountList
+  .listContents
+  .tableRow
+  .tableData:nth-child(4) {
+  width: 100px;
+  width: 18.691%;
+}
+
+.apt .totalCountListWrap .totalCountList .listContents .tableRow {
+  display: flex;
+  padding: 7.5px 0;
+  border-top: 1px solid #e7e2df;
+}
+.apt .totalCountListWrap .totalCountList .listContents .tableRow:last-child {
+  border-bottom: 1px solid #e7e2df;
+}
+.apt .totalCountListWrap .totalCountList .listContents .tableRow .tableData {
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+}
+.sectionWrap.apt .listSection .paginationWrap {
+  padding-top: 40px;
+}
+.apt .areafilterWrap {
+  position: relative;
+}
+
+.apt .SYpaginationWrap {
+  padding-bottom: 16px;
+}
+
+@media (max-width: 1024px) {
+  .apt .contentInfoWrap {
+    display: block;
+  }
+  .apt .contentInfoWrap .complexColumn {
+    width: 100%;
+  }
+  .apt .adContentArea .bannerBox {
+    width: auto;
+    margin: 0 16px;
+    padding: 32px 16px;
+  }
+  .apt .complexColumn:last-child {
+    margin: 0;
+  }
+  .apt .contentInfoWrap .complexColumn .complexContentArea {
+    border-radius: 0;
+    border: none;
+  }
+}
+
+/* 아파트 입주 물량 초기화 */
+.apt .SYfilterWrap {
+  border: 0;
+}
+.apt .SYfilterWrap h2 {
+  display: inline-block;
+  vertical-align: middle;
+}
+.apt .SYfilterWrap .filtering {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  height: auto;
+  margin-left: 16px;
+}
+.apt .totalCountListWrap .totalCountList .tableContent .tableRow,
+.new .supplyList .tableContent .tableRow,
+.newDetail .summary .tableContent .tableRow {
+  border-top: 0;
+}
+
+/* 입주탐방 아이콘 부분 */
+.tour
+  .articleWrap
+  .tourInfoWrap
+  .articleContent
+  .agencyInfoWrap
+  .articleBtnWrap
+  .articleBtn {
+  border: 1px solid #d5cdcb;
+  border-radius: 4px;
+}
+.tour
+  .articleWrap
+  .tourInfoWrap
+  .articleContent
+  .agencyInfoWrap
+  .articleBtnWrap
+  .articleBtn
+  .Icon_btn[aria-label="중개사문의"] {
+  width: 17px;
+  height: 17px;
+  background: url(../images/ic_request.png) no-repeat center;
+  margin-right: 7px;
+}
+
+/* 분양유상옵션 */
+.optionPopupWrap.open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.3);
+}
+.optionPopupWrap .optionPopupInner {
+  padding: 30px 0;
+  height: 100%;
+  text-align: center;
+}
+.optionPopupWrap .optionPopupInner .optionPopupContent {
+  position: relative;
+  display: inline-block;
+  max-height: 100%;
+  overflow-y: auto;
+  text-align: left;
+  background: #ffffff;
+  max-width: 588px;
+  padding: 40px;
+}
+.optionPopupWrap .optionPopupTitle {
+  margin-bottom: 8px;
+}
+.optionPopupWrap .optionPopupTitle > p {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #3a3736;
+  text-align: center;
+}
+.optionPopupWrap .optionPopupTitle .optionPopupClose {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: url(../images/220823_Icon.svg) no-repeat -236px -212px;
+  right: 29px;
+  top: 29px;
+}
+
+.byoption {
+  background: #fff;
+}
+.byoption .optionRefresh {
+  text-align: right;
+  margin-right: -16px;
+}
+.byoption .optionRefresh button {
+  display: inline-block;
+  text-align: left;
+  position: relative;
+  width: 73px;
+  height: 32px;
+  border: 1px solid #d5cdcb;
+  border-radius: 4px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+  padding-left: 28px;
+  background: #fff;
+}
+.byoption .optionRefresh button::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: url(../images/220823_Icon.svg) no-repeat -81px -273px;
+  left: 10px;
+  top: 50%;
+  margin-top: -6.5px;
+}
+.byoption .byOptionTitle {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+}
+.byoption .byOptionInfo {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7b726f;
+}
+.byoption .byOptionPrice {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7b726f;
+}
+.byoption input[type="checkbox"] {
+  position: absolute;
+  left: -99999px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.byoption .byOptionDep2Bx,
+.byoption .byOptionDep3Bx {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+.byoption .byOptionDep2Bx.active,
+.byoption .byOptionDep3Bx.active {
+  max-height: 4000px;
+}
+
+/* 오른쪽 화살표 표기 */
+.byoption .arrowBtn {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+.byoption .arrowBtn::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -3.5px;
+  width: 12px;
+  height: 7px;
+  background: url(../images/220823_Icon.svg) no-repeat center;
+  background-position: -174px -249px;
+}
+.byoption .byOptionDep1Title.arrowBtn::after {
+  right: 23px;
+}
+
+/* 첫번째 항목 */
+.byoption .byOptionDep1Wrap .byOptionDep1Title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  padding: 20px;
+  border-bottom: 1px solid #e7e2df;
+}
+.byoption .byOptionDep1Wrap .byOptionDep1Title span {
+  position: relative;
+  display: inline-block;
+  padding-left: 28px;
+  z-index: 5;
+}
+.byoption .byOptionDep1Wrap .byOptionDep1Title span::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: 0;
+  top: 4px;
+  background: #e7e2df;
+}
+
+.byoption .byOptionDep1Wrap .byOptionDep1Title.check span::before {
+  background: #F47630;
+}
+
+/* 두번째 항목 */
+.byoption .byOptionDep2Wrap {
+  padding: 0 24px 0 48px;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner {
+  padding: 16px;
+  border-bottom: 1px solid #e7e2df;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner:last-child {
+  border-bottom: 0;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2TitleWrap {
+  width: 70%;
+}
+.byoption .byOptionDep2Wrap .byoptionDep2PriceWrap {
+  width: 30%;
+  text-align: right;
+}
+
+.byoption .byOptionDep2Wrap.noChild {
+  background-color: #fafafa;
+}
+.byoption .byOptionDep2Wrap.noChild .byOptionDep2Inner {
+  border-bottom: 0;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.noChild {
+  padding: 16px 0;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.noChild label {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.noChild label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d5cdcb;
+  border-radius: 4px;
+  left: 0;
+  top: 1px;
+  background-color: #ffffff;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.noChild label.checked::before {
+  background: #f47630 url(../images/ic_check.png) no-repeat center;
+  border-color: #f47630;
+}
+
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild {
+  display: block;
+  padding: 0;
+  border-bottom: 0;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild .arrowBtn {
+  border-bottom: 1px solid #e7e2df;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild .arrowBtn > label {
+  display: inline-block;
+  position: relative;
+  padding: 16px 0;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild .arrowBtn > label::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  left: 0;
+  top: 19px;
+  background: #e7e2df;
+}
+
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild .arrowBtn.check > label::before {
+  background: #F47630;
+}
+/* .byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild .arrowBtn > label::before { content: ""; position: absolute; width: 20px; height: 20px; border: 1px solid #D5CDCB; border-radius: 4px; left: 0; top: 17px; } 
+.byoption .byOptionDep2Wrap .byOptionDep2Inner.hasChild .arrowBtn > label.checked::before { background: #F47630 url(../images/ic_check.png) no-repeat center; border-color: #F47630; } */
+
+/* 세번째 항목 */
+.byoption .byOptionDep3Wrap {
+  background-color: #fafafa;
+  padding: 20px 25px;
+  overflow: hidden;
+}
+.byoption .byOptionDep3Wrap .byOptionDep3Inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.byoption .byOptionDep3Wrap .byOptionDep3TitleWrap {
+  width: 80%;
+}
+.byoption .byOptionDep3Wrap .byOptionDep3TitleWrap label {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  padding-left: 30px;
+}
+.byoption .byOptionDep3Wrap .byOptionDep3TitleWrap label::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d5cdcb;
+  border-radius: 4px;
+  left: 0;
+  top: 2px;
+  background-color: #ffffff;
+}
+.byoption .byOptionDep3Wrap .byOptionDep3TitleWrap label.checked::before {
+  background: #f47630 url(../images/ic_check.png) no-repeat center;
+  border-color: #f47630;
+}
+.byoption .byOptionDep3Wrap .byoptionDep3PriceWrap {
+  width: 20%;
+  text-align: right;
+}
+
+.optionTotalResult {
+  background-color: #fff5ef;
+  padding: 24px 39px;
+}
+.optionTotalResult .optionTotalResultInner {
+  display: flex;
+  justify-content: space-between;
+}
+.optionTotalResult .optionTotalResultInner > p {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 30px;
+  color: #3a3736;
+}
+.optionTotalResult .optionTotalBx {
+  text-align: right;
+}
+.optionTotalResult .optionTotalBx .optionTotalPrice {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #3a3736;
+}
+.optionTotalResult .optionTotalBx > button {
+  background: transparent url(../images/ic_arrow.png) no-repeat center right;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #f47630;
+  padding-right: 28px;
+}
+
+/* 옵션계산 결과화면 */
+.optionResult.contentWrap {
+  background-color: #ffffff;
+}
+.optionResult .optionResultTitle {
+  padding: 14px;
+  background: #fafafa;
+  border-top: 1px solid #e7e2df;
+  border-bottom: 1px solid #e7e2df;
+  text-align: center;
+  margin-top: 40px;
+}
+.optionResult .optionResultTitle .title {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+.optionResult .optionResultTitle .info {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+}
+
+.optionResult .optionResultButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 32px 0 8px 0;
+}
+.optionResult .optionResultButton p {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+}
+.optionResult .optionResultButton button {
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 4px;
+  background: #f47630;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  color: #ffffff;
+}
+
+.optionResult .optionResultItem table {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 1px solid #7b726f;
+  border-bottom: 1px solid #7b726f;
+}
+.optionResult .optionResultItem table thead th {
+  text-align: left;
+  padding: 10px 0;
+  padding-left: 25px;
+  background: #fafafa;
+  border-bottom: 1px solid #e7e2df;
+}
+.optionResult .optionResultItem table tbody td {
+  padding: 10px 0;
+  padding-left: 25px;
+  text-align: left;
+}
+.optionResult .optionResultItem table tbody td p {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+}
+.optionResult .optionResultItem table tbody td p.info {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #7b726f;
+}
+.optionResult .optionResultItem table tfoot {
+  border-top: 1px solid #e7e2df;
+}
+.optionResult .optionResultItem table tfoot td {
+  padding: 16px 0;
+  padding-left: 25px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+}
+
+.optionResult .optionResultTotal {
+  background-color: #fff5ef;
+  border: 1px solid #ffd0b7;
+  border-radius: 4px;
+  padding: 24px;
+  margin: 11px 0 8px;
+}
+.optionResult .optionResultTotal dl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.optionResult .optionResultTotal dt,
+.optionResult .optionResultTotal dd {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #3a3736;
+}
+.optionResult .optionResultTotal dl.totalPrice {
+  border-top: 1px solid #7b726f;
+  padding-top: 15px;
+  margin-bottom: 0;
+}
+.optionResult .optionResultTotal dl.totalPrice dt {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #3a3736;
+}
+.optionResult .optionResultTotal dl.totalPrice dd {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 30px;
+  color: #f47630;
+}
+
+.optionResult .optionResultCaption p {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #9c9694;
+}
+
+/* 분양옵션 하단 배너 작업 */
+.bunyangCalculatorBanner {
+  position: relative;
+}
+.bunyangCalculatorBanner::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 70px;
+  background: url(../images/bunyang_option.png) no-repeat center;
+  right: 32px;
+  top: 50%;
+  margin-top: -35px;
+}
+.bunyangCalculatorBanner > button {
+  display: block;
+  width: 100%;
+  padding: 21px 32px;
+  padding-right: 100px;
+  background: #fff1f5;
+  border: 1px solid #ffdce6;
+  border-radius: 8px;
+  margin-top: 24px;
+  text-align: left;
+}
+.bunyangCalculatorBanner .title {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+.bunyangCalculatorBanner .info {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #3a3736;
+}
+
+.bunyangWeeklyBanner > button {
+  display: block;
+  width: 100%;
+  padding: 21px 32px;
+  background: #eff9f0;
+  border: 1px solid #e0f2e1;
+  border-radius: 8px;
+  margin-top: 24px;
+  text-align: left;
+}
+.bunyangWeeklyBanner .title {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a3736;
+}
+.bunyangWeeklyBanner .info {
+  display: block;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #3a3736;
+}
+
+/* 분양리스트 오른쪽 상단 표기 */
+.scheduleIng {
+  display: inline-block;
+  background: #fff7f7;
+  border: 1px solid #f8c8c8;
+  border-radius: 4px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 4px 8px;
+}
+.scheduleIng > span {
+  display: inline-block;
+  color: #ce2e2e;
+  vertical-align: middle;
+}
+
+.scheduleIng .scheduleScore {
+  display: inline-block;
+  margin-left: 3px;
+}
+.scheduleIng .scheduleScore .scoreBar {
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 12px;
+  margin: 0 1px;
+  margin-top: -1px;
+  background: #fee3e3;
+  border-radius: 2px;
+}
+
+.scheduleIng .scheduleScore .scoreBar.active {
+  background: #ce2e2e;
+}
+
+.scheduleComplete {
+    display: inline-block;
+  background: #f6f6f7;
+  border: 1px solid #e7e2df;
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+.scheduleComplete,
+.scheduleComplete > span {
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #3a3736;
+}
+/* 분양정보 뷰페이지 청약 tip */
+.tipContent .articleTitle {position: relative;}
+.tipContent .articleTitle .date {position: absolute; right: 0; font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px; color: #7B726F;}
+
+/* 분양정보 뷰페이지 입주예정 아파트 */
+.bunyangMoveInContent .articleTitle span {color: #f47630;}
+
+
+/* 공통부분 반응형 */
+@media all and (max-width: 1220px){
+  html {overflow-y: auto;}
+  body {height: 100%; overflow: hidden;}
+
+  /* footer */
+  .SYfooter {padding: 40px 16px;}
+  .footerWrap {width: 100%;}
+
+  /* 컨텐츠 영역 */
+  .contentWrap .sectionWrap {padding: 40px 16px;}
+}
+
+@media all and (max-width: 1220px){
+  /* 분양정보 반응형 */
+  .contentInfoWrap .bunyangContents {
+    width: 100%;
+  }
+  .contentInfoWrap .bunyangListWrap {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 24px
+  }
+
+  /* 분양정보 뷰 페이지 */
+  .contentInfoWrap .complexColumn:first-child {
+    width: 100%;
+  }
+  .contentInfoWrap .complexColumn:last-child {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* 현장방문 반응형 */
+  .reportDetail {padding: 0 16px;}
+  .contentInfoWrap {
+    display: block;
+  }
+
+  /* 부동산 AtoZ 반응형 */
+  .atoz .contentInfoWrap .complexColumn.w384 {
+    width: 100%;
+  }
+  .contentInfoWrap .complexColumn:last-child {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 24px;
+  }
+
+  /* 아파트 입주 물량 반응형 */
+  .apt .contentInfoWrap .complexColumn {
+    width: 100%;
+  }
+}
+
+
+
+

@@ -1,0 +1,563 @@
+@charset "utf-8";
+/*
+
+    공통 레이아웃 부분 (header, footer)
+
+*/
+
+/* HEADER */
+.SYheader {
+  position: relative;
+  background-color: #fff;
+  border-bottom: 1px solid #f47630;
+}
+.SYheader.detail {
+  border: none;
+}
+.SYheader .headerWrap {
+  position: relative;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+.SYheader .logo {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.SYheader .logo .Img_logo {
+  width: 91px;
+  height: 26px;
+  background-position: -140px -8px;
+}
+.SYheader .gnbWrap {
+  position: relative;
+  height: 40px;
+  padding: 2px 8px;
+  overflow: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid #f3f0ed;
+}
+.SYheader.detail .gnbWrap {
+  display: none;
+}
+.SYheader .gnbWrap .menu {
+  position: relative;
+  display: inline-block;
+  padding: 8px;
+  line-height: 20px;
+  color: #3a3736;
+}
+.SYheader .gnbWrap .menu:hover,
+.SYheader .gnbWrap .menu[aria-selected="true"] {
+  transition: all 0.2s;
+  color: #f47630;
+  font-weight: 500;
+}
+.SYheader .buttonWrap {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+.header .headerWrap {
+  width: 100%;
+  height: 80px;
+  padding: 0;
+  background: #ffffff;
+  border-bottom: solid 1px #f47630;
+}
+.headerWrap .headerInner {
+}
+.headerWrap .headerInner {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.headerWrap .headerInner .headerGnbWrap {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+.headerWrap .headerInner .logoWrap {
+}
+.headerWrap .headerInner .logoWrap .logo {
+}
+.headerWrap .headerInner .logoWrap .logo .Img_logo {
+  width: 91px;
+  height: 26px;
+  background-position: -140px -8px;
+}
+.headerWrap .headerInner .gnb {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  margin-left: 40px;
+}
+.headerWrap .headerInner .gnb .menu {
+  margin-right: 32px;
+}
+.headerWrap .headerInner .gnb .menu:hover {
+  color: #f47630;
+  transition: all 0.2s;
+}
+
+@media (min-width: 680px) {
+  .SYheader.detail {
+    border-bottom: 1px solid #f47630;
+  }
+  .SYheader .headerWrap {
+    width: 1200px;
+    padding-top: 70px;
+  }
+  .SYheader .headerMenuWrap,
+  .SYheader .buttonWrap {
+    display: none;
+  }
+  .SYheader .logo {
+    top: 22px;
+    left: 0;
+  }
+  .SYheader .gnbWrap {
+    position: absolute;
+    top: 7px;
+    left: 115px;
+    height: 56px;
+    overflow: hidden;
+    border-top: none;
+  }
+  .SYheader.detail .gnbWrap {
+    display: block;
+  }
+  .SYheader .gnbWrap .menu {
+    position: relative;
+    display: inline-block;
+    padding: 16px;
+    line-height: 24px;
+  }
+}
+
+@media all and (max-width: 680px) {
+  /* header */
+  .SYheader .headerMenuWrap {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 40px 16px 0;
+    background-color: #fff;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  .SYheader .headerMenuWrap.open {
+    left: 0;
+  }
+  .SYheader .headerMenuWrap::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(90deg, #ff6060 0%, #ff6f20 100%);
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+  .SYheader .headerMenuWrap .close {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url(../images/btn_mobile_close.png) no-repeat center;
+    right: 16px;
+    top: 8px;
+    z-index: 2;
+  }
+  .SYheader .buttonWrap .asideMenu {
+    width: 24px;
+    height: 24px;
+    background: url(../images/btn_mobile.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .menuTitle {
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    margin-top: 24px;
+  }
+  .SYheader .headerMenuWrap .menuTitle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #3a3736;
+    left: 0;
+    top: 50%;
+  }
+  .SYheader .headerMenuWrap .menuTitle span {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    padding-right: 8px;
+    background-color: #ffffff;
+  }
+  .SYheader .headerMenuWrap .menuItemWrap,
+  .SYheader .headerMenuWrap .snsItemWrap {
+    margin-top: 6px;
+    padding: 0 8px;
+  }
+  .SYheader .headerMenuWrap .menuItemWrap .menuItem {
+    padding-top: 10px;
+  }
+  .SYheader .headerMenuWrap .menuItemWrap .menuItem .menu {
+    font-size: 16px;
+    line-height: 24px;
+    font-family: "SUIT";
+  }
+  .SYheader .headerMenuWrap .snsItemWrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 16px;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem {
+    width: 33.33%;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .sns {
+    display: block;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon {
+    display: block;
+    margin: 0 auto;
+    width: 32px;
+    height: 32px;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .sns p {
+    margin-top: 10px;
+    font-family: "SUIT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #3a3736;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.blog {
+    background: url(../images/ic_naver_blog.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.post {
+    background: url(../images/ic_naver_post.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.navertv {
+    background: url(../images/ic_naver_tv.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.facebook {
+    background: url(../images/ic_facebook.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.kakaotv {
+    background: url(../images/ic_kakao_tv.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.kakaostory {
+    background: url(../images/ic_kakao_story.png) no-repeat center;
+  }
+  .SYheader .headerMenuWrap .snsItemWrap .snsItem .snsIcon.insta {
+    background: url(../images/ic_instagram.png) no-repeat center;
+  }
+}
+
+/* FOOTER */
+.SYfooter {
+  padding: 40px 0;
+  background-color: #f3f0ed;
+}
+.footerWrap {
+  position: relative;
+}
+.footerWrap .logo {
+  position: absolute;
+  top: 0px;
+  left: 0;
+}
+.footerWrap .logo .SYicon {
+  display: block;
+  width: 91px;
+  height: 26px;
+  background-image: url("../images/220823_Image.svg");
+  background-position: -140px -42px;
+}
+.footerWrap .companyInfoMobileBtn {
+  display: none;
+}
+.footerWrap .companyInfoWrap {
+  width: calc(100% - 225px);
+  position: relative;
+  line-height: 16px;
+  color: #7b726f;
+}
+.footerWrap .companyInfoWrap .info {
+  font-size: 12px;
+  font-weight: 400;
+}
+.footerWrap .companyInfoWrap .infoWrap {
+  margin-top: 8px;
+}
+.footerWrap .companyInfoWrap .notice,
+.footerWrap .companyInfoWrap .copyright {
+  margin-top: 16px;
+  font-size: 12px;
+}
+.footerWrap .contactInfoWrap {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  color: #7b726f;
+  text-align: right;
+}
+.footerWrap .contactInfoWrap .callInfo .title {
+  line-height: 24px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.footerWrap .contactInfoWrap .callInfo .callNumber {
+  line-height: 32px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.footerWrap .contactInfoWrap .footerSns {
+  margin-top: 18px;
+}
+.footerWrap .contactInfoWrap .footerSns .snsComponent a {
+  display: inline-block;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  margin: 0 4px;
+  background: url(../images/ic_footer_sns.svg) no-repeat;
+  font-size: 0;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="블로그"] {
+  background-position: -2px -2px;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="포스트"] {
+  background-position: -38px -2px;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="네이버티비"] {
+  background-position: -74px -2px;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="페이스북"] {
+  background-position: -110px -2px;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="카카오스토리"] {
+  background-position: -146px -2px;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="카카오티비"] {
+  background-position: -182px -2px;
+}
+.footerWrap .contactInfoWrap .footerSns a[aria-label="인스타그램"] {
+  background-position: -218px -2px;
+}
+
+@media all and (min-width: 680px) {
+  .footerWrap {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0px 0 0px 130px;
+  }
+}
+
+@media all and (max-width: 1220px) {
+  /* footer */
+  .SYfooter {
+    padding: 40px 16px;
+  }
+  .footerWrap {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .footerWrap {
+    text-align: center;
+    padding: 0;
+  }
+  .footerWrap .logo {
+    position: static;
+    display: inline-block;
+    margin-bottom: 17px;
+  }
+  .footerWrap .companyInfoWrap {
+    width: 100%;
+  }
+  .footerWrap .contactInfoWrap {
+    position: static;
+    text-align: center;
+  }
+
+  .footerWrap .footerInner {
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 40px 16px;
+  }
+  .footerWrap .footerInner .footerLogoWrap {
+    margin-right: 0;
+    padding-bottom: 16px;
+  }
+  .footerWrap .footerInner .footerLogoWrap .footerLogo .MSicon {
+    display: block;
+    width: 70px;
+    height: 28px;
+    background-position: -400px -96px;
+    margin: 0 auto;
+  }
+  .footerWrap .footerInner .footerLeft,
+  .footerWrap .footerInner .footerInfoWrap .companyInfoWrap .companyInfo {
+    display: block;
+  }
+  .footerWrap .footerInner .footerInfoWrap {
+    display: block;
+    line-height: 20px;
+  }
+  .footerWrap .footerInner .footerInfoWrap .companyInfoWrap .companyInfo .text,
+  .footerWrap .footerInner .footerInfoWrap .inquireWrap .text {
+    margin-right: 0;
+  }
+  .footerWrap .footerInner .footerInfoWrap .contactWrap .text {
+    padding-right: 10px;
+  }
+  .footerWrap .footerInner .footerInfoWrap .contactWrap .text::after {
+    right: 5px;
+  }
+  .footerWrap .footerInner .footerInfoWrap .contactWrap .text:last-child {
+    padding-right: 0;
+  }
+  .footerWrap .footerInner .footerRight {
+    display: block;
+  }
+  .footerWrap .footerInner .footerRight .snsWrap {
+    justify-content: center;
+    padding-top: 20px;
+  }
+  .footerWrap .footerInner .footerInfoWrap .cautionWrap {
+    padding-top: 16px;
+  }
+  .footerWrap .footerInner .footerRight .snsWrap a .SNSicon {
+    display: block;
+    width: 24px;
+    height: 24px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="블로그"]
+    .SNSicon {
+    background-position: -240px -176px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="포스트"]
+    .SNSicon {
+    background-position: -264px -176px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="네이버티비"]
+    .SNSicon {
+    background-position: -288px -176px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="페이스북"]
+    .SNSicon {
+    background-position: -336px -176px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="카카오스토리"]
+    .SNSicon {
+    background-position: -312px -176px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="카카오티비"]
+    .SNSicon {
+    background-position: -360px -176px;
+  }
+  .footerWrap
+    .footerInner
+    .footerRight
+    .snsWrap
+    a[aria-label="인스타그램"]
+    .SNSicon {
+    background-position: -596px -224px;
+  }
+}
+
+@media all and (max-width: 500px){
+    /* footer */
+  .footerWrap .companyInfoMobileBtn {
+    position: relative;
+    padding: 6px 10px;
+    padding-right: 30px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    font-family: "SUIT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 15px;
+    color: #7b726f;
+  }
+  .footerWrap .companyInfoMobileBtn::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 6px;
+    background: url("../images/220823_Icon.svg") no-repeat;
+    background-position: -132px -278px;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+    transform: rotateX(0);
+    transition: all 0.35s;
+  }
+  .footerWrap .companyInfoMobileBtn.open:after {
+    transform: rotateX(180deg);
+  }
+
+  .footerWrap .callInfo {
+    margin-top: 15px;
+  }
+  .footerWrap .companyInfoBx {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.35s;
+  }
+  .footerWrap .companyInfoBx.open {
+    max-height: 100px;
+  }
+  .footerWrap .companyInfoBxInner {
+    padding: 10px;
+    background-color: #fff5ef;
+    border: 1px solid #fce1d2;
+    border-radius: 4px;
+  }
+}
